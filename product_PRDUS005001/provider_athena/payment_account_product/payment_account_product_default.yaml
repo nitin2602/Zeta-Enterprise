@@ -1,0 +1,32 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.athena.configuration.product.prdus005001.default.payment-account-product
+spec:
+  metadata:
+    id: athena.configuration.product.prdus005001.default.payment-account-product
+    name: Payment Account Product for CWUAT
+    description: Payment Account Product for CWUAT
+    tenantId: '600309'
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"code":{"type":"string"},"description":{"type":"string"},"name":{"type":"string"},"resourceProductCode":{"type":"string"},"status":{"enum":["ACTIVE","INACTIVE"]},"tags":{"items":{"type":"string"},"type":"array"},"walletProductCode":{"type":"string"}},"required":["code","name","description","resourceProductCode","status"],"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: PPDUS005001
+      name: Credit Card Payment Account Product for CWUAT
+      description: Credit Card Payment Account Product for CWUAT
+      type: CREDIT_CARD
+      status: ACTIVE
+      baseCurrency: USD
+      paymentAccountProviderCode: PAPUS003001
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.payment-product
+    displayName: Payment Account Product for PRDUS005001

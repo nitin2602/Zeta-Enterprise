@@ -1,0 +1,31 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.athena.configuration.product.prdus005001.form-factor-product-ttms.form-factor-product
+  labels:
+    rrsd.zetaapps.in/day: day-one
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.lsg","gitDbPath":"","filePath":"product_configurations/product_PRDUS005001/provider_athena/form_factor_product/form-factor-product_form-factor-product-ttms.yaml","tenantCode":""}'
+spec:
+  metadata:
+    id: athena.configuration.product.prdus005001.form-factor-product-ttms.form-factor-product
+    name: athena.configuration.product.prdus005001.form-factor-product-ttms.form-factor-product
+    description: athena.configuration.product.prdus005001.form-factor-product-ttms.form-factor-product
+    tenantId: '600309'
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"code":{"type":"string"},"description":{"type":"string"},"issuanceStatus":{"enum":["ACTIVE","INACTIVE"]},"name":{"type":"string"},"paymentStatus":{"enum":["ACTIVE","INACTIVE"]},"provider":{"enum":["CMS","WMS","WCMS","TTMS","UIDMS","PMS","PCMS","UPIMS","PKMS","DIDMS"]},"skuID":{"type":"string"},"tags":{"items":{"pattern":"^tag://[a-zA-Z0-9-]+/.{1,255}$","type":"string"},"type":"array"},"type":{"enum":["card","wallet","walletCard","tethysToken","uniqueId","phoneNumber","proxyCard","vpa","public_key","device"]}},"required":["code","name","description","type","provider","issuanceStatus","paymentStatus"],"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: FFPUS00500102_CARDWORKSUAT
+      description: Cardworksuat Tethys Token Form Factor Product
+      issuanceStatus: ACTIVE
+      name: Cardworksuat Tethys Token Form Factor Product
+      paymentStatus: ACTIVE
+      provider: TTMS
+      type: tethysToken

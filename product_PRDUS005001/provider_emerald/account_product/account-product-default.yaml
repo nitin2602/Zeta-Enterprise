@@ -1,0 +1,67 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+metadata:
+  name: lsg.emerald.configuration.product.prdin005001.default.account-product
+spec:
+  metadata:
+    id: emerald.configuration.product.prdin005001.default.account-product
+    name: Pixel test Credit Card Loan Monthly Product5001
+    description: Pixel test Credit Card Loan Monthly Product5001
+    tenantId: '600309'
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: https://banking-assets.s3.ap-south-1.amazonaws.com/hedwig/product_configuration_schema/provider_ruby/account_product_family/account_product/v1/product.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      name: Pixel test Credit Card Loan Monthly Product5001
+      code: EAPUS00500101
+      coaCode: COAUS005001
+      accountProductFamilyCode: EPFUS005001
+      description: Pixel test Credit Card Loan Monthly Product5001
+      productPreferences:
+        defaultTenure:
+          days: 0
+          months: 0
+          years: 0
+        issuanceEndDate: '2999-12-31'
+        issuanceStartDate: '2010-04-01'
+        maxLoanAmount:
+          amount: 100000000
+          currency: USD
+        maxTenure:
+          days: 0
+          months: 60
+          years: 0
+        minLoanAmount:
+          amount: 50000
+          currency: USD
+        minTenure:
+          days: 1
+          months: 0
+          years: 0
+      policies:
+        interestPolicy:
+          code: EIPUS005001
+          version: 1
+        repaymentPolicy:
+          code: ERPUS005001
+          version: 1
+        accountClosurePolicy:
+          code: ECPUS005001
+          version: 1
+        accountNumberGenerationPolicy:
+          code: ENGUS005001
+          version: 1
+        amortizationPolicy:
+          code: EAPUS005001
+          version: 2
+        loanLifeCyclePolicy:
+          code: ELLCUS005001
+          version: 1
+        creditAllocationPolicy:
+          code: ECAPUS005001
+          version: 1
+      templateCode: us-credit

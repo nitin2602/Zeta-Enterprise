@@ -1,0 +1,33 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.athena.configuration.product.prdus005001.card.form-factor-product
+spec:
+  metadata:
+    id: athena.configuration.product.PRDUS005001.card.form-factor-product
+    name: Card Form Factor Product cardworksuat
+    description: Card Form Factor Product cardworksuat
+    tenantId: '600309'
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"code":{"type":"string"},"description":{"type":"string"},"issuanceStatus":{"enum":["ACTIVE","INACTIVE"]},"name":{"type":"string"},"paymentStatus":{"enum":["ACTIVE","INACTIVE"]},"provider":{"enum":["CMS","WMS","WCMS","TTMS","UIDMS","PMS","PCMS","UPIMS","PKMS","DIDMS"]},"skuID":{"type":"string"},"tags":{"items":{"type":"string"},"type":"array"},"type":{"enum":["card","wallet","walletCard","tethysToken","uniqueId","phoneNumber","proxyCard","vpa","public_key","device"]}},"required":["code","name","description","type","provider","issuanceStatus","paymentStatus"],"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: FFPUS005001_CARDWORKSUAT
+      description: Card Form Factor Product cardworksuat 5001
+      issuanceStatus: ACTIVE
+      name: Card Form Factor Product cardworksuat 5001
+      paymentStatus: ACTIVE
+      provider: CMS
+      skuID: SKUUS005001_CARDWORKSUAT
+      type: card
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.form-factor-product
+    displayName: Card Form Factor Product cardworksuat

@@ -1,0 +1,115 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.athena.configuration.product.prdus005001.default.payment-product
+spec:
+  metadata:
+    id: athena.configuration.product.PRDUS005001.default.payment-product
+    name: default Payment Product for cardworksuat
+    description: default Payment Product for cardworksuat
+    tenantId: '600309'
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"code":{"type":"string"},"description":{"type":"string"},"name":{"type":"string"},"resourceProductCode":{"type":"string"},"status":{"enum":["ACTIVE","INACTIVE"]},"tags":{"items":{"type":"string"},"type":"array"},"walletProductCode":{"type":"string"}},"required":["code","name","description","resourceProductCode","status"],"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: PYPUS005001_CARDWORKSUAT
+      description: Payment Product cardworksuat
+      name: Payment Product cardworksuat
+      resourceProductCode: RSPUS005001_CARDWORKSUAT
+      status: ACTIVE
+      channelCodePaymentCodeMapping:
+        - channelCode: CHNUSZZ1101
+          paymentCodes:
+            - PMCUSZZ110121103
+            - PMCUSZZ110120103
+            - PMCUSZZ110100503
+            - PMCUSZZ110101034
+            - PMCUSZZ110100034
+            - PMCUSZZ110111034
+            - PMCUSZZ110110034
+            - PMCUSZZ110110035
+            - PMCUSZZ110111035
+            - PMCUSZZ110101004
+            - PMCUSZZ110100004
+            - PMCUSZZ110101005
+            - PMCUSZZ110101058
+            - PMCUSZZ110100058
+            - PMCUSZZ110101082
+            - PMCUSZZ110111092
+            - PMCUSZZ110111136
+            - PMCUSZZ110101031
+            - PMCUSZZ110101122
+            - PMCUSZZ110110092
+            - PMCUSZZ110110136
+            - PMCUSZZ110100082
+            - PMCUSZZ110100031
+            - PMCUSZZ110100122
+            - PMCUSZZ110100013
+            - PMCUSZZ110101013
+            - PMCUSZZ110131042
+            - PMCUSZZ110130042
+            - PMCUSZZ110130043
+            - PMCUSZZ110131043
+            - PMCUSZZ110130100
+            - PMCUSZZ110131100
+            - PMCUSZZ110130101
+            - PMCUSZZ110131101
+            - PMCUSZZ110150040
+            - PMCUSZZ110151040
+            - PMCUSZZ110111009
+            - PMCUSZZ110110009
+            - PMCUSZZ110111098
+            - PMCUSZZ110110098
+            - PMCUSZZ110101020
+            - PMCUSZZ110101021
+            - PMCUSZZ110111023
+            - PMCUSZZ110111022
+            - PMCUSZZ110100020
+            - PMCUSZZ110100021
+            - PMCUSZZ110110023
+            - PMCUSZZ110110022
+            - PMCUSZZ110100005
+            - PMCUSZZ110121106
+            - PMCUSZZ110121300
+            - PMCUSZZ110121302
+            - PMCUSZZ110120106
+            - PMCUSZZ110100505
+            - PMCUSZZ110120300
+            - PMCUSZZ110120302
+            - PMCUSZZ110100201
+            - PMCUSZZ110100203
+            - PMCUSZZ110101201
+            - PMCUSZZ110101203
+            - PMCUSZZ110110215
+            - PMCUSZZ110110217
+            - PMCUSZZ110111215
+            - PMCUSZZ110111217
+            - PMCUSZZ110150201
+            - PMCUSZZ110151201
+            - PMCUSZZ110100261
+            - PMCUSZZ110110261
+            - PMCUSZZ110111261
+            - PMCUSZZ110100263
+            - PMCUSZZ110101263
+            - PMCUSZZ110110260
+            - PMCUSZZ110111260
+            - PMCUSZZ110191034
+            - PMCUSZZ110192034
+            - PMCUSZZ110191005
+            - PMCUSZZ110192005
+            - PMCUSZZ110191103
+            - PMCUSZZ110192103
+            - PMCUSZZ110110029
+            - PMCUSZZ110101261
+            - PMCUSZZ110111029
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.payment-product
+    displayName: default Payment Product for cardworksuat

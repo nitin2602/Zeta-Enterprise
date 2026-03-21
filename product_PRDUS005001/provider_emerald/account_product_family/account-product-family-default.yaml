@@ -1,0 +1,25 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+metadata:
+  name: lsg.emerald.configuration.product.prdin05001.default.account-product-family
+spec:
+  metadata:
+    id: emerald.configuration.product.prdin005001.default.account-product-family
+    name: pixel test Loan Monthly Product Family5001
+    description: pixel test Loan Monthly Product Family5001
+    tenantId: '600309'
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: https://banking-assets.s3.ap-south-1.amazonaws.com/hedwig/product_configuration_schema/provider_ruby/account_product_family/v1/schema.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      name: Loan Monthly Product Family5001
+      code: EPFUS005001
+      description: Loan Monthly Product Family5001
+      coaCode: COAUS005001
+      parentCoaNodeCode: COAUS005001_Node_Unsecured_Loans
+      attributes:
+        productClass: 12

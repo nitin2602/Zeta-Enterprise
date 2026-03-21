@@ -1,0 +1,164 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+metadata:
+  name: lsg.ruby.configuration.product.prdus005001.default.account-product
+spec:
+  metadata:
+    id: ruby.configuration.product.prdus005001.default.account-product
+    name: Cardworks UAT Account Product 5001
+    description: Cardworks UAT Account Product 5001
+    tenantId: '600309'
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: https://banking-assets.s3.ap-south-1.amazonaws.com/hedwig/product_configuration_schema/provider_ruby/account_product_family/account_product/v1/product.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      name: Merrick Bank Unsecured 5001
+      code: RAPUS005001
+      coaCode: COAUS005001
+      accountProductFamilyCode: APFUS005001
+      description: F&F Test 5.9+ P,  A/F, NO joining fee, 2K line
+      productPreferences:
+        issuanceStartDate: '2006-01-01'
+        issuanceEndDate: '2999-01-01'
+        minCreditLimit:
+          currency: USD
+          amount: 10000
+        maxCreditLimit:
+          currency: USD
+          amount: 200000
+        cashLimitPercent: 100
+        overLimitPercent: 0
+      policies:
+        couponAccountingPolicy:
+          code: CAPUS005001
+          version: 1
+        creditAllocationPolicy:
+          code: CROUS005001
+          version: 1
+        chargeOffDecisionPolicy:
+          code: CODUS003005
+          version: 2
+        accountClosurePolicy:
+          code: ACPUS005001
+          version: 1
+        accountNumberGenerationPolicy:
+          code: ANGUS005002
+          version: 4
+        feePolicies:
+          loanConversionBillingInterestFee:
+            code: LCBUS005001
+            version: 1
+          loanConversionFeePolicy:
+            code: LCFUS005001
+            version: 1
+          loanConversionPreClosureFeeAdjustmentPolicy:
+            code: LCPUS005001
+            version: 1
+          loanConversionPolicy:
+            code: ELCUS005001
+            version: 1
+          loanConversionPreClosureInterestPolicy:
+            code: LCPINTUS005001
+            version: 1
+          annualFee:
+            code: ANFUS005001
+            version: 3
+          joiningFee:
+            code: JFFUS006001
+            version: 108
+          cardReplacementFee:
+            code: CRFUS005001
+            version: 4
+          cashAdvanceFee:
+            code: CAFUS005001
+            version: 5
+          forexFee:
+            code: FCFUS005001
+            version: 999
+          forexAdvanceFee:
+            code: FCCUS005001
+            version: 1037
+          forexFeeRequestBased:
+            code: FCFUS002001REQUESTBASED
+            version: 4
+          cashadvanceRequestBased:
+            code: CAFUS002001RQBSD
+            version: 4
+          lateFee:
+            code: LPFUS005001
+            version: 3
+          classificationBasedFeeSupervisor:
+            code: CFSUS003004
+            version: 1
+          thresholdBasedFeeSupervisor:
+            code: TFSUS003004
+            version: 3
+          creditBalanceHandlingPolicy:
+            code: CBRIN003004
+            version: 5
+          mlaFeeSupervisorPolicy:
+            code: MFSUS003003
+            version: 4
+          overlimitFee:
+            code: OVLUS005001
+            version: 2
+        delinquencyPolicy:
+          code: DLQUS005001
+          version: 3
+        dormancyPolicy:
+          code: DORUS005001
+          version: 1
+        interestPolicy:
+          code: INTUS005001
+          version: 7
+        madPolicy:
+          code: MADUS005001
+          version: 3
+        repaymentPolicy:
+          code: REPUS005001
+          version: 1
+        statementPolicy:
+          code: STMUS005001
+        spendLimitPolicy:
+          code: SPLUS005001
+          version: 8201597217231407251
+      channelCodes:
+        - CHNUSZZ1101
+      programs:
+        - code: IPGUS005003
+          type: General
+          validFrom: '2000-01-01T00:00:00.000-05:00'
+          validTill: '2999-12-31T00:00:00.000-05:00'
+        - code: SPGUS001001
+          type: Scra
+          validFrom: '2000-01-01T23:09:01.795+07:00'
+          validTill: '2999-01-01T23:09:01.795+07:00'
+        - code: ELCPROGUS005001
+          type: LOAN_CONVERSION
+          validFrom: '2000-01-01T23:09:01.795+07:00'
+          validTill: '2999-01-01T23:09:01.795+07:00'
+        - code: ELCPROGUS005002
+          type: LOAN_CONVERSION
+          validFrom: '2000-01-01T23:09:01.795+07:00'
+          validTill: '2999-01-01T23:09:01.795+07:00'
+        - code: CRAUS005001
+          type: CreditAllocation
+          validFrom: '2000-01-01T00:00:00.000-05:00'
+          validTill: '2999-12-31T00:00:00.000-05:00'
+        - code: CRAUS005002
+          type: CreditAllocation
+          validFrom: '2000-01-01T00:00:00.000-05:00'
+          validTill: '2999-12-31T00:00:00.000-05:00'
+        - code: CRAUS005003
+          type: CreditAllocation
+          validFrom: '2000-01-01T00:00:00.000-05:00'
+          validTill: '2999-12-31T00:00:00.000-05:00'
+        - code: CRAUS005004
+          type: CreditAllocation
+          validFrom: '2000-01-01T00:00:00.000-05:00'
+          validTill: '2999-12-31T00:00:00.000-05:00'
+      templateCode: us-credit

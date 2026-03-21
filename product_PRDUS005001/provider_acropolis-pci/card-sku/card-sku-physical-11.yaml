@@ -1,0 +1,36 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.acropolis-pci.configuration.product.prdus005001.999999-11.card-sku
+spec:
+  metadata:
+    id: acropolis-pci.configuration.product.PRDUS005001.999999-11.card-sku
+    name: Card SKU For Physical Bin Range 999999-11
+    description: Card SKU For Physical Bin Range 999999-11
+    tenantId: '600309'
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"bin":{"type":"string"},"code":{"type":"string"},"fileAttributes":{"properties":{"bankIdentifier":{"type":"string"}},"type":"object"},"plasticCode":{"type":"string"},"productCode":{"type":"string"},"range":{"type":"string"},"reservoirConfig":{"properties":{"inventory.size":{"type":"number"},"refilling.rate":{"type":"number"}},"type":"object"},"vendorIDs":{"items":{"type":"string"},"type":"array"}},"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      batchCode: DEAFULT_600309_BATCH
+      code: SKUUS005001_01_CARDWORKSUAT
+      fileAttributes:
+        bankIdentifier: Merrick
+      plasticCode: Platinum
+      productCode: CRPUS005001_01_CWUAT
+      reservoirConfig:
+        inventory.size: 2000
+        refilling.rate: 1000
+      vendorIDs:
+        - VENUS00100101
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.acropolis.card-sku
+    displayName: Card SKU For Physical Bin Range 999999-11

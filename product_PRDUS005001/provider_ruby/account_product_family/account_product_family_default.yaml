@@ -1,0 +1,23 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+metadata:
+  name: lsg.ruby.configuration.product.prdus005001.default.account-product-family
+spec:
+  metadata:
+    id: ruby.configuration.product.prdus005001.default.account-product-family
+    name: Cardworks UAT Account Product Family 5001
+    description: Cardworks UAT Account Product Family 5001
+    tenantId: '600309'
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: https://banking-assets.s3.ap-south-1.amazonaws.com/hedwig/product_configuration_schema/provider_ruby/account_product_family/v1/schema.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      name: Friends and Family 2k limit (5.9%) 5001
+      code: APFUS005001
+      description: Merrick Bank Unsecured 5001
+      coaCode: COAUS005001
+      parentCoaNodeCode: COAUS005001_Node_Revolving_Credit
