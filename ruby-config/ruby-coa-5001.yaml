@@ -1,0 +1,51 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyCOA
+metadata:
+  name: lsg.ruby.rubycoa.5001
+spec:
+  metadata:
+    id: ruby.rubycoa.5001
+    name: 5001 Ruby Coa 5001
+    description: COA_Monthly_cardworksuat Ruby Coa 5001 description
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  code: COAUS005001
+  name: COA MONTHLY cardworksuat COAUS005001
+  currency: USD
+  calendarCode: CALUS005001
+  clockCode: CLKUS005001
+  billingCycleCodes:
+    - CYCUS00500101
+    - CYCUS00500102
+    - CYCUS00500103
+    - CYCUS00500104
+    - CYCUS00500105
+    - CYCUS00500106
+    - CYCUS00500107
+    - CYCUS00500109
+    - CYCUS00500110
+    - CYCUS00500111
+    - CYCUS00500112
+    - CYCUS00500113
+    - CYCUS00500114
+    - CYCUS00500115
+    - CYCUS00500116
+    - CYCUS00500117
+    - CYCUS00500118
+    - CYCUS00500119
+    - CYCUS00500120
+    - CYCUS00500121
+    - CYCUS00500122
+    - CYCUS00500123
+    - CYCUS00500124
+    - CYCUS00500125
+    - CYCUS00500126
+    - CYCUS00500127
+    - CYCUS00500128
+    - CYCUS00500129
+  statementYearlyCycleCodes:
+    - CYCUS00500108
+  templateCode: us-credit

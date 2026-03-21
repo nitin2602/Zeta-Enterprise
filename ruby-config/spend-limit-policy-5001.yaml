@@ -1,0 +1,24 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubySpendLimitPolicy
+metadata:
+  name: lsg.ruby.rubyspendlimitpolicy.5001
+spec:
+  metadata:
+    id: ruby.rubyspendlimitpolicy.5001
+    name: 5001 Ruby Spend Limit Policies
+    description: 5001 Ruby Spend Limit Policies
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  validFrom: '2000-07-25T23:09:01.000Z'
+  validTill: '2999-12-01T23:09:01.000Z'
+  name: Spend Limit Policy 5001
+  description: Spend Limit Policy 5001
+  code: SPLUS005001
+  coaCode: COAUS005001
+  disabledForNewCards: []
+  defaultLimitsForNewCards: []
+  spendLimits: []
+  templateCode: us-credit

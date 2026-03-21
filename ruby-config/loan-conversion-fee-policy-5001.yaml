@@ -1,0 +1,37 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyLoanConversionFeePolicy
+metadata:
+  name: lsg.ruby.loanconversionfeepolicy.5001
+spec:
+  code: LCFUS005001
+  description: loan conversion fee policy changed
+  metadata:
+    description: 5001 loan fee policy
+    id: ruby.loanconversionfeepolicy.5001
+    name: 5001 conversion fee policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantCode: lsg
+    tenantId: '600309'
+  modelParameters:
+    baseStateLocation: TN
+    taxes:
+      cgst: 9
+      igst: 18
+      sgst: 9
+    invoiceNumberConfig:
+      status: ACTIVE
+      ingConfig:
+        code: INGUS001002
+        version: '1'
+      generationContext:
+        clockType: BOOK
+        dateFormat: yyDDD
+        customFields:
+          sourceSystemCode: TCC
+      generationStrategy: DATE_BASED
+  name: loan conversion fee policy
+  templateCode: us-credit
+  validFrom: '2010-04-01T00:00:00.000+05:30'
+  validTill: '2999-12-31T00:00:00.000+05:30'

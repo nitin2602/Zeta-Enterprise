@@ -1,0 +1,33 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyAccountClosurePolicy
+metadata:
+  name: lsg.ruby.rubyaccountclosurepolicy.5001
+spec:
+  metadata:
+    id: ruby.rubyaccountclosurepolicy.5001
+    name: 5001 Account Closure Policy
+    description: 5001 Account Closure Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  name: Account Closure Policy
+  code: ACPUS005001
+  description: Account Closure Policy
+  reason:
+    - reasonCode: Delinquency
+      maxDebitBalForWriteOff: 0
+    - reasonCode: Dormancy
+      maxDebitBalForWriteOff: 0
+    - reasonCode: NonActivation
+      maxDebitBalForWriteOff: 0
+    - reasonCode: CustomerRequest
+      maxDebitBalForWriteOff: 0
+    - reasonCode: BankInitiated
+      maxDebitBalForWriteOff: 0
+    - reasonCode: Others
+      maxDebitBalForWriteOff: 0
+  validFrom: '2000-01-01T00:00:00.000-05:00'
+  validTill: '2999-01-01T00:00:00.000-05:00'
+  templateCode: us-credit

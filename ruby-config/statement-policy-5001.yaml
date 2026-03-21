@@ -1,0 +1,67 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyStatementPolicy
+metadata:
+  name: lsg.ruby.rubystatementpolicy.5001
+spec:
+  metadata:
+    id: ruby.rubystatementpolicy.5001
+    name: 5001 Ruby Statement Policies
+    description: 5001 Ruby Statement Policies
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  validFrom: '2000-01-01T00:00:00.000-05:00'
+  validTill: '2999-01-01T00:00:00.000-05:00'
+  name: Statement Policy
+  description: Statement Policy
+  code: STMUS005001
+  physicalStatementThreshold: '0'
+  dueDays: 2
+  graceDays: 1
+  payByHolidayTreatment: retainHoliday
+  dueDaysCalculationMethod: DueDays
+  allowedStatementCycles:
+    - billingCycle: CYCUS00500101
+    - billingCycle: CYCUS00500102
+    - billingCycle: CYCUS00500103
+    - billingCycle: CYCUS00500104
+    - billingCycle: CYCUS00500105
+    - billingCycle: CYCUS00500106
+    - billingCycle: CYCUS00500107
+    - billingCycle: CYCUS00500109
+    - billingCycle: CYCUS00500110
+    - billingCycle: CYCUS00500111
+    - billingCycle: CYCUS00500112
+    - billingCycle: CYCUS00500113
+    - billingCycle: CYCUS00500114
+    - billingCycle: CYCUS00500115
+    - billingCycle: CYCUS00500116
+    - billingCycle: CYCUS00500117
+    - billingCycle: CYCUS00500118
+    - billingCycle: CYCUS00500119
+    - billingCycle: CYCUS00500120
+    - billingCycle: CYCUS00500121
+    - billingCycle: CYCUS00500122
+    - billingCycle: CYCUS00500123
+    - billingCycle: CYCUS00500124
+    - billingCycle: CYCUS00500125
+    - billingCycle: CYCUS00500126
+    - billingCycle: CYCUS00500127
+    - billingCycle: CYCUS00500128
+    - billingCycle: CYCUS00500129
+  password: function password(context) { return 'password' }
+  statementTemplateCode: https://hercules-assets.mum1-pp.zetaapps.in/statement-templates/3.0.65/sparrow/digital.html,https://hercules-assets.mum1-pp.zetaapps.in/statement-templates/3.0.65/sparrow/mail.html
+  applyLateFeesOn: GRACE_DATE
+  valueDateOfLateFees: GRACE_DATE
+  ytdSummaryEnabled: true
+  isProbableLateFeeEnabled: true
+  isInterestBreakupEnabled: true
+  yearlyCycle: CYCUS00500108
+  billingCycleChangeConfig:
+    coolOffDaysBetweenBillingCycleChange: 0
+    rules:
+      - maxLimit: 1
+        period: YEARLY
+  templateCode: us-credit

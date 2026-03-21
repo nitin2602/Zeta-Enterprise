@@ -1,0 +1,57 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyLateFeePolicy
+metadata:
+  name: lsg.ruby.rubylatefeepolicy.5001
+spec:
+  metadata:
+    id: ruby.rubylatefeepolicy.5001
+    name: 5001 Ruby Late Fee Policy
+    description: 5001 Ruby Late Fee Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  name: Ruby Late Fee Policy
+  code: LPFUS005001
+  description: Ruby Late Fee Policy
+  modelParameters:
+    amountType: FIXED
+    repeatedOccurrence:
+      maxAmount: 4100
+      baseAmount: 4100
+    firstOccurenceAmount:
+      maxAmount: 2900
+      baseAmount: 2900
+    repeatOccurrenceWindow:
+      type: CYCLES
+      count: '6'
+    considerReversedInstances: true
+    balanceNotSubjectedToThisFee: [
+      ]
+  chargeStrategy: DIRECT-APPLY
+  precedenceCode: ZZ0025
+  chargeStrategyConfig:
+    placeHold:
+      phase: EOPI
+      applyOn: keyDateSpecification://code/DUE_DATE
+      purposeCode: LATE_PAYMENT_CHARGES
+      voucherCode: PLACE_HOLD
+      expiryInDays: '100'
+    application:
+      applyOn: keyDateSpecification://code/BILLING_DATE
+      offsetDaysForValueDate: '1'
+    releaseHold:
+      phase: EOPI
+      applyOn: keyDateSpecification://code/BILLING_DATE
+      voucherCode: RELEASE_HOLD
+  requiredChargeArtifactSummary:
+    - categoryCode: LateFeeUnbilled
+      duration:
+        cycleCode: CYCUS00500101
+        unit: MONTHS
+        value: 6
+      durationType: RELATIVE
+  validFrom: '2000-01-01T00:00:00.000-05:00'
+  validTill: '2999-01-01T00:00:00.000-05:00'
+  templateCode: us-credit

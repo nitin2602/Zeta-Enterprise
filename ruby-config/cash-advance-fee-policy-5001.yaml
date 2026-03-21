@@ -1,0 +1,25 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyCashAdvanceFeePolicy
+metadata:
+  name: lsg.ruby.rubycashadvancefeepolicy.5001
+spec:
+  metadata:
+    id: ruby.rubycashadvancefeepolicy.5001
+    name: 5001 Ruby Cash Advance Fee Policy
+    description: 5001 Ruby Cash Advance Fee Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  name: Cash Advance Fee Policy
+  code: CAFUS005001
+  description: Cash Advance Fee Policy
+  modelParameters:
+    variableAmount:
+      range:
+        min: 1000.0
+      percentage: 4.0
+  validFrom: '2000-01-01T00:00:00.000-05:00'
+  validTill: '2999-01-01T00:00:00.000-05:00'
+  templateCode: us-credit

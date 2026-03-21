@@ -1,0 +1,109 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyRepaymentPolicy
+metadata:
+  name: lsg.ruby.rubyrepaymentpolicy.5001
+spec:
+  metadata:
+    id: ruby.rubyrepaymentpolicy.5001
+    name: 5001 Ruby Repayment Policy
+    description: 5001 Ruby Repayment Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  name: Ruby Repayment Policy
+  code: REPUS005001
+  description: Ruby Repayment Policy
+  repaymentAllocation:
+    aboveMAD:
+      allocationModel: HIGHESTTOLOWESTAPR
+      allocationTieBreaker: REPAYMENTSEQUENCE
+      repaymentSequence:
+        - chargeOffStatuses:
+            - '*'
+          repaymentSequenceTieBreaker: FIFO
+          settlementPriority:
+            - CashInterestBilled
+            - CashInterestUnbilled
+            - CashPrincipalBilled
+            - CashPrincipalUnbilled
+            - InsufficientFundFeeBilled
+            - InsufficientFundFeeUnbilled
+            - RetailServiceFeeBilled
+            - RetailServiceFeeUnbilled
+            - LateFeeBilled
+            - LateFeeUnbilled
+            - RetailMiscFeeBilled
+            - RetailMiscFeeUnbilled
+            - AnnualFeeBilled
+            - AnnualFeeUnbilled
+            - RetailInterestBilled
+            - RetailInterestUnbilled
+            - RetailPrincipalBilled
+            - RetailPrincipalUnbilled
+            - CashAdvanceFeeBilled
+            - CashAdvanceFeeUnbilled
+    belowMAD:
+      allocationModel: LOWESTTOHIGHESTAPR
+      allocationTieBreaker: REPAYMENTSEQUENCE
+      repaymentSequence:
+        - chargeOffStatuses:
+            - '*'
+          repaymentSequenceTieBreaker: FIFO
+          settlementPriority:
+            - CashAdvanceFeeBilled
+            - CashAdvanceFeeUnbilled
+            - LateFeeBilled
+            - LateFeeUnbilled
+            - RetailMiscFeeBilled
+            - RetailMiscFeeUnbilled
+            - AnnualFeeBilled
+            - AnnualFeeUnbilled
+            - InsufficientFundFeeBilled
+            - InsufficientFundFeeUnbilled
+            - RetailServiceFeeBilled
+            - RetailServiceFeeUnbilled
+            - RetailInterestBilled
+            - RetailInterestUnbilled
+            - CashInterestBilled
+            - CashInterestUnbilled
+            - RetailPrincipalBilled
+            - RetailPrincipalUnbilled
+            - CashPrincipalBilled
+            - CashPrincipalUnbilled
+  otherCreditAllocation:
+    allocationModel: HIGHESTTOLOWESTAPR
+    allocationTieBreaker: REPAYMENTSEQUENCE
+    repaymentSequence:
+      - chargeOffStatuses:
+          - '*'
+        repaymentSequenceTieBreaker: FIFO
+        settlementPriority:
+          - CashAdvanceFeeBilled
+          - CashAdvanceFeeUnbilled
+          - LateFeeBilled
+          - LateFeeUnbilled
+          - RetailMiscFeeBilled
+          - RetailMiscFeeUnbilled
+          - AnnualFeeBilled
+          - AnnualFeeUnbilled
+          - InsufficientFundFeeBilled
+          - InsufficientFundFeeUnbilled
+          - RetailServiceFeeBilled
+          - RetailServiceFeeUnbilled
+          - RetailInterestBilled
+          - RetailInterestUnbilled
+          - CashInterestBilled
+          - CashInterestUnbilled
+          - RetailPrincipalBilled
+          - RetailPrincipalUnbilled
+          - CashPrincipalBilled
+          - CashPrincipalUnbilled
+  repaymentReversal:
+    excessAttributionPostingCategory: RetailPrincipalUnbilled
+    lateFeeAdjustment: true
+    interestAdjustment: true
+  validFrom: '2000-01-01T00:00:00.000-05:00'
+  validTill: '2999-01-01T00:00:00.000-05:00'
+  templateCode: us-credit

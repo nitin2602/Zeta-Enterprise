@@ -1,0 +1,37 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyLoanConversionPreClosureInterestPolicy
+metadata:
+  name: lsg.ruby.loanpreclosureinterestpolicy.5001
+spec:
+  code: LCPINTUS005001
+  description: loan conversion preclosure interest policy changed
+  metadata:
+    description: 5001 loan preclosure interest policy
+    id: ruby.loanpreclosureinterestpolicy.5001
+    name: 5001 loanpreclosure interest policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantCode: lsg
+    tenantId: '600309'
+  modelParameters:
+    taxes:
+      cgst: 9
+      igst: 18
+      sgst: 9
+    baseStateLocation: TN
+    invoiceNumberConfig:
+      status: ACTIVE
+      ingConfig:
+        code: INGUS001002
+        version: '1'
+      generationContext:
+        clockType: BOOK
+        dateFormat: yyDDD
+        customFields:
+          sourceSystemCode: TCC
+      generationStrategy: DATE_BASED
+  name: loan conversion preclosure interest policy
+  templateCode: us-credit
+  validFrom: '2010-04-01T00:00:00.000+05:30'
+  validTill: '2999-12-30T00:00:00.000+05:30'

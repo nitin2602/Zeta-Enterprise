@@ -1,0 +1,69 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyMinimumAmountDuePolicy
+metadata:
+  name: lsg.ruby.rubyminimumamountduepolicy.5001
+spec:
+  metadata:
+    id: ruby.rubyminimumamountduepolicy.5001
+    name: 5001 Ruby Minimum Amount Due Policies
+    description: 5001 Ruby Minimum Amount Due Policies
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  validFrom: '2000-01-01T00:00:00.000-05:00'
+  validTill: '2999-01-01T00:00:00.000-05:00'
+  name: Minimum Amount Due Policy
+  description: Minimum Amount Due  Policy
+  code: MADUS005001
+  minimumMadAmount: 3500
+  postingCategoriesComponent:
+    - percentage: 5
+      postingCategory: AccountSetupFeeBilled
+    - percentage: 5
+      postingCategory: AccountSetupFeeUnbilled
+    - percentage: 1
+      postingCategory: CashInterestBilled
+    - percentage: 1
+      postingCategory: RetailInterestBilled
+    - percentage: 1
+      postingCategory: CashAdvanceFeeBilled
+    - percentage: 1
+      postingCategory: RetailServiceFeeBilled
+    - percentage: 1
+      postingCategory: LateFeebilled
+    - percentage: 1
+      postingCategory: AnnualFeeBilled
+    - percentage: 1
+      postingCategory: RetailMiscFeeBilled
+    - percentage: 1
+      postingCategory: InsufficientFundFeeBilled
+    - percentage: 1
+      postingCategory: CashPrincipalBilled
+    - percentage: 1
+      postingCategory: RetailPrincipalBilled
+    - percentage: 101
+      postingCategory: CashInterestUnbilled
+    - percentage: 101
+      postingCategory: RetailInterestUnbilled
+    - percentage: 101
+      postingCategory: CashAdvanceFeeUnbilled
+    - percentage: 1
+      postingCategory: RetailServiceFeeUnbilled
+    - percentage: 101
+      postingCategory: LateFeeUnbilled
+    - percentage: 101
+      postingCategory: AnnualFeeUnbilled
+    - percentage: 1
+      postingCategory: RetailMiscFeeUnbilled
+    - percentage: 101
+      postingCategory: InsufficientFundFeeUnbilled
+    - percentage: 1
+      postingCategory: CashPrincipalUnbilled
+    - percentage: 1
+      postingCategory: RetailPrincipalUnbilled
+  overwriteDefaultBehaviour: false
+  overwriteMADFunction: |
+    var isNotNull = function(value) { return (value != null && value != undefined); }; var applyRounding = function(value, roundingStrategy) { var valueInDollars = value / 100; if (!isNotNull(roundingStrategy) || roundingStrategy == 'NEAR') { return Math.round(valueInDollars) * 100; } else if (roundingStrategy == 'ROUNDUP') { return Math.ceil(valueInDollars) * 100; } else if (roundingStrategy == 'ROUNDDOWN') { return Math.floor(valueInDollars) * 100; } else { return Math.round(valueInDollars) * 100; } }; function computeMad(args, applicableMadProgram) { var getModelParam = function(paramName) { if (isNotNull(args.modelparameters)) { var modelParam = args.modelparameters[paramName]; return isNotNull(modelParam) ? modelParam : null; } else { return null; } }; var getUnpaidLateFeesFromPreviousBillingPeriod = function(lateFeeBilledActiveCoupons, previousBillingSummary) { var unpaidLateFeesFromPreviousBillingPeriod = 0; if (isNotNull(previousBillingSummary)) { var previousBillingStartMillis = previousBillingSummary['periodStartDate']; var previousBillingEndMillis = previousBillingSummary['periodEndDate']; for (var index in lateFeeBilledActiveCoupons) { var coupon = lateFeeBilledActiveCoupons[index]; if (coupon.rootCoupon.bookTime >= previousBillingStartMillis && coupon.rootCoupon.bookTime <= previousBillingEndMillis) { unpaidLateFeesFromPreviousBillingPeriod += coupon.value; } } } return unpaidLateFeesFromPreviousBillingPeriod; }; var getMinimumCurrMAD = function() { var currDueThreshold = getModelParam('currentDueThreshold'); return isNotNull(currDueThreshold) ? currDueThreshold : 3500; }; var getMinimumTotalMAD = function() { var totalMinDueThreshold = getModelParam('minimumAmountDueThreshold'); return isNotNull(totalMinDueThreshold) ? totalMinDueThreshold : 0; }; var getMADComponentsForCategories = function(madComponentsOverride) { var madComponentsWithAttrbution = {}; for (var postingCategory in madComponentsOverride) { if (isNotNull(args.postingcategories[postingCategory])) { madComponentsWithAttrbution[postingCategory] = madComponentsOverride[postingCategory] * args.postingcategories[postingCategory]; } else { madComponentsWithAttrbution[postingCategory] = 0; } } return madComponentsWithAttrbution; }; var addMadComponentsToComputeCurrentMADExcludingUnbilledLateFee = function(madComponents) { var currMADFromCategories = 0; for (var madComponent in madComponents) { if(madComponent !== 'latefeeunbilled') { currMADFromCategories += madComponents[madComponent]; } } return currMADFromCategories; }; function computeCurrentMAD(args, madComponents, minMAD, unpaidLateFeesFromPreviousBillingPeriod, includeLateFees) { var currMADFromCategoriesExcludingUnbilledLateFee = addMadComponentsToComputeCurrentMADExcludingUnbilledLateFee(madComponents); var roundedCurrMad = applyRounding(currMADFromCategoriesExcludingUnbilledLateFee, getModelParam('roundingForCurrentDue')); var currMADConsideringMinMAD = Math.max(roundedCurrMad, minMAD); var finalCurrMAD = currMADConsideringMinMAD + Math.min(Math.max(madComponents['latefeeunbilled'] - unpaidLateFeesFromPreviousBillingPeriod, 0), 4000); if (includeLateFees) { var roundedCurrMADFromCategories = applyRounding( currMADFromCategoriesExcludingUnbilledLateFee + madComponents['latefeeunbilled'], getModelParam('roundingForCurrentDue')); currMADConsideringMinMAD = Math.max(roundedCurrMADFromCategories, minMAD); finalCurrMAD = currMADConsideringMinMAD; } if (args.currentbalance < 0 || finalCurrMAD < 0) { finalCurrMAD = 0; } return finalCurrMAD; } var madComponents = getMADComponentsForCategories(applicableMadProgram.madComponentsOverride); var previousminimumamountdue = 1 * (args.postingcategories.minimumamountdue); var minMAD = applicableMadProgram.flags['minMADApplicable'] ? getMinimumCurrMAD() : 0; var unpaidLateFeesFromPreviousBillingPeriod = !applicableMadProgram.flags['skipLateFeeHandlingForPrevCycle'] ? getUnpaidLateFeesFromPreviousBillingPeriod(args.activecouponspercategory['latefeebilled'], args.previousbillingsummary) : 0; var finalCurrMAD = computeCurrentMAD(args, madComponents, minMAD, unpaidLateFeesFromPreviousBillingPeriod, applicableMadProgram.flags['includeLateFeesInCurrMAD']); var totalMAD = finalCurrMAD + previousminimumamountdue; if (totalMAD >= args.currentbalance) { finalCurrMAD = Math.max(finalCurrMAD - totalMAD + args.currentbalance, 0); totalMAD = finalCurrMAD + previousminimumamountdue; } var finalTotalMAD = Math.max(Math.min(totalMAD, args.currentbalance), getMinimumTotalMAD()); madComponents['previouscycleunpaidlatefee'] = unpaidLateFeesFromPreviousBillingPeriod; madComponents['minimumminimumamountdue'] = minMAD; madComponents['previousminimumamountdue'] = previousminimumamountdue; madComponents['currentminimumamountdue'] = finalCurrMAD; madComponents['totalminimumamountdue'] = finalTotalMAD; return JSON.stringify(madComponents); } function madFormula(args) { var defaultFlags = { minMADApplicable: true, skipLateFeeHandlingForPrevCycle: false, includeLateFeesInCurrMAD: false, }; var postingCategoryMadComponentsDefaultAttribution = { 'retailprincipalbilled': 0.05, 'retailprincipalunbilled': 0.05, 'retailinterestbilled': 0.05, 'retailinterestunbilled': 0.05, 'annualfeeunbilled': 0.05, 'annualfeebilled': 0.05, 'latefeeunbilled': 1, 'latefeebilled': 0.05, 'overlimitfeebilled': 0.05, 'overlimitfeeunbilled': 0.05, 'insufficientfundfeeunbilled': 0.05, 'insufficientfundfeebilled': 0.05, 'retailservicefeeunbilled': 0.05, 'retailservicefeebilled': 0.05, 'collectionfeeunbilled': 0.05, 'collectionfeebilled': 0.05, 'retailmiscfeeunbilled': 0.05, 'retailmiscfeebilled': 0.05, 'gstbilled': 0.05, 'gstunbilled': 0.05, 'cashprincipalbilled': 0.05, 'cashprincipalunbilled': 0.05, 'cashinterestbilled': 0.05, 'cashinterestunbilled': 0.05, 'cashadvancefeebilled': 0.05, 'cashadvancefeeunbilled': 0.05, 'accountsetupfeeunbilled': 0.05, 'accountsetupfeebilled': 0.05, 'emiinterestunbilled': 0.05, 'emiinterestbilled': 0.05, 'emiprincipalunbilled': 0.05, 'emiprincipalbilled': 0.05 }; var scraProgramFlags = JSON.parse(JSON.stringify(defaultFlags)); scraProgramFlags['includeLateFeesInCurrMAD'] = true; scraProgramFlags['skipLateFeeHandlingForPrevCycle'] = true; scraProgramFlags['minMADApplicable'] = false; var scraProgramMadComponentsOverride = JSON.parse(JSON.stringify(postingCategoryMadComponentsDefaultAttribution)); scraProgramMadComponentsOverride['latefeeunbilled'] = 0.05; var scraMadProgram = { precedence: 100, selectionCriteria: { tags: [ { type: 'SCRAStatus', value: 'LEVEL_1', }, ], }, flags: scraProgramFlags, madComponentsOverride: scraProgramMadComponentsOverride }; var defaultProgram = {precedence: 1, selectionCriteria: null, flags: defaultFlags, madComponentsOverride: postingCategoryMadComponentsDefaultAttribution}; var madPrograms = []; madPrograms.push(scraMadProgram, defaultProgram); madPrograms.sort(function(a,b) { return b.precedence - a.precedence}); var getApplicableMadProgram = function() { if (!args.ledgerinfo) { return defaultProgram; } for (var i = 0; i < madPrograms.length; i++) { var program = madPrograms[i]; if(program.selectionCriteria == null) { return program; } for (var j = 0; j < program.selectionCriteria.tags.length; j++) { var programTag = program.selectionCriteria.tags[j]; for (var k = 0; k < args.ledgerinfo.tags.length; k++) { var ledgerTag = args.ledgerinfo.tags[k]; if (programTag.type === ledgerTag.type && programTag.value === ledgerTag.value && (ledgerTag.attributes['expiryDate'] == null || ledgerTag.attributes['expiryDate'] > args.billingdate)) { return program; } } } } return defaultProgram; }; var applicableMadProgram = getApplicableMadProgram(); return computeMad(args, applicableMadProgram); }
+  templateCode: us-credit

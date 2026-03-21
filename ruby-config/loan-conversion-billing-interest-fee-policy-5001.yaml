@@ -1,0 +1,37 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyLoanConversionBillingInterestFeePolicy
+metadata:
+  name: lsg.ruby.loanconversionbillinginterestfeepolicy.5001
+spec:
+  code: LCBUS005001
+  description: loan conversion billing interest fee policy
+  metadata:
+    id: ruby.loanconversionbillinginterestfeepolicy.5001
+    name: 5001 Ruby Loan Conversion Billing Interest Fee Policy
+    description: 5001 Ruby Loan Conversion Billing Interest Fee Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  modelParameters:
+    baseStateLocation: TN
+    invoiceNumberConfig:
+      generationContext:
+        clockType: BOOK
+        customFields:
+          sourceSystemCode: TCC
+        dateFormat: yyDDD
+      generationStrategy: DATE_BASED
+      ingConfig:
+        code: INGUS001002
+        version: '1'
+      status: ACTIVE
+    taxes:
+      cgst: 9
+      igst: 18
+      sgst: 9
+  name: loan conversion billing interest fee policy
+  templateCode: us-credit
+  validFrom: '2010-04-01T00:00:00.000+05:30'
+  validTill: '2999-12-31T00:00:00.000+05:30'
