@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Bank Ezz × ZPay Credit Card Statement</title>
+	<style>
+		:root {
+			--navy: #0f2b46;
+			--blue: #0f5d9c;
+			--teal: #0e8f9e;
+			--ink: #111827;
+			--muted: #6b7280;
+			--line: #dfe4ea;
+			--bg: #f3f6fa;
+			--warn: #8a2a0f;
+			--warn-bg: #fff5f2;
+			--good: #0c6b57;
+			--good-bg: #edfdf9;
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			margin: 0;
+			padding: 22px;
+			background: var(--bg);
+			color: var(--ink);
+			font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+			line-height: 1.4;
+		}
+
+		.sheet {
+			max-width: 1024px;
+			margin: 0 auto;
+			border: 1px solid var(--line);
+			border-radius: 14px;
+			overflow: hidden;
+			background: #fff;
+			box-shadow: 0 12px 26px rgba(15, 43, 70, 0.08);
+		}
+
+		.header {
+			padding: 18px 24px;
+			background: linear-gradient(135deg, var(--navy), var(--blue) 55%, var(--teal));
+			color: #fff;
+		}
+
+		.head-top {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-bottom: 12px;
+		}
+
+		.co-brand {
+			display: flex;
+			gap: 8px;
+			align-items: center;
+			font-weight: 700;
+		}
+
+		.badge {
+			border: 1px solid rgba(255, 255, 255, 0.36);
+			background: rgba(255, 255, 255, 0.15);
+			border-radius: 999px;
+			padding: 5px 10px;
+			font-size: 12px;
+		}
+
+		.title {
+			margin: 0;
+			font-size: 24px;
+			font-weight: 800;
+			letter-spacing: 0.2px;
+		}
+
+		.subtitle {
+			margin: 2px 0 0;
+			font-size: 12.5px;
+			color: rgba(255, 255, 255, 0.88);
+		}
+
+		.grid-4,
+		.grid-3,
+		.grid-2 {
+			display: grid;
+			gap: 10px;
+		}
+
+		.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+		.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+		.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+		.head-card {
+			margin-top: 12px;
+			background: rgba(255, 255, 255, 0.14);
+			border: 1px solid rgba(255, 255, 255, 0.24);
+			border-radius: 10px;
+			padding: 8px 10px;
+		}
+
+		.label {
+			font-size: 11px;
+			letter-spacing: 0.45px;
+			text-transform: uppercase;
+			color: var(--muted);
+		}
+
+		.header .label { color: rgba(255, 255, 255, 0.74); }
+
+		.value {
+			margin-top: 2px;
+			font-size: 14px;
+			font-weight: 700;
+		}
+
+		.header .value { color: #fff; }
+
+		.section {
+			border-top: 1px solid var(--line);
+			padding: 16px 24px;
+		}
+
+		h2 {
+			margin: 0 0 10px;
+			color: var(--navy);
+			font-size: 16px;
+			text-transform: uppercase;
+			letter-spacing: 0.35px;
+		}
+
+		.alert {
+			border: 1px solid #f7c9bb;
+			border-left: 5px solid #de613d;
+			background: var(--warn-bg);
+			border-radius: 10px;
+			padding: 12px;
+			display: flex;
+			justify-content: space-between;
+			gap: 10px;
+			align-items: center;
+		}
+
+		.alert strong { color: var(--warn); }
+
+		.pay {
+			background: #de613d;
+			color: #fff;
+			border: 0;
+			border-radius: 8px;
+			padding: 9px 12px;
+			text-decoration: none;
+			font-weight: 700;
+			font-size: 12px;
+			white-space: nowrap;
+		}
+
+		.card {
+			border: 1px solid var(--line);
+			border-radius: 10px;
+			padding: 10px;
+			background: #fff;
+		}
+
+		.card.good {
+			border-color: #b6f0de;
+			background: var(--good-bg);
+		}
+
+		.big {
+			margin-top: 4px;
+			font-size: 20px;
+			font-weight: 800;
+			color: #0f172a;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: 12.5px;
+		}
+
+		th,
+		td {
+			border-bottom: 1px solid var(--line);
+			padding: 7px 8px;
+			text-align: left;
+			vertical-align: top;
+		}
+
+		th {
+			font-size: 11px;
+			color: var(--muted);
+			text-transform: uppercase;
+			letter-spacing: 0.45px;
+			background: #f8fafc;
+		}
+
+		.amt {
+			text-align: right;
+			white-space: nowrap;
+			font-variant-numeric: tabular-nums;
+		}
+
+		.muted { color: var(--muted); }
+
+		.note {
+			margin-top: 8px;
+			font-size: 11.5px;
+			color: var(--muted);
+		}
+
+		.warning-table td,
+		.warning-table th {
+			border: 1px solid var(--line);
+		}
+
+		.pill {
+			display: inline-block;
+			border-radius: 999px;
+			padding: 2px 8px;
+			font-size: 10px;
+			font-weight: 700;
+			letter-spacing: 0.35px;
+			text-transform: uppercase;
+			background: #edf2ff;
+			color: #3730a3;
+		}
+
+		.divider {
+			border-top: 2px dashed #cfd8e3;
+			margin: 14px 0;
+		}
+
+		.coupon {
+			background: #fcfdff;
+			border: 1px dashed #9fb3c8;
+			border-radius: 10px;
+			padding: 10px;
+		}
+
+		.footer {
+			padding: 14px 24px 18px;
+			background: #f8fafc;
+			color: #566173;
+			font-size: 11.5px;
+		}
+
+		.mono { font-family: ui-monospace, Menlo, Monaco, Consolas, monospace; }
+
+		@media (max-width: 920px) {
+			.grid-4,
+			.grid-3,
+			.grid-2 { grid-template-columns: 1fr; }
+
+			.alert { flex-direction: column; align-items: flex-start; }
+		}
+
+		@media print {
+			body { background: #fff; padding: 0; }
+			.sheet { border: 0; border-radius: 0; box-shadow: none; max-width: 100%; }
+			.pay { display: none; }
+		}
+	</style>
+</head>
+<body>
+	<main class="sheet">
+		<header class="header">
+			<div class="head-top">
+				<div class="co-brand">
+					<span class="badge">Bank Ezz (Issuer)</span>
+					<span>×</span>
+					<span class="badge">ZPay (Co‑Brand Partner)</span>
+				</div>
+				<div class="badge">Statement No: <span id="statementNo" class="mono"></span></div>
+			</div>
+			<h1 class="title">Credit Card Statement</h1>
+
+			<div class="grid-4">
+				<div class="head-card"><div class="label">Cardholder</div><div id="cardholder" class="value"></div></div>
+				<div class="head-card"><div class="label">Card Ending</div><div id="cardEnding" class="value mono"></div></div>
+				<div class="head-card"><div class="label">Billing Period</div><div id="billingPeriod" class="value"></div></div>
+				<div class="head-card"><div class="label">Member Since</div><div id="memberSince" class="value"></div></div>
+			</div>
+		</header>
+
+		<section class="section">
+			<div class="alert">
+				<div>
+					<strong id="alertText"></strong>
+					<div class="muted" id="alertSub"></div>
+				</div>
+				<a id="payLink" href="#" class="pay">Pay via ZPay</a>
+			</div>
+		</section>
+
+		<section class="section">
+			<h2>Account Summary</h2>
+			<div class="grid-3" id="accountSummaryCards"></div>
+		</section>
+
+		<section class="section">
+			<h2>Rewards Summary</h2>
+			<div class="grid-2">
+				<div class="card"><div class="label">Rewards Earned This Period</div><div id="rewardsPeriod" class="big"></div></div>
+				<div class="card good"><div class="label">Rewards Earned Year-to-Date</div><div id="rewardsYtd" class="big"></div></div>
+			</div>
+			<div id="rewardMessage" class="note" style="margin-top:10px;"></div>
+		</section>
+
+		<section class="section">
+			<h2>Payment Information</h2>
+			<div class="grid-4" id="paymentInfoCards"></div>
+
+			<h2 style="margin-top:14px;">Minimum Payment Warning</h2>
+			<table class="warning-table">
+				<thead>
+					<tr>
+						<th>If You Pay...</th>
+						<th>You Will Pay Off In About...</th>
+						<th class="amt">Estimated Total Paid</th>
+					</tr>
+				</thead>
+				<tbody id="minimumWarningRows"></tbody>
+			</table>
+			<div id="counselLine" class="note"></div>
+		</section>
+
+		<section class="section">
+			<h2>Account Notifications</h2>
+			<ul id="notifications" style="margin:0; padding-left:18px;"></ul>
+		</section>
+
+		<section class="section">
+			<div class="divider"></div>
+			<div class="coupon">
+				<h2 style="margin-top:0;">Payment Coupon (Detach and Mail if Applicable)</h2>
+				<div class="grid-4" id="couponCards"></div>
+			</div>
+		</section>
+
+		<section class="section">
+			<h2>Detailed Account Activity</h2>
+			<div id="activitySections"></div>
+		</section>
+
+		<section class="section">
+			<h2>Year-to-Date Totals</h2>
+			<table>
+				<tbody id="ytdRows"></tbody>
+			</table>
+
+			<h2 style="margin-top:14px;">Interest Charge Calculation</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Type of Balance</th>
+						<th>APR</th>
+						<th class="amt">Balance Subject to Interest</th>
+						<th class="amt">Interest Charged</th>
+					</tr>
+				</thead>
+				<tbody id="aprRows"></tbody>
+			</table>
+		</section>
+
+		<section class="section">
+			<h2>Important Information</h2>
+			<ul id="importantInfo" style="margin:0; padding-left:18px;"></ul>
+		</section>
+
+		<footer class="footer">
+			<div style="margin-top:6px;">Issued by Bank Ezz under applicable network license. Co-brand partner: ZPay.</div>
+			<div style="margin-top:6px;">Customer care: <span id="carePhone"></span> | Email: <span id="careEmail"></span></div>
+		</footer>
+	</main>
+
+	<script>
+		function getMockStatementData() {
+			return {
+				statementNo: "BEZ-ZP-2026-03-000784",
+				cardholder: "Aarav Mehta",
+				cardEnding: "**** **** **** 4921",
+				billingPeriod: "20 Feb 2026 - 20 Mar 2026",
+				memberSince: "2022",
+				paymentLink: "https://zpay.example/pay",
+
+				accountSummary: [
+					{ label: "Previous Balance", amount: 68420.75 },
+					{ label: "Payments & Credits", amount: -18000.00 },
+					{ label: "Transactions", amount: 25490.30 },
+					{ label: "Cash Advances", amount: 12000.00 },
+					{ label: "Fees Charged", amount: 1200.00 },
+					{ label: "Interest Charged", amount: 890.44 },
+					{ label: "New Balance", amount: 89901.49 },
+					{ label: "Credit Limit", amount: 150000.00 },
+					{ label: "Available Credit", amount: 60000.09 },
+					{ label: "Cash Advance Limit", amount: 60000.00 },
+					{ label: "Available Cash", amount: 38000.00 },
+					{ label: "Disputed Balance", amount: 1500.00 },
+					{ label: "Days in Billing Cycle", text: "29" }
+				],
+
+				rewards: {
+					period: 1240,
+					ytd: 13880,
+					message: "You earn accelerated ZPay points on partner categories and 1% base value on eligible on-time repayments."
+				},
+
+				paymentInfo: {
+					newBalance: 89901.49,
+					minCurrent: 4890.00,
+					minPastDue: 1250.00,
+					totalMinDue: 6140.00,
+					dueDate: "05 Apr 2026",
+					lateFeeWarning: "If we do not receive your minimum payment by the due date, a late fee up to ₹1,300 plus taxes may apply."
+				},
+
+				minimumWarningRows: [
+					{ pay: "Only minimum due", payoff: "8 years", total: 178640.00 },
+					{ pay: "₹10,000 per month", payoff: "2 years 11 months", total: 103880.00 }
+				],
+				counseling: "Credit counseling available: AICF (All India Credit Forum) at 1800-111-220 or www.creditdisputeonline.com — free government-recognized service.",
+
+				notifications: [
+					"Annual membership fee of ₹2,999 is charged at the time of card issuance and renewal. GST applicable as per applicable rate.",
+					"Reward points are valid for 36 months from date of earning. Expired points are forfeited. Terms and conditions apply.",
+					"Any account update requests (address/email/mobile) can be done on the Bank Ezz app or ZPay app or by contacting Customer Care."
+				],
+
+				coupon: {
+					cardholder: "Aarav Mehta",
+					cardEnding: "**** **** **** 4921",
+					billingAddress: "123 Park Avenue, Mumbai 400026, MH, India",
+					newBalance: 89901.49,
+					minimumDue: 6140.00,
+					dueDate: "05 Apr 2026",
+					amountEnclosed: "",
+					payee: "Bank Ezz Limited - Credit Cards Division",
+					mailTo: "Bank Ezz Cards, PO Box 1102, Mumbai 400001, India"
+				},
+
+				activityGroups: [
+					{
+						title: "Payments and Other Credits",
+						rows: [
+							["03/03", "03/03", "Internet Banking - NEFT Transfer", "PA91231", -7000.00],
+							["12/03", "12/03", "Cheque Deposit - HDFC Bank", "PA91782", -11000.00],
+							["16/03", "16/03", "Merchant Refund - ZPay Travel", "RF77321", -1500.00]
+						],
+						totalLabel: "Total Payments and Credits",
+						total: -19500.00
+					},
+					{
+						title: "Transactions",
+						rows: [
+							["22/02", "23/02", "ZPay Mart - Grocery", "TX33590", 5400.00],
+							["27/02", "27/02", "SkyWays Airlines", "TX34120", 12450.00],
+							["02/03", "02/03", "Fuel Stop - Mumbai", "TX34912", 2900.00],
+							["14/03", "14/03", "ElectroHub Online", "TX36590", 8100.30]
+						],
+						totalLabel: "Total Transactions",
+						total: 28850.30
+					},
+					{
+						title: "Cash Advances",
+						rows: [
+							["01/03", "01/03", "ATM Cash Withdrawal", "CA09871", 12000.00]
+						],
+						totalLabel: "Total Cash Advances",
+						total: 12000.00
+					},
+					{
+						title: "Fees Charged",
+						rows: [
+							["06/03", "06/03", "Late Payment Fee", "FE77111", 1000.00],
+							["09/03", "09/03", "GST on Late Fee", "FE77119", 180.00],
+							["11/03", "11/03", "Cash Advance Fee", "FE77200", 350.00]
+						],
+						totalLabel: "Total Fees Charged",
+						total: 1530.00
+					},
+					{
+						title: "Interest Charged",
+						rows: [
+							["20/03", "20/03", "Interest on Cash Advances", "IN88011", 890.44]
+						],
+						totalLabel: "Total Interest Charged",
+						total: 890.44
+					}
+				],
+
+				ytdTotals: [
+					{ label: "Total fees charged in 2026", value: 6240.00 },
+					{ label: "Total interest charged in 2026", value: 4412.66 }
+				],
+
+				aprTable: [
+					["Purchases", "40.00%", 66540.75, 0.00],
+					["Cash Advances", "48.00%", 12000.00, 890.44]
+				],
+
+				importantInfo: [
+					"Grace Period: Interest-free period on purchases applies only if the entire new balance is paid by the due date. No grace period on cash advances.",
+					"Interest Calculation: We use the Average Daily Balance (ADB) method, including new transactions. Interest is charged on the daily outstanding balance at the applicable APR.",
+					"Cash Advance APR applies from the transaction date. No grace period or rewards apply to cash advances.",
+					"Billing Frequency: Monthly. Statement generated on the last day of each month for the period. Due date is typically 20-25 days after statement generation.",
+					"Dispute Resolution: Raise billing disputes within 30 days from statement date. Mail disputes to the address below with documentary evidence.",
+					"RBI Ombudsman: If disputes are not resolved within 30 days, escalate to RBI Ombudsman under the Ombudsman Scheme 2019. No fee for lodging complaints.",
+					"Fees & Charges: All stated fees exclude applicable GST as per tax laws. GST will be added at the rate applicable on the date of incurrence.",
+					"Co-brand Terms: This card is issued by Bank Ezz under the ZPay partner ecosystem. Partner benefits and reward redemptions are governed by a separate agreement.",
+					"Card Terms & Conditions, complete fee schedule and APR changes are available on www.bankezz.example and www.zpay.example. Rates subject to periodic review."
+				],
+
+				carePhone: "1800-12-9009 (Toll-free) / +91-22-6719-9009",
+				careEmail: "support@bankezz-zpay.example",
+				customerAddress: "123 Park Avenue, Mumbai 400026, Maharashtra, India"
+			};
+		}
+
+		function formatCurrency(value) {
+			const num = Number(value) || 0;
+			return new Intl.NumberFormat("en-IN", {
+				style: "currency",
+				currency: "INR",
+				maximumFractionDigits: 2
+			}).format(num);
+		}
+
+		function putText(id, value) {
+			const el = document.getElementById(id);
+			if (el) el.textContent = value;
+		}
+
+		function renderStatement(data) {
+			putText("statementNo", data.statementNo);
+			putText("cardholder", data.cardholder);
+			putText("cardEnding", data.cardEnding);
+			putText("billingPeriod", data.billingPeriod);
+			putText("memberSince", data.memberSince);
+			putText("carePhone", data.carePhone);
+			putText("careEmail", data.careEmail);
+
+			const payment = data.paymentInfo;
+			putText("alertText", `${formatCurrency(payment.totalMinDue)} minimum due by ${payment.dueDate} | New balance ${formatCurrency(payment.newBalance)}`);
+			putText("alertSub", payment.lateFeeWarning);
+			const payLink = document.getElementById("payLink");
+			payLink.href = data.paymentLink;
+
+			const accountSummaryCards = document.getElementById("accountSummaryCards");
+			accountSummaryCards.innerHTML = "";
+			data.accountSummary.forEach((item) => {
+				const card = document.createElement("div");
+				card.className = "card" + (item.label === "Available Credit" ? " good" : "");
+				const val = item.text ?? formatCurrency(item.amount);
+				card.innerHTML = `<div class="label">${item.label}</div><div class="value">${val}</div>`;
+				accountSummaryCards.appendChild(card);
+			});
+
+			putText("rewardsPeriod", `${data.rewards.period.toLocaleString("en-IN")} pts`);
+			putText("rewardsYtd", `${data.rewards.ytd.toLocaleString("en-IN")} pts`);
+			putText("rewardMessage", data.rewards.message);
+
+			const paymentInfoCards = document.getElementById("paymentInfoCards");
+			const payItems = [
+				["New Balance", formatCurrency(payment.newBalance)],
+				["Minimum Payment Due (Current)", formatCurrency(payment.minCurrent)],
+				["Minimum Payment Due (Past)", formatCurrency(payment.minPastDue)],
+				["Total Minimum Payment Due", formatCurrency(payment.totalMinDue)],
+				["Payment Due Date", payment.dueDate]
+			];
+			paymentInfoCards.innerHTML = "";
+			payItems.forEach(([label, val]) => {
+				const card = document.createElement("div");
+				card.className = "card" + (label === "Total Minimum Payment Due" ? " good" : "");
+				card.innerHTML = `<div class="label">${label}</div><div class="value">${val}</div>`;
+				paymentInfoCards.appendChild(card);
+			});
+
+			const minRows = document.getElementById("minimumWarningRows");
+			minRows.innerHTML = "";
+			data.minimumWarningRows.forEach((r) => {
+				const tr = document.createElement("tr");
+				tr.innerHTML = `<td>${r.pay}</td><td>${r.payoff}</td><td class="amt">${formatCurrency(r.total)}</td>`;
+				minRows.appendChild(tr);
+			});
+			putText("counselLine", data.counseling);
+
+			const notices = document.getElementById("notifications");
+			notices.innerHTML = "";
+			data.notifications.forEach((n) => {
+				const li = document.createElement("li");
+				li.textContent = n;
+				notices.appendChild(li);
+			});
+
+			const couponCards = document.getElementById("couponCards");
+			const couponEntries = [
+				["Cardholder Name", data.coupon.cardholder],
+				["Card Ending", data.coupon.cardEnding],
+				["Billing Address", data.coupon.billingAddress],
+				["New Balance", formatCurrency(data.coupon.newBalance)],
+				["Minimum Due", formatCurrency(data.coupon.minimumDue)],
+				["Payment Due Date", data.coupon.dueDate],
+				["Amount Enclosed", data.coupon.amountEnclosed || "__________"],
+				["Payee", data.coupon.payee],
+				["Mail To", data.coupon.mailTo]
+			];
+			couponCards.innerHTML = "";
+			couponEntries.forEach(([label, val]) => {
+				const c = document.createElement("div");
+				c.className = "card";
+				c.innerHTML = `<div class="label">${label}</div><div class="value">${val}</div>`;
+				couponCards.appendChild(c);
+			});
+
+			const activity = document.getElementById("activitySections");
+			activity.innerHTML = "";
+			data.activityGroups.forEach((group) => {
+				const wrap = document.createElement("div");
+				wrap.style.marginBottom = "14px";
+				const tableRows = group.rows.map((r) => `<tr>
+					<td>${r[0]}</td>
+					<td>${r[1]}</td>
+					<td>${r[2]}</td>
+					<td class="mono">${r[3]}</td>
+					<td class="amt">${formatCurrency(r[4])}</td>
+				</tr>`).join("");
+				wrap.innerHTML = `
+					<h2>${group.title}</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Txn Date</th>
+								<th>Post Date</th>
+								<th>Description</th>
+								<th>Reference #</th>
+								<th class="amt">Amount</th>
+							</tr>
+						</thead>
+						<tbody>
+							${tableRows}
+							<tr>
+								<td colspan="4"><span class="pill">${group.totalLabel}</span></td>
+								<td class="amt"><strong>${formatCurrency(group.total)}</strong></td>
+							</tr>
+						</tbody>
+					</table>
+				`;
+				activity.appendChild(wrap);
+			});
+
+			const ytdRows = document.getElementById("ytdRows");
+			ytdRows.innerHTML = "";
+			data.ytdTotals.forEach((row) => {
+				const tr = document.createElement("tr");
+				tr.innerHTML = `<td>${row.label}</td><td class="amt">${formatCurrency(row.value)}</td>`;
+				ytdRows.appendChild(tr);
+			});
+
+			const aprRows = document.getElementById("aprRows");
+			aprRows.innerHTML = "";
+			data.aprTable.forEach((row) => {
+				const tr = document.createElement("tr");
+				tr.innerHTML = `
+					<td>${row[0]}</td>
+					<td>${row[1]}</td>
+					<td class="amt">${formatCurrency(row[2])}</td>
+					<td class="amt">${formatCurrency(row[3])}</td>
+				`;
+				aprRows.appendChild(tr);
+			});
+
+			const importantInfo = document.getElementById("importantInfo");
+			importantInfo.innerHTML = "";
+			data.importantInfo.forEach((text) => {
+				const li = document.createElement("li");
+				li.textContent = text;
+				importantInfo.appendChild(li);
+			});
+		}
+
+		const statementData = getMockStatementData();
+		renderStatement(statementData);
+	</script>
+</body>
+</html>
