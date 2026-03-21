@@ -1,0 +1,47 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: EmeraldInterestPolicy
+metadata:
+  name: lsg.emerald.emeraldinterestpolicy.5001
+spec:
+  metadata:
+    id: emerald.emeraldinterestpolicy.5001
+    name: Emerald Interest Policy
+    description: Emerald Interst Policy
+    requester:
+      module: emerald-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  name: Emerald Interst Policy
+  code: EIPUS005001
+  description: Emerald Interst Policy
+  validFrom: '2010-03-06T00:00:00.000+05:30'
+  validTill: '2999-12-31T00:00:00.000+05:30'
+  creditEffectiveFrom: ValueDate
+  debitEffectiveFrom: ValueDate
+  interestAccrual:
+    accountLevelRate: true
+    dayCountMethods:
+      - lifeCycleEvent: firstInstallment
+        dayCountMethod: ACTUAL/360_HDFC
+      - lifeCycleEvent: preClosure
+        dayCountMethod: ACTUAL/360_HDFC
+      - lifeCycleEvent: reAmortization
+        dayCountMethod: 30/360G
+      - lifeCycleEvent: default
+        dayCountMethod: 30/360G
+    roundingRule: NEAR
+  interestLiquidation:
+    liquidationVoucherCode: LOAN_INTEREST_LIQUIDATION
+  interestRules:
+    - balanceType: DAILY_BALANCE
+      description: Normal Interest Base
+      interestComponent: NORMAL_INTEREST_BASE
+      liquidation:
+        model: BillUnconditional
+        postingCategories:
+          accrualPostingCategory: ACCRUEDINTERESTNORMAL
+          billingPostingCategory: NORMALINTEREST
+          penaltyPostingCategory: PENALTYINTERESTBASE
+      postingCategory: NORMALINTERESTBASE
+  templateCode: us-credit

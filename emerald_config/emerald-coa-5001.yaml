@@ -1,0 +1,17 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: EmeraldCOA
+metadata:
+  name: lsg.emerald.emeraldcoa.5001
+spec:
+  metadata:
+    id: emerald.emeraldcoa.5001
+    name: Emerald Credit Line
+    description: lsg Emerald Credit Line
+    requester:
+      module: emerald-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  code: COAUS005001
+  name: lsg cardworks
+  templateCode: us-credit
