@@ -1,0 +1,38 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.notification.configuration.module.config.notification
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.lsg","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.lsg.git","filePath":"/.defaults/module_configurations/module_notification/tree/root/t0/module_configurations/module_notification/notification_config.yaml","tenantCode":"lsg"}'
+spec:
+  metadata:
+    id: notification.configuration.module.config.notification
+    name: lsg notification
+    description: Preconfigured notifications for lsg... OQA_1764570500
+    requester:
+      module: notification
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"channels":{"items":{"enum":["SMS","EMAIL","PRINTED LETTER"],"type":"string"},"type":"array"},"templateBundles":{"items":{"enum":["Default_notifications"],"type":"string"},"type":"array"}},"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      channels:
+        - SMS
+        - EMAIL
+        - PRINTED LETTER
+      templateBundles:
+        - Default_notifications
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.notification.notification
+    displayName: lsg notification
