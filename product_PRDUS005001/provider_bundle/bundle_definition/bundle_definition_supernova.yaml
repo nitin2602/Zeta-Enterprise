@@ -1,0 +1,53 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+metadata:
+  name: lsg.aether.configuration.product.prdin001012.supernova.bundle-definition
+spec:
+  metadata:
+    id: aether.configuration.product.prdin001012.supernova.bundle-definition
+    name: Ezz x ZPay Supernova Bundle
+    description: Supernova Unsecured Premium Credit Card Bundle — Ezz x ZPay India
+    tenantId: "600309"
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: https://banking-assets.s3.ap-south-1.amazonaws.com/hedwig/product_configuration_schema/provider_bundle/bundle_definition/v1/schema.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      name: Ezz x ZPay Supernova Bundle
+      code: BUNIN-SUPERNOVA-1012
+      description: Supernova Unsecured Premium Credit Card Bundle — Ezz x ZPay India
+      picURL: https://assets.ezzbank.in/card-images/supernova-card-matte-black.png
+      productMappings:
+        accountProduct:
+          productFamilyCode: APFIN-SUPERNOVA-1012
+          productCode: RAPIN-SUPERNOVA-1012
+          serviceProvider: RUBY
+        paymentProduct:
+          productFamilyCode: PYPIN-SUPERNOVA-1012
+          productCode: PYPIN-SUPERNOVA-1012
+        paymentAccountProduct:
+          productFamilyCode: PAPIN-SUPERNOVA-1012
+          productCode: PAPIN-SUPERNOVA-1012
+        rewardsProduct:
+          productFamilyCode: RWPIN-SUPERNOVA-1012
+          productCode: RWPIN-SUPERNOVA-1012
+          serviceProvider: LUMINOS
+        notificationProduct:
+          productFamilyCode: NTPIN-SUPERNOVA-1012
+          productCode: NTPIN-SUPERNOVA-1012
+          serviceProvider: LUMINOS
+        loanProduct:
+          productFamilyCode: LNPIN-SUPERNOVA-1012
+          productCode: LNPIN-SUPERNOVA-1012
+          serviceProvider: RUBY
+      issueInactiveCard: true
+      applySpendLimits: true
+      cardVariant: SUPERNOVA
+      cardType: UNSECURED
+      network: RUPAY
+      programCode: EZZ-ZPAY-IN
+      upgradeEligible: false
+      sourceBundleCode: BUNIN-NOVA-1011

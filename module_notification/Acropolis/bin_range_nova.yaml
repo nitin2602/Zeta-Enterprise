@@ -1,0 +1,137 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.acropolis-pci.configuration.module.535998-01.bin-range
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.lsg","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.lsg.git","filePath":"module_configurations/module_acropolis-pci/bin_range/bin_range_535998-01.yaml","tenantCode":"lsg"}'
+spec:
+  metadata:
+    id: acropolis-pci.configuration.module.535998-01.bin-range
+    name: 535998-01 bin-range
+    description: BIN Range for Ezz x ZPay Nova — Secured Credit Card
+    tenantId: "600309"
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      bin: "535998"
+      range: "01"
+      code: C535998-01
+      cardType: PHYSICAL
+      features:
+        - MAG_STRIPE
+        - EMV
+        - NFC
+      acs:
+        is.enrollment.enabled: true
+        algorithm: HMACSHA256
+        iav.mk.keyid: KEYIN759025
+      attributes:
+        channel.code: CHNIN-RUPAY-001
+        morpheusClientConfig:
+          url: https://api.internal.mum1-pp.zetaapps.in/zeta.in/morpheus/1.0/sendMessageV2
+          tokenKey: morpheus.sendMessage.llt
+        stip.isEnabled: "true"
+      cardConfig:
+        asi.transaction.enabled: true
+        association.crn.allowed: true
+        association.fullCardDetails.allowed: true
+        cvv2.validation.allowed: ALWAYS
+        avv.validation.allowed: "true"
+        backdate.transaction.allowed: false
+        dispatch.allowed: true
+        maskedPanFormat: "[0-9]{6}xxxxxx[0-9]{4}"
+        contactless.transaction.allowed: true
+        maximum.allowed.contactless.amount: "500000"
+        offlinePin.verification.enabled: true
+        stepUp.required: true
+        tokenization.enabled: true
+        track1.cvv1.startIndex: "7"
+        track1.cvv1.endIndex: "10"
+        track2.cvv1.startIndex: "24"
+        track2.cvv1.endIndex: "27"
+        disallowedPatternsForPAN:
+          - \d{8}9\d*
+        atcConfig:
+          actionResetPeriod: HOURS
+          actionResetFixedDelayHours: "24"
+          isEnabledForOnlineTxns: true
+          isEnabledForOfflineTxns: true
+          threshold: 5
+          thresholdBreachAction: TEMPORARY_BLOCK_CARD
+        incorrectPinConfig:
+          actionResetPeriod: HOURS
+          actionResetFixedDelayHours: "24"
+          isEnabledForOnlineTxns: true
+          isEnabledForOfflineTxns: false
+          resetCounterOnActionReset: false
+          threshold: 3
+          thresholdBreachAction: TEMPORARY_BLOCK_CARD
+          transactionsAllowedPostThresholdBreach:
+            domestic:
+              - CARD_PRESENT_WITHOUT_PIN
+              - CARD_NOT_PRESENT
+            international:
+              - CARD_NOT_PRESENT
+      clearing:
+        clearance.processor.v2.isEnabled: "true"
+        debit.isEnabled: "true"
+        debit.blocked.mcc.list: ""
+        refund.partial.blocked.mcc.list: ""
+        debit.adjustment.forUnmatchedAuth.isEnabled: "true"
+        duplicate.credit.isEnabled: "false"
+        duplicate.debit.isEnabled: "false"
+        failed.credit.isEnabled: "true"
+        failed.debit.isEnabled: "true"
+        forced.debit.isEnabled: "true"
+        late.presentment.credit.isEnabled: "true"
+        late.presentment.debit.isEnabled: "true"
+        merchandiseReturn.capture.isEnabled: "true"
+        credit.forUnmatchedMerchandiseReturn.isEnabled: "true"
+        credit.forUnmatchedRefund.isEnabled: "true"
+        credit.forUnmatchedOCT.isEnabled: "true"
+        payment.capture.isEnabled: "true"
+        payment.capture.withUpdatedAmount.isEnabled: "true"
+        refund.isEnabled: "true"
+        refund.partial.isEnabled: "true"
+        refund.processor.v2.enabled: "true"
+        financial.posting.isEnabled: "true"
+        recurring.debit.adjustment.forUnmatchedAuth.isEnabled: "true"
+        opsCentre.processDefinitionKey: PZClearingException_Maker
+        opsCentre.bpdCode: RQDIN-NOVA-001
+        tat.harmonisation.days: 5
+      iso:
+        ac.mk.keyid: KEYIN589851
+        cvc3.keyId: KEYIN589851
+        allowed.transaction.currency.list: "356"
+        cardholder.billing.currency: "356"
+        rupay:
+          rupay.memberID: EZZBANK-RUPAY
+          pos.zpk.keyid: KEYIN589906
+      keyConfig:
+        cvv.generation.mechanism: USING_HSM
+        cvv1.keyAlgorithm: DES
+        cvv1.keyId: KEYIN589876
+        cvv1.service.code: "226"
+        cvv1.slotId: "1"
+        cvv2.keyId: KEYIN589882
+        cvv2.slotId: "1"
+        cvv12.keyAlgorithm: DES3
+        cvv12.keyId: KEYIN589888
+        cvv12.slotId: "1"
+        cavv.generation.mechanism: USING_HSM
+        cavv.slotId: "1"
+        cavv1.keyAlgorithm: DES
+        cavv1.keyId: KEYIN589894
+        cavv2.keyAlgorithm: DES
+        cavv2.keyId: KEYIN589900
+        zmkKeyId: KEYIN589942
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.acropolis.bin-range
+    displayName: Bin 535998 Range 01 — Nova

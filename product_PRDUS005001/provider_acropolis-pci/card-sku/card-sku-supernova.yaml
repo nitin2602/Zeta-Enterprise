@@ -1,0 +1,36 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.acropolis-pci.configuration.product.prdin001012.supernova.card-sku
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.lsg","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.lsg.git","filePath":"product_configurations/provider_acropolis-pci/card-sku/card-sku-supernova.yaml","tenantCode":"lsg"}'
+spec:
+  metadata:
+    id: acropolis-pci.configuration.product.PRDIN001012.supernova.card-sku
+    name: Supernova Card SKU
+    description: Card SKU for Ezz x ZPay Supernova — Unsecured Premium Credit Card
+    tenantId: "600309"
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: SKUIN-SUPERNOVA-1012
+      productCode: CRPIN-SUPERNOVA-1012
+      batchCode: EZZ_600309_SUPERNOVA_BATCH
+      plasticCode: SUPERNOVA-MATTE-BLACK
+      fileAttributes:
+        bankIdentifier: EzzBank
+      reservoirConfig:
+        inventory.size: 50000
+        refilling.rate: 5000
+      vendorIDs:
+        - VENIN00100703
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.acropolis.card-sku
+    displayName: Supernova Card SKU

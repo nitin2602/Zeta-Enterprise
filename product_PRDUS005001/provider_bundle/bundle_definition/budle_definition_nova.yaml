@@ -1,0 +1,53 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+metadata:
+  name: lsg.aether.configuration.product.prdin001011.nova.bundle-definition
+spec:
+  metadata:
+    id: aether.configuration.product.prdin001011.nova.bundle-definition
+    name: Ezz x ZPay Nova Bundle
+    description: Nova Secured Credit Card Bundle — Ezz x ZPay India
+    tenantId: "600309"
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: https://banking-assets.s3.ap-south-1.amazonaws.com/hedwig/product_configuration_schema/provider_bundle/bundle_definition/v1/schema.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      name: Ezz x ZPay Nova Bundle
+      code: BUNIN-NOVA-1011
+      description: Nova Secured Credit Card Bundle — Ezz x ZPay India
+      picURL: https://assets.ezzbank.in/card-images/nova-card-light-purple.png
+      productMappings:
+        accountProduct:
+          productFamilyCode: APFIN-NOVA-1011
+          productCode: RAPIN-NOVA-1011
+          serviceProvider: RUBY
+        paymentProduct:
+          productFamilyCode: PYPIN-NOVA-1011
+          productCode: PYPIN-NOVA-1011
+        paymentAccountProduct:
+          productFamilyCode: PAPIN-NOVA-1011
+          productCode: PAPIN-NOVA-1011
+        rewardsProduct:
+          productFamilyCode: RWPIN-NOVA-1011
+          productCode: RWPIN-NOVA-1011
+          serviceProvider: LUMINOS
+        notificationProduct:
+          productFamilyCode: NTPIN-NOVA-1011
+          productCode: NTPIN-NOVA-1011
+          serviceProvider: LUMINOS
+        loanProduct:
+          productFamilyCode: LNPIN-NOVA-1011
+          productCode: LNPIN-NOVA-1011
+          serviceProvider: RUBY
+      issueInactiveCard: true
+      applySpendLimits: true
+      cardVariant: NOVA
+      cardType: SECURED
+      network: RUPAY
+      programCode: EZZ-ZPAY-IN
+      upgradeEligible: true
+      upgradeBundleCode: BUNIN-SUPERNOVA-1012

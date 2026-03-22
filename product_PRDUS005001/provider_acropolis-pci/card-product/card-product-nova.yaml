@@ -1,0 +1,75 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.acropolis-pci.configuration.product.prdin001011.nova.card-product
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.lsg","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.lsg.git","filePath":"product_configurations/provider_acropolis-pci/card-product/card-product-nova.yaml","tenantCode":"lsg"}'
+spec:
+  metadata:
+    id: acropolis-pci.configuration.product.PRDIN001011.nova.card-product
+    name: Nova Card Product
+    description: Card Product for Ezz x ZPay Nova — Secured Credit Card
+    tenantId: "600309"
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: CRPIN-NOVA-1011
+      name: Ezz x ZPay Nova Card Product
+      description: Nova Secured Credit Card — Ezz x ZPay India
+      status: ENABLED
+      binRangeSelectionStrategy: CHRONOLOGICAL
+      binRanges:
+        - bin: "53599800"
+          range: "01"
+      features:
+        - MAG_STRIPE
+        - EMV
+        - NFC
+      expiry:
+        month: 0
+        year: 5
+      cardActivationPolicy:
+        - physical.activation.type: MANUAL
+          digital.activation.type: MANUAL
+          enabled: true
+      cardReissuancePolicy:
+        - policyType: TERMINATE_SOURCE_CARD
+          enabled: true
+          overrideAllowed: false
+        - policyType: SWAP_TOKENS_FROM_SOURCE_CARD
+          enabled: false
+          overrideAllowed: false
+      cardRenewalPolicy:
+        - policyType: TERMINATE_SOURCE_CARD
+          enabled: true
+          overrideAllowed: false
+        - policyType: SWAP_PIN_FROM_SOURCE_CARD
+          enabled: true
+          overrideAllowed: false
+        - policyType: SWAP_TOKENS_FROM_SOURCE_CARD
+          enabled: true
+          overrideAllowed: false
+      cardReplacementPolicy:
+        - policyType: TERMINATE_SOURCE_CARD
+          enabled: true
+          overrideAllowed: false
+        - policyType: SWAP_TOKENS_FROM_SOURCE_CARD
+          enabled: true
+          overrideAllowed: false
+      acsProviderConfig:
+        enrollmentConfigs:
+          - enrollmentType: CARD_ENROLLMENT
+            enrollmentCredentials:
+              - PHONE_NUMBER
+            enabled: true
+            domainID: 600309.acs
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.acropolis.card-product
+    displayName: Nova Card Product

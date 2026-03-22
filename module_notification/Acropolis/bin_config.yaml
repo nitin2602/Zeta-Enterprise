@@ -1,0 +1,36 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.acropolis-pci.configuration.module.535998.bin
+spec:
+  metadata:
+    id: acropolis-pci.configuration.module.535998.bin
+    name: 535998 bin
+    description: BIN for Bank Ezz x ZPay RuPay Credit Card Program
+    tenantId: "600309"
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"bin":{"type":"string"},"code":{"type":"string"},"binLength":{"type":"number"},"cardNetwork":{"enum":["VISA","MASTERCARD","RUPAY"],"type":"string"},"clearingType":{"enum":["SMS","DMS"],"type":"string"},"panLength":{"type":"number"},"rangeLength":{"type":"number"},"sponsorBank":{"type":"string"}},"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      attributes:
+        bin.type: CREDIT
+        bin.countryCode: IND
+      bin: "535998"
+      code: C535998
+      binLength: 6
+      cardNetwork: RUPAY
+      clearingType: DMS
+      panLength: 16
+      rangeLength: 2
+      sponsorBank: Ezz Bank
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.acropolis.bin
+    displayName: Bin 535998
