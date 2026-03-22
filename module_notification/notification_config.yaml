@@ -9,7 +9,7 @@ metadata:
 spec:
   metadata:
     id: notification.configuration.module.config.notification
-    name: lsg notification
+    name: BankEzz Nova/Supernova Notification Configuration
     description: Preconfigured notifications for lsg... OQA_1764570500
     requester:
       module: notification

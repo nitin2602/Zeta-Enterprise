@@ -27,17 +27,17 @@ spec:
           months: 0
           years: 0
         issuanceEndDate: '2999-12-31'
-        issuanceStartDate: '2010-04-01'
+        issuanceStartDate: '2026-03-01'
         maxLoanAmount:
           amount: 100000000
-          currency: USD
+          currency: INR
         maxTenure:
           days: 0
           months: 60
           years: 0
         minLoanAmount:
           amount: 10000
-          currency: USD
+          currency: INR
         minTenure:
           days: 1
           months: 0
@@ -64,4 +64,4 @@ spec:
         creditAllocationPolicy:
           code: ECAPUS005001
           version: 1
-      templateCode: us-credit
+      templateCode: in-credit

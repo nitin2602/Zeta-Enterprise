@@ -13,5 +13,5 @@ spec:
     tenantId: '600309'
     tenantCode: lsg
   code: COAUS005001
-  name: lsg cardworks
-  templateCode: us-credit
+  name: lsg Supernova
+  templateCode: in-credit

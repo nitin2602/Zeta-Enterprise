@@ -12,7 +12,7 @@ spec:
       moduleVersion: 0.0.1
     tenantId: '600309'
     tenantCode: lsg
-  validFrom: '2010-03-06T00:00:00.000+05:30'
+  validFrom: '2026-03-06T00:00:00.000+05:30'
   validTill: '2999-12-31T00:00:00.000+05:30'
   name: Emerald Repayment Policy
   description: Emerald Repayment Policy
@@ -28,4 +28,4 @@ spec:
     - settlementPriority:
         - INTEREST
         - PRINCIPAL
-  templateCode: us-credit
+  templateCode: in-credit

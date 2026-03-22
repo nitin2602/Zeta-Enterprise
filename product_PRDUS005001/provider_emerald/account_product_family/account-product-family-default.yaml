@@ -5,8 +5,8 @@ metadata:
 spec:
   metadata:
     id: emerald.configuration.product.prdin005001.default.account-product-family
-    name: pixel test Loan Monthly Product Family5001
-    description: pixel test Loan Monthly Product Family5001
+    name: SuperNova test Loan Monthly Product Family5001
+    description: SuperNova test Loan Monthly Product Family5001
     tenantId: '600309'
     tenantCode: lsg
   config:

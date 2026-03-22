@@ -12,7 +12,7 @@ spec:
       moduleVersion: 0.0.1
     tenantId: '600309'
     tenantCode: lsg
-  validFrom: '2010-04-01T00:00:00.000+05:30'
+  validFrom: '2026-03-01T00:00:00.000+05:30'
   validTill: '2999-11-31T00:00:00.000+05:30'
   name: Emerald Loan Conversion Policy
   description: Emerald Loan Conversion Policy
@@ -256,4 +256,4 @@ spec:
     addOnDays: 1
     mode: BILLING_DATE
   periodForLoanCancellationOnRefund: 0
-  templateCode: us-credit
+  templateCode: in-credit
