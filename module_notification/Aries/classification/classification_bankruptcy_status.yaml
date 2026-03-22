@@ -1,0 +1,158 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.aries.configuration.module.bankruptcy-status.classification
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.lsg","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.lsg.git","filePath":"/.defaults/module_configurations/module_aries/tree/root/t0/module_configurations/module_aries/classification/classification-bankruptcy-status.yaml","tenantCode":"lsg"}'
+spec:
+  metadata:
+    id: aries.configuration.module.bankruptcy-status.classification
+    name: Ezz x ZPay Bankruptcy Status Classification
+    description: Account Holder Bankruptcy Status Classification — Ezz x ZPay India
+    requester:
+      module: aries
+      moduleVersion: 0.0.1
+    tenantId: "600309"
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: BANKRUPTCY
+      name: BANKRUPTCY
+      modelType: Collection
+      associationCardinality: Single
+      objectType: in.zeta.mars.AccountHolder
+      isRuleBased: true
+      icon: https://assets.ezzbank.in/icons/status/bankruptcy.png
+      infoUri: https://support.ezzbank.in/credit-cards/bankruptcy-policy
+      classificationFunction: function classificationUnits(object) {
+        // some javascript logic
+        return classificationUnitCodes;
+        }
+      classificationUnits:
+        - code: Regular
+          name: Regular
+          description: Active Nova/Supernova cardholder in good standing
+          icon: https://assets.ezzbank.in/icons/status/regular.png
+          infoUri: https://support.ezzbank.in/credit-cards/account-status
+          attributes:
+            isPermanent: false
+            graceDays: 0
+          restrictedActionCodes: []
+
+        - code: BankruptcyInformed
+          name: Bankruptcy Informed
+          description: Bank Ezz notified of IBC filing. Credit account under review.
+          icon: https://assets.ezzbank.in/icons/status/bankruptcy-informed.png
+          infoUri: https://support.ezzbank.in/credit-cards/bankruptcy-policy#informed
+          attributes:
+            isPermanent: false
+            graceDays: 7
+          restrictedActionCodes:
+            - CREDIT_LIMIT_INCREASE
+            - NEW_CARD_ISSUANCE
+            - ADD_ON_CARD_ISSUANCE
+            - EMI_CONVERSION
+            - CREDIT_LINE_ENHANCEMENT
+
+        - code: BankruptcyInitiated
+          name: Bankruptcy Initiated
+          description: IBC proceedings initiated. Credit account fully frozen.
+          icon: https://assets.ezzbank.in/icons/status/bankruptcy-initiated.png
+          infoUri: https://support.ezzbank.in/credit-cards/bankruptcy-policy#initiated
+          attributes:
+            isPermanent: false
+            graceDays: 0
+          restrictedActionCodes:
+            - CREDIT_LIMIT_INCREASE
+            - NEW_CARD_ISSUANCE
+            - ADD_ON_CARD_ISSUANCE
+            - EMI_CONVERSION
+            - CREDIT_LINE_ENHANCEMENT
+            - TRANSACTION_DEBIT
+            - CARD_REPLACE
+            - CARD_REISSUANCE
+            - CARD_RENEW
+            - UPI_TRANSACTION
+            - TOKEN_PROVISIONING
+            - REWARD_REDEMPTION
+
+        - code: BankruptcyClosed
+          name: Bankruptcy Closed
+          description: Proceedings concluded. Awaiting resolution sub-status from ops.
+          icon: https://assets.ezzbank.in/icons/status/bankruptcy-closed.png
+          infoUri: https://support.ezzbank.in/credit-cards/bankruptcy-policy#closed
+          attributes:
+            isPermanent: false
+            graceDays: 30
+          restrictedActionCodes:
+            - CREDIT_LIMIT_INCREASE
+            - NEW_CARD_ISSUANCE
+            - ADD_ON_CARD_ISSUANCE
+            - EMI_CONVERSION
+            - CREDIT_LINE_ENHANCEMENT
+            - CARD_REPLACE
+            - CARD_REISSUANCE
+            - TOKEN_PROVISIONING
+
+        - code: BankruptcyDismissed
+          name: Bankruptcy Dismissed
+          description: Petition dismissed by NCLT. Account under review for restoration.
+          icon: https://assets.ezzbank.in/icons/status/bankruptcy-dismissed.png
+          infoUri: https://support.ezzbank.in/credit-cards/bankruptcy-policy#dismissed
+          attributes:
+            isPermanent: false
+            graceDays: 30
+          restrictedActionCodes:
+            - CREDIT_LIMIT_INCREASE
+            - NEW_CARD_ISSUANCE
+            - ADD_ON_CARD_ISSUANCE
+
+        - code: BankruptcyDischarged
+          name: Bankruptcy Discharged
+          description: Discharged by NCLT. Card permanently blocked. No reissuance permitted.
+          icon: https://assets.ezzbank.in/icons/status/bankruptcy-discharged.png
+          infoUri: https://support.ezzbank.in/credit-cards/bankruptcy-policy#discharged
+          attributes:
+            isPermanent: true
+            graceDays: 0
+          restrictedActionCodes:
+            - CREDIT_LIMIT_INCREASE
+            - NEW_CARD_ISSUANCE
+            - ADD_ON_CARD_ISSUANCE
+            - EMI_CONVERSION
+            - CREDIT_LINE_ENHANCEMENT
+            - TRANSACTION_DEBIT
+            - CARD_REPLACE
+            - CARD_REISSUANCE
+            - CARD_RENEW
+            - UPI_TRANSACTION
+            - TOKEN_PROVISIONING
+            - REWARD_REDEMPTION
+            - ACCOUNT_REACTIVATION
+            - SUPERNOVA_UPGRADE
+
+        - code: BankruptcyWithdrawn
+          name: Bankruptcy Withdrawn
+          description: Petition withdrawn before NCLT admission. 90-day review period applies.
+          icon: https://assets.ezzbank.in/icons/status/bankruptcy-withdrawn.png
+          infoUri: https://support.ezzbank.in/credit-cards/bankruptcy-policy#withdrawn
+          attributes:
+            isPermanent: false
+            graceDays: 90
+          restrictedActionCodes:
+            - CREDIT_LIMIT_INCREASE
+            - NEW_CARD_ISSUANCE
+            - ADD_ON_CARD_ISSUANCE
+            - SUPERNOVA_UPGRADE
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.aries.classification
+    displayName: Ezz x ZPay Bankruptcy Status Classification

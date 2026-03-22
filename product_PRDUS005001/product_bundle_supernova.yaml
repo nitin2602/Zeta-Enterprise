@@ -1,0 +1,28 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+metadata:
+  name: lsg.aether.configuration.product.prdin001012.supernova.product
+spec:
+  metadata:
+    id: aether.configuration.product.prdin001012.supernova.product
+    name: Ezz x ZPay Supernova Product
+    description: Ezz x ZPay Supernova Unsecured Premium Credit Card Product
+    tenantId: "600309"
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: https://card-program-files.s3.amazonaws.com/schema/product_bundle.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      name: Ezz x ZPay Supernova
+      code: PRDIN001012
+      codeSuffix: "1012"
+      description: Ezz x ZPay Supernova Unsecured Premium Credit Card Product
+      imageUrl: https://assets.ezzbank.in/card-images/supernova-card-matte-black.png
+      status: active
+      bundleCode: BUNIN-SUPERNOVA-1012
+      source:
+        clonedFrom: Template
+        clonedProduct: PRDIN001012
