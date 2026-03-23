@@ -21,6 +21,7 @@ spec:
       coaCode: COAUS-NOVA-1011
       accountProductFamilyCode: EPFUS-NOVA-1011
       description: Nova test Credit Card Loan Monthly Product NOVA-1011
+      productType: NOVA_CARD_EMI
       productPreferences:
         defaultTenure:
           days: 0

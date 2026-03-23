@@ -21,6 +21,7 @@ spec:
       coaCode: COAUS-SUPERNOVA-1012
       accountProductFamilyCode: EPFUS-SUPERNOVA-1012
       description: Loan Smart EMI Product SUPERNOVA-1012
+      productType: POST_PURCHASE_EMI
       productPreferences:
         defaultTenure:
           days: 0

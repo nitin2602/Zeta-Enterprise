@@ -21,6 +21,7 @@ spec:
       coaCode: COAUS-SUPERNOVA-1012
       accountProductFamilyCode: EPFUS-SUPERNOVA-1012
       description: Loan Merchant EMI Product SUPERNOVA-1012
+      productType: ZPAY_MERCHANT_EMI
       productPreferences:
         defaultTenure:
           days: 0

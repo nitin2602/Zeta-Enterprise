@@ -21,6 +21,7 @@ spec:
       coaCode: COAUS-NOVA-1011
       accountProductFamilyCode: EPFUS-NOVA-1011
       description: Loan Merchant EMI Product NOVA-1011
+      productType: ZPAY_MERCHANT_EMI
       productPreferences:
         defaultTenure:
           days: 0

@@ -21,6 +21,7 @@ spec:
       coaCode: COAUS-NOVA-1011
       accountProductFamilyCode: EPFUS-NOVA-1011
       description: Loan Smart EMI Product NOVA-1011
+      productType: POST_PURCHASE_EMI
       productPreferences:
         defaultTenure:
           days: 0
