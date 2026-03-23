@@ -1,0 +1,17 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: EmeraldCOA
+metadata:
+  name: lsg.emerald.emeraldcoa.nova.1011
+spec:
+  metadata:
+    id: emerald.emeraldcoa.nova.1011
+    name: Emerald Credit Line
+    description: lsg Emerald Credit Line
+    requester:
+      module: emerald-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  code: COAUS-NOVA-1011
+  name: lsg Nova
+  templateCode: in-credit

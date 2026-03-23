@@ -1,10 +1,10 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: EmeraldClosurePolicy
 metadata:
-  name: lsg.emerald.emeraldclosurepolicy.5001
+  name: lsg.emerald.emeraldclosurepolicy.supernova.1012
 spec:
   metadata:
-    id: emerald.emeraldclosurepolicy.5001
+    id: emerald.emeraldclosurepolicy.supernova.1012
     name: Emerald Closure Policy
     description: Emerald Closure Policy
     requester:
@@ -16,7 +16,7 @@ spec:
   validTill: '2999-12-31T00:00:00.000+05:30'
   name: EMI CLOSURE Policy
   description: Nova/SupernovaCredit Card EMI CLOSURE Policy
-  code: ECPUS005001
+  code: ECPUS-SUPERNOVA-1012
   allowCancellation: true
   coolingPeriodForCancellation: 90
   allowPreClosure: true

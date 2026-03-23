@@ -1,0 +1,25 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+metadata:
+  name: lsg.emerald.configuration.product.prdin.nova.1011.account-product-family
+spec:
+  metadata:
+    id: emerald.configuration.product.prdin.nova.1011.account-product-family
+    name: Nova test Loan Monthly Product Family NOVA-1011
+    description: Nova test Loan Monthly Product Family NOVA-1011
+    tenantId: '600309'
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: https://banking-assets.s3.ap-south-1.amazonaws.com/hedwig/product_configuration_schema/provider_ruby/account_product_family/v1/schema.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      name: Loan Monthly Product Family NOVA-1011
+      code: EPFUS-NOVA-1011
+      description: Loan Monthly Product Family NOVA-1011
+      coaCode: COAUS-NOVA-1011
+      parentCoaNodeCode: COAUS-NOVA-1011_Node_Unsecured_Loans
+      attributes:
+        productClass: 12

@@ -1,0 +1,26 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: EmeraldClosurePolicy
+metadata:
+  name: lsg.emerald.emeraldclosurepolicy.nova.1011
+spec:
+  metadata:
+    id: emerald.emeraldclosurepolicy.nova.1011
+    name: Emerald Closure Policy
+    description: Emerald Closure Policy
+    requester:
+      module: emerald-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  validFrom: '2026-03-01T00:00:00.000+05:30'
+  validTill: '2999-12-31T00:00:00.000+05:30'
+  name: EMI CLOSURE Policy
+  description: Nova/SupernovaCredit Card EMI CLOSURE Policy
+  code: ECPUS-NOVA-1011
+  allowCancellation: true
+  coolingPeriodForCancellation: 90
+  allowPreClosure: true
+  preClosureLockIn: 0
+  autoPreClosureThresholdPercentage: 89.99
+  includeCatchUpInterest: true
+  templateCode: in-credit

@@ -1,10 +1,10 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: EmeraldCOA
 metadata:
-  name: lsg.emerald.emeraldcoa.5001
+  name: lsg.emerald.emeraldcoa.supernova.1012
 spec:
   metadata:
-    id: emerald.emeraldcoa.5001
+    id: emerald.emeraldcoa.supernova.1012
     name: Emerald Credit Line
     description: lsg Emerald Credit Line
     requester:
@@ -12,6 +12,6 @@ spec:
       moduleVersion: 0.0.1
     tenantId: '600309'
     tenantCode: lsg
-  code: COAUS005001
+  code: COAUS-SUPERNOVA-1012
   name: lsg Supernova
   templateCode: in-credit

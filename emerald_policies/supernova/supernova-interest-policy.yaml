@@ -1,10 +1,10 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: EmeraldInterestPolicy
 metadata:
-  name: lsg.emerald.emeraldinterestpolicy.5001
+  name: lsg.emerald.emeraldinterestpolicy.supernova.1012
 spec:
   metadata:
-    id: emerald.emeraldinterestpolicy.5001
+    id: emerald.emeraldinterestpolicy.supernova.1012
     name: Emerald Interest Policy
     description: Emerald Interst Policy
     requester:
@@ -13,7 +13,7 @@ spec:
     tenantId: '600309'
     tenantCode: lsg
   name: Emerald Interst Policy
-  code: EIPUS005001
+  code: EIPUS-SUPERNOVA-1012
   description: Emerald Interst Policy
   validFrom: '2026-03-06T00:00:00.000+05:30'
   validTill: '2999-12-31T00:00:00.000+05:30'
@@ -21,6 +21,7 @@ spec:
   debitEffectiveFrom: ValueDate
   interestAccrual:
     accountLevelRate: true
+    annualInterestRate: 16.00
     dayCountMethods:
       - lifeCycleEvent: firstInstallment
         dayCountMethod: ACTUAL/360_EZZ

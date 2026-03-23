@@ -1,12 +1,12 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: Configuration
 metadata:
-  name: lsg.emerald.configuration.product.prdin005001.smartemi.account-product
+  name: lsg.emerald.configuration.product.prdin.supernova.1012.account-product
 spec:
   metadata:
-    id: emerald.configuration.product.prdin005001.smartemi.account-product
-    name: Loan Smart EMI Product5001
-    description: Loan Smart EMI Product5001
+    id: emerald.configuration.product.prdin.supernova.1012.account-product
+    name: Supernova test Credit Card Loan Monthly Product SUPERNOVA-1012
+    description: Supernova test Credit Card Loan Monthly Product SUPERNOVA-1012
     tenantId: '600309'
     tenantCode: lsg
   config:
@@ -16,11 +16,11 @@ spec:
     isEncrypted: false
     useVault: false
     value:
-      name: Loan Smart EMI Product5001
-      code: EAPUS00500101
-      coaCode: COAUS005001
-      accountProductFamilyCode: EPFUS005001
-      description: Loan Smart EMI Product5001
+      name: Supernova test Credit Card Loan Monthly Product SUPERNOVA-1012
+      code: EAPUS-SUPERNOVA-1012
+      coaCode: COAUS-SUPERNOVA-1012
+      accountProductFamilyCode: EPFUS-SUPERNOVA-1012
+      description: Supernova test Credit Card Loan Monthly Product SUPERNOVA-1012
       productPreferences:
         defaultTenure:
           days: 0
@@ -36,7 +36,7 @@ spec:
           months: 60
           years: 0
         minLoanAmount:
-          amount: 10000
+          amount: 50000
           currency: INR
         minTenure:
           days: 1
@@ -44,24 +44,24 @@ spec:
           years: 0
       policies:
         interestPolicy:
-          code: EIPUS005001
+          code: EIPUS-SUPERNOVA-1012
           version: 1
         repaymentPolicy:
-          code: ERPUS005001
+          code: ERPUS-SUPERNOVA-1012
           version: 1
         accountClosurePolicy:
-          code: ECPUS005001
+          code: ECPUS-SUPERNOVA-1012
           version: 1
         accountNumberGenerationPolicy:
-          code: ENGUS005001
+          code: ENGUS-SUPERNOVA-1012
           version: 1
         amortizationPolicy:
-          code: EAPUS005001
+          code: EAPUS-SUPERNOVA-1012
           version: 2
         loanLifeCyclePolicy:
-          code: ELLCUS005001
+          code: ELLCUS-SUPERNOVA-1012
           version: 1
         creditAllocationPolicy:
-          code: ECAPUS005001
+          code: ECAPUS-SUPERNOVA-1012
           version: 1
       templateCode: in-credit

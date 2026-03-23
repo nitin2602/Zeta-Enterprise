@@ -1,10 +1,10 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: EmeraldAmortizationPolicy
 metadata:
-  name: lsg.emerald.emeraldamortizationpolicy.5001
+  name: lsg.emerald.emeraldamortizationpolicy.nova.1011
 spec:
   metadata:
-    id: emerald.emeraldamortizationpolicy.5001
+    id: emerald.emeraldamortizationpolicy.nova.1011
     name: Supernova COA Emerald Amortization Policies
     description: Supernova COA Emerald Amortization Policies
     requester:
@@ -16,7 +16,7 @@ spec:
   validTill: '2999-12-31T00:00:00.000+05:30'
   name: Amortization Policy
   description: Amortization Policy
-  code: EAPUS005001
+  code: EAPUS-NOVA-1011
   epiMethod: REDUCING_BALANCE
   installmentFrequency: MONTHLY
   paymentType: ARREARS

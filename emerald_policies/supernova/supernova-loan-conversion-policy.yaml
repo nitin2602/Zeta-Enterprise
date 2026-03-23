@@ -1,12 +1,12 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: EmeraldLoanConversionPolicy
 metadata:
-  name: lsg.emerald.emeraldloanconversionpolicy.5001
+  name: lsg.emerald.emeraldloanconversionpolicy.supernova.1012
 spec:
   metadata:
-    id: emerald.emeraldloanconversionpolicy.5001
-    name: 5001 Emerald Loan Conversion Policy
-    description: 5001 Emerald Loan Conversion Policy
+    id: emerald.emeraldloanconversionpolicy.supernova.1012
+    name: Supernova Emerald Loan Conversion Policy
+    description: Supernova Emerald Loan Conversion Policy
     requester:
       module: emerald-module-e2e
       moduleVersion: 0.0.1
@@ -16,7 +16,7 @@ spec:
   validTill: '2999-11-31T00:00:00.000+05:30'
   name: Emerald Loan Conversion Policy
   description: Emerald Loan Conversion Policy
-  code: ELCUS005001
+  code: ELCUS-SUPERNOVA-1012
   accountProvider: ruby
   allowedLoanTypes:
     - autoRefundProcessing: true

@@ -1,0 +1,25 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+metadata:
+  name: lsg.emerald.configuration.product.prdin.supernova.1012.account-product-family
+spec:
+  metadata:
+    id: emerald.configuration.product.prdin.supernova.1012.account-product-family
+    name: Supernova test Loan Monthly Product Family SUPERNOVA-1012
+    description: Supernova test Loan Monthly Product Family SUPERNOVA-1012
+    tenantId: '600309'
+    tenantCode: lsg
+  config:
+    format: YAML
+    schemaUrl: https://banking-assets.s3.ap-south-1.amazonaws.com/hedwig/product_configuration_schema/provider_ruby/account_product_family/v1/schema.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      name: Loan Monthly Product Family SUPERNOVA-1012
+      code: EPFUS-SUPERNOVA-1012
+      description: Loan Monthly Product Family SUPERNOVA-1012
+      coaCode: COAUS-SUPERNOVA-1012
+      parentCoaNodeCode: COAUS-SUPERNOVA-1012_Node_Unsecured_Loans
+      attributes:
+        productClass: 12

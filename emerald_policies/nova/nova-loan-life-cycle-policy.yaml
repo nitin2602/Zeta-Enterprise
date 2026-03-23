@@ -1,10 +1,10 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: EmeraldLoanLifeCyclePolicy
 metadata:
-  name: lsg.emerald.emeraldloanlifecyclepolicy.5001
+  name: lsg.emerald.emeraldloanlifecyclepolicy.nova.1011
 spec:
   metadata:
-    id: emerald.emeraldloanlifecyclepolicy.5001
+    id: emerald.emeraldloanlifecyclepolicy.nova.1011
     name: Emerald Loan Life Cycle Policy
     description: Emerald Loan Life Cycle Policy
     requester:
@@ -16,7 +16,7 @@ spec:
   validTill: '2099-12-31T00:00:00.000+05:30'
   name: Loan Life Cycle Policy
   description: Loan Life Cycle Policy
-  code: ELLCUS005001
+  code: ELLCUS-NOVA-1011
   kfsTemplateCode: https://hercules-assets.mum1-pp.zetaapps.in/statement-templates/3.3.1/sigma/key_fact_statement.html
   loanProposalKFSExpiryInMs: 1000000
   graceDays: 0

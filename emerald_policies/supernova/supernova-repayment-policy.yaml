@@ -1,10 +1,10 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: EmeraldRepaymentPolicy
 metadata:
-  name: lsg.emerald.emeraldrepaymentpolicy.5001
+  name: lsg.emerald.emeraldrepaymentpolicy.supernova.1012
 spec:
   metadata:
-    id: emerald.emeraldrepaymentpolicy.5001
+    id: emerald.emeraldrepaymentpolicy.supernova.1012
     name: Emerald Repayment Policy
     description: Emerald Repayment Policy
     requester:
@@ -16,7 +16,7 @@ spec:
   validTill: '2999-12-31T00:00:00.000+05:30'
   name: Emerald Repayment Policy
   description: Emerald Repayment Policy
-  code: ERPUS005001
+  code: ERPUS-SUPERNOVA-1012
   longestOverDue: false
   minAmountForPartialPayOff: 50000
   minInstallmentsForPartialPayOff: 0

@@ -1,0 +1,48 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: EmeraldInterestPolicy
+metadata:
+  name: lsg.emerald.emeraldinterestpolicy.nova.1011
+spec:
+  metadata:
+    id: emerald.emeraldinterestpolicy.nova.1011
+    name: Emerald Interest Policy
+    description: Emerald Interst Policy
+    requester:
+      module: emerald-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  name: Emerald Interst Policy
+  code: EIPUS-NOVA-1011
+  description: Emerald Interst Policy
+  validFrom: '2026-03-06T00:00:00.000+05:30'
+  validTill: '2999-12-31T00:00:00.000+05:30'
+  creditEffectiveFrom: ValueDate
+  debitEffectiveFrom: ValueDate
+  interestAccrual:
+    accountLevelRate: true
+    annualInterestRate: 13.00
+    dayCountMethods:
+      - lifeCycleEvent: firstInstallment
+        dayCountMethod: ACTUAL/360_EZZ
+      - lifeCycleEvent: preClosure
+        dayCountMethod: ACTUAL/360_EZZ
+      - lifeCycleEvent: reAmortization
+        dayCountMethod: 30/360G
+      - lifeCycleEvent: default
+        dayCountMethod: 30/360G
+    roundingRule: NEAR
+  interestLiquidation:
+    liquidationVoucherCode: LOAN_INTEREST_LIQUIDATION
+  interestRules:
+    - balanceType: DAILY_BALANCE
+      description: Normal Interest Base
+      interestComponent: NORMAL_INTEREST_BASE
+      liquidation:
+        model: BillUnconditional
+        postingCategories:
+          accrualPostingCategory: ACCRUEDINTERESTNORMAL
+          billingPostingCategory: NORMALINTEREST
+          penaltyPostingCategory: PENALTYINTERESTBASE
+      postingCategory: NORMALINTERESTBASE
+  templateCode: in-credit

@@ -1,7 +1,7 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: Configuration
 metadata:
-  name: lsg.emerald.configuration.program.general5001.loan-conversion-program
+  name: lsg.emerald.configuration.program.general.nova.1011.loan-conversion-program
 spec:
   config:
     format: YAML
@@ -11,7 +11,7 @@ spec:
     schemaUrl: http://localhost
     useVault: false
     value:
-      programCode: ELCPROGUS005001
+      programCode: ELCPROGUS-NOVA-1011
       precedenceCode: '100'
       validFrom: '2000-04-01T00:00:00.000+05:30'
       validUntil: '2099-12-31T00:00:00.000+05:30'
@@ -312,7 +312,7 @@ spec:
             installmentFrequency: MONTHLY
   metadata:
     description: Loan conversion program
-    id: emerald.configuration.program.general5001.loan-conversion-program
+    id: emerald.configuration.program.general.nova.1011.loan-conversion-program
     name: Loan Conversion Program
     tenantCode: lsg
     tenantId: '600309'
