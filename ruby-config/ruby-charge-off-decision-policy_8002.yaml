@@ -1,0 +1,60 @@
+kind: RubyChargeOffDecisionPolicy
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.ruby.rubychargeoffdecisionpolicy.module.8002
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.lsg","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.lsg.git","filePath":"module_configurations/module_ruby/charge-off-decision-policies/ruby-charge-off-decision-policy_8002.yaml","tenantCode":"lsg"}'
+  namespace: ruby
+spec:
+  metadata:
+    id: ruby.rubychargeoffdecisionpolicy.module.8002
+    name: ruby.rubychargeoffdecisionpolicy.module.8002
+    description: ruby.rubychargeoffdecisionpolicy.module.8002
+    tenantId: '600309'
+    tenantCode: lsg
+  validFrom: '2025-01-01T00:00:00.000-07:00'
+  validTill: '2099-01-01T00:00:00.000-07:00'
+  name: Ruby Charge Off Decision
+  description: Ruby Charge Off Decision
+  code: CODIN008002
+  decision: CHARGE_OFF
+  enabled: true
+  classificationConfiguration:
+    chargeOffBasis: DPD_DAYS
+    finalChargeOffDPDLimit: 180
+    writeOffDPDLimit: 120
+    writeOffPrincipalAmount: 1000
+    delinquencyLevelLimit: LEVEL_6
+  accounting:
+    enabled: true
+    accountingType: ACCOUNT_HOLDER
+    autoChargeOffAccountingOn: BILLING_DATE_PLUS_ONE_DAY
+    manualChargeOffAccountingOn: IMMEDIATE
+    recoverySettlementPriority:
+      - cashPrincipal
+      - retailPrincipal
+      - cashInterest
+      - retailInterest
+      - cashAdvanceFee
+      - retailMiscFee
+      - lateFee
+      - insufficientFundFee
+      - overlimitFee
+      - collectionFee
+      - retailServiceFee
+      - annualFee
+  reversal:
+    enabled: false
+    graceDays: 0
+  writeOff:
+    enabled: true
+    accounting:
+      enabled: true
+      accountingType: ACCOUNT_HOLDER
+    reversal:
+      enabled: false
+      graceDays: 0
+  statementBeforeChargeOff: false
+  templateCode: in-credit

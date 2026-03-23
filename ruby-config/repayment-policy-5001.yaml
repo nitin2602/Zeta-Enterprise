@@ -13,7 +13,7 @@ spec:
     tenantId: '600309'
     tenantCode: lsg
   name: Ruby Repayment Policy
-  code: REPUS005001
+  code: REPIN005001
   description: Ruby Repayment Policy
   repaymentAllocation:
     aboveMAD:
@@ -24,26 +24,34 @@ spec:
             - '*'
           repaymentSequenceTieBreaker: FIFO
           settlementPriority:
-            - CashInterestBilled
-            - CashInterestUnbilled
-            - CashPrincipalBilled
-            - CashPrincipalUnbilled
-            - InsufficientFundFeeBilled
-            - InsufficientFundFeeUnbilled
-            - RetailServiceFeeBilled
-            - RetailServiceFeeUnbilled
             - LateFeeBilled
-            - LateFeeUnbilled
-            - RetailMiscFeeBilled
-            - RetailMiscFeeUnbilled
-            - AnnualFeeBilled
-            - AnnualFeeUnbilled
-            - RetailInterestBilled
-            - RetailInterestUnbilled
-            - RetailPrincipalBilled
-            - RetailPrincipalUnbilled
+            - InsufficientFundFeeBilled
+            - OverlimitFeeBilled
+            - CollectionFeeBilled
             - CashAdvanceFeeBilled
+            - RetailMiscFeeBilled
+            - RetailServiceFeeBilled
+            - AnnualFeeBilled
+            - CashInterestBilled
+            - EMIInterestBilled
+            - RetailInterestBilled
+            - CashPrincipalBilled
+            - EMIPrincipalBilled
+            - RetailPrincipalBilled
+            - LateFeeUnbilled
+            - InsufficientFundFeeUnbilled
+            - OverlimitFeeUnbilled
+            - CollectionFeeUnbilled
             - CashAdvanceFeeUnbilled
+            - RetailMiscFeeUnbilled
+            - RetailServiceFeeUnbilled
+            - AnnualFeeUnbilled
+            - CashInterestUnbilled
+            - EMIInterestUnbilled
+            - RetailInterestUnbilled
+            - CashPrincipalUnbilled
+            - EMIPrincipalUnbilled
+            - RetailPrincipalUnbilled
     belowMAD:
       allocationModel: LOWESTTOHIGHESTAPR
       allocationTieBreaker: REPAYMENTSEQUENCE
@@ -52,26 +60,34 @@ spec:
             - '*'
           repaymentSequenceTieBreaker: FIFO
           settlementPriority:
-            - CashAdvanceFeeBilled
-            - CashAdvanceFeeUnbilled
             - LateFeeBilled
-            - LateFeeUnbilled
-            - RetailMiscFeeBilled
-            - RetailMiscFeeUnbilled
-            - AnnualFeeBilled
-            - AnnualFeeUnbilled
             - InsufficientFundFeeBilled
-            - InsufficientFundFeeUnbilled
+            - OverlimitFeeBilled
+            - CollectionFeeBilled
+            - CashAdvanceFeeBilled
+            - RetailMiscFeeBilled
             - RetailServiceFeeBilled
-            - RetailServiceFeeUnbilled
-            - RetailInterestBilled
-            - RetailInterestUnbilled
+            - AnnualFeeBilled
             - CashInterestBilled
-            - CashInterestUnbilled
-            - RetailPrincipalBilled
-            - RetailPrincipalUnbilled
+            - EMIInterestBilled
+            - RetailInterestBilled
             - CashPrincipalBilled
+            - EMIPrincipalBilled
+            - RetailPrincipalBilled
+            - LateFeeUnbilled
+            - InsufficientFundFeeUnbilled
+            - OverlimitFeeUnbilled
+            - CollectionFeeUnbilled
+            - CashAdvanceFeeUnbilled
+            - RetailMiscFeeUnbilled
+            - RetailServiceFeeUnbilled
+            - AnnualFeeUnbilled
+            - CashInterestUnbilled
+            - EMIInterestUnbilled
+            - RetailInterestUnbilled
             - CashPrincipalUnbilled
+            - EMIPrincipalUnbilled
+            - RetailPrincipalUnbilled
   otherCreditAllocation:
     allocationModel: HIGHESTTOLOWESTAPR
     allocationTieBreaker: REPAYMENTSEQUENCE
@@ -80,30 +96,38 @@ spec:
           - '*'
         repaymentSequenceTieBreaker: FIFO
         settlementPriority:
-          - CashAdvanceFeeBilled
-          - CashAdvanceFeeUnbilled
           - LateFeeBilled
-          - LateFeeUnbilled
-          - RetailMiscFeeBilled
-          - RetailMiscFeeUnbilled
-          - AnnualFeeBilled
-          - AnnualFeeUnbilled
           - InsufficientFundFeeBilled
-          - InsufficientFundFeeUnbilled
+          - OverlimitFeeBilled
+          - CollectionFeeBilled
+          - CashAdvanceFeeBilled
+          - RetailMiscFeeBilled
           - RetailServiceFeeBilled
-          - RetailServiceFeeUnbilled
-          - RetailInterestBilled
-          - RetailInterestUnbilled
+          - AnnualFeeBilled
           - CashInterestBilled
-          - CashInterestUnbilled
-          - RetailPrincipalBilled
-          - RetailPrincipalUnbilled
+          - EMIInterestBilled
+          - RetailInterestBilled
           - CashPrincipalBilled
+          - EMIPrincipalBilled
+          - RetailPrincipalBilled
+          - LateFeeUnbilled
+          - InsufficientFundFeeUnbilled
+          - OverlimitFeeUnbilled
+          - CollectionFeeUnbilled
+          - CashAdvanceFeeUnbilled
+          - RetailMiscFeeUnbilled
+          - RetailServiceFeeUnbilled
+          - AnnualFeeUnbilled
+          - CashInterestUnbilled
+          - EMIInterestUnbilled
+          - RetailInterestUnbilled
           - CashPrincipalUnbilled
+          - EMIPrincipalUnbilled
+          - RetailPrincipalUnbilled
   repaymentReversal:
     excessAttributionPostingCategory: RetailPrincipalUnbilled
     lateFeeAdjustment: true
     interestAdjustment: true
-  validFrom: '2000-01-01T00:00:00.000-05:00'
+  validFrom: '2025-01-01T00:00:00.000+05:30'
   validTill: '2999-01-01T00:00:00.000-05:00'
-  templateCode: us-credit
+  templateCode: in-credit

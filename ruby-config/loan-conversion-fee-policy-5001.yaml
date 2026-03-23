@@ -3,7 +3,7 @@ kind: RubyLoanConversionFeePolicy
 metadata:
   name: lsg.ruby.loanconversionfeepolicy.5001
 spec:
-  code: LCFUS005001
+  code: LCFIN005001
   description: loan conversion fee policy changed
   metadata:
     description: 5001 loan fee policy
@@ -23,7 +23,7 @@ spec:
     invoiceNumberConfig:
       status: ACTIVE
       ingConfig:
-        code: INGUS001002
+        code: INGIN001002
         version: '1'
       generationContext:
         clockType: BOOK
@@ -32,6 +32,6 @@ spec:
           sourceSystemCode: TCC
       generationStrategy: DATE_BASED
   name: loan conversion fee policy
-  templateCode: us-credit
-  validFrom: '2010-04-01T00:00:00.000+05:30'
+  templateCode: in-credit
+  validFrom: '2025-01-01T00:00:00.000+05:30'
   validTill: '2999-12-31T00:00:00.000+05:30'

@@ -1,0 +1,55 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyCreditBureauReportingPolicy
+metadata:
+  name: lsg.ruby.rubycreditbureaureportingpolicy.3002
+spec:
+  metadata:
+    id: ruby.rubycreditbureaureportingpolicy.3002
+    name: 3002 Ruby Credit Bureau Reporting Policy
+    description: 3002 Ruby Credit Bureau Reporting Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  name: Ruby Credit Bureau Reporting Policy
+  code: CBRIN003002
+  description: Ruby Credit Bureau Reporting Policy
+  provider: ruby
+  reportToCreditBureau: true
+  frequencyOfReporting: BILLING_CYCLE
+  restrictedStatusesForBureauReporting:
+    - tag://tradeline/LEVEL_0
+    - tag://accountBlockStatus/LEVEL_1
+    - tag://accountClosureStatus/LEVEL_2
+    - tag://accountLifecycleStatus/LEVEL_5
+    - tag://accountLifecycleStatus/LEVEL_6
+  accountClosureReporting:
+    status: CLOSURE_ACCEPTED
+  immediateReportNewOpenedAccount: true
+  addressPreference:
+    - permanent
+    - residence
+    - default
+  immediateReportingForTerminalStatus:
+    - tagUri: tag://autoChargeOffStatus/LEVEL_0
+      applicableField: finalChargeOffDate
+      source: account
+    - tagUri: tag://manualChargeOffStatus/LEVEL_0
+      applicableField: effectiveFrom
+      source: account
+    - tagUri: tag://tradeline/LEVEL_0
+      applicableField: deletionDate
+      source: account
+    - tagUri: tag://manualBundleStatusDeceased/MBAD1
+      applicableField: deceased_status_effective_date
+      source: account
+    - tagUri: tag://manualBundleStatusBankruptcy/MBBK1
+      applicableField: bankruptcy_effective_date
+      source: account
+  associatedConsumerReporting:
+    relationshipTypes:
+      - SPOUSE
+  validFrom: '2025-01-01T00:00:00.000+05:30'
+  validTill: '2999-01-01T23:09:01.795+07:00'
+  templateCode: in-credit

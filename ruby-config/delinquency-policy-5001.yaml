@@ -13,7 +13,7 @@ spec:
     tenantId: '600309'
     tenantCode: lsg
   name: Delinquency Policy
-  code: DLQUS005001
+  code: DLQIN005001
   description: Delinquency Policy
   delinquencyRules:
     - level: 1
@@ -37,18 +37,18 @@ spec:
       fromDays: 121
       toDays: 150
     - level: 6
-      description: Chargeoff
+      description: 6 payments past due
       fromDays: 151
       toDays: 180
   paymentVariance:
-    amount: 1000
-    currency: USD
+    amount: 10000
+    currency: INR
   paymentVarianceForLateFee:
-    amount: 1000
-    currency: USD
+    amount: 5000
+    currency: INR
   delinquencyAgeingBasis: dueDate
   balanceLevelForDueReview: CURRENTBALANCE
   dpdAgeingBasis: dueDate
-  validFrom: '2000-01-01T00:00:00.000-05:00'
+  validFrom: '2025-01-01T00:00:00.000+05:30'
   validTill: '9918-01-01T00:00:00.000-05:00'
-  templateCode: us-credit
+  templateCode: in-credit

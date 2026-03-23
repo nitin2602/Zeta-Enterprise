@@ -17,17 +17,15 @@ spec:
   description: Account Closure Policy
   reason:
     - reasonCode: Delinquency
-      maxDebitBalForWriteOff: 0
+      maxDebitBalForWriteOff: 8000
     - reasonCode: Dormancy
       maxDebitBalForWriteOff: 0
-    - reasonCode: NonActivation
-      maxDebitBalForWriteOff: 0
     - reasonCode: CustomerRequest
-      maxDebitBalForWriteOff: 0
+      maxDebitBalForWriteOff: 1000
     - reasonCode: BankInitiated
       maxDebitBalForWriteOff: 0
     - reasonCode: Others
       maxDebitBalForWriteOff: 0
-  validFrom: '2000-01-01T00:00:00.000-05:00'
+  validFrom: '2025-01-01T00:00:00.000+05:30'
   validTill: '2999-01-01T00:00:00.000-05:00'
-  templateCode: us-credit
+  templateCode: in-credit

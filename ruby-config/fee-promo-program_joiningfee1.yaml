@@ -1,0 +1,34 @@
+kind: FeePromoProgram
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: lsg.tdr.feepromoprogram.module.joiningfee1
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.lsg","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.lsg.git","filePath":"module_configurations/module_ruby/fee_promo_program/fee-promo-program_joiningfee1.yaml","tenantCode":"lsg"}'
+spec:
+  metadata:
+    id: tdr.feepromoprogram.module.joiningfee1
+    name: tdr.feepromoprogram.module.joiningfee1
+    description: tdr.feepromoprogram.module.joiningfee1
+    tenantId: '600309'
+    tenantCode: lsg
+  programCode: JFPP00005
+  precedenceCode: '20'
+  name: Joining Fee Segmentation Promo Program
+  description: This is a Joining Fee Segmentation promo program.
+  validFrom: 1742841000000
+  validUntil: 1745605799000
+  promotions:
+    - chargeSpecificationCode: CHSINZZ0017
+      chargeDescription: Joining Fee Charge Description
+      modelParams:
+        fixedAmount:
+          baseFee:
+            amount: 0
+            currency: INR
+  attributes:
+    key1: value1
+    key2: value2
+  tags:
+    - tag://bundleSegment/Seg2?tagTypeCode=test

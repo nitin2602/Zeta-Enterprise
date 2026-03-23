@@ -3,7 +3,7 @@ kind: RubyLoanConversionBillingInterestFeePolicy
 metadata:
   name: lsg.ruby.loanconversionbillinginterestfeepolicy.5001
 spec:
-  code: LCBUS005001
+  code: LCBIN005001
   description: loan conversion billing interest fee policy
   metadata:
     id: ruby.loanconversionbillinginterestfeepolicy.5001
@@ -24,7 +24,7 @@ spec:
         dateFormat: yyDDD
       generationStrategy: DATE_BASED
       ingConfig:
-        code: INGUS001002
+        code: INGIN001002
         version: '1'
       status: ACTIVE
     taxes:
@@ -32,6 +32,6 @@ spec:
       igst: 18
       sgst: 9
   name: loan conversion billing interest fee policy
-  templateCode: us-credit
-  validFrom: '2010-04-01T00:00:00.000+05:30'
+  templateCode: in-credit
+  validFrom: '2025-01-01T00:00:00.000+05:30'
   validTill: '2999-12-31T00:00:00.000+05:30'

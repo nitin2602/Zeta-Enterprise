@@ -1,0 +1,31 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyAccountSetupFeePolicy
+metadata:
+  name: lsg.ruby.rubyaccountsetupfeepolicy.1001
+spec:
+  metadata:
+    id: ruby.rubyaccountsetupfeepolicy.1001
+    name: 1001 Account Setup Fee Policy
+    description: 1001 Account Setup Fee Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  name: Account Setup Fee Policy
+  code: ASFUS001001
+  description: Account Setup Fee Policy
+  modelParameters:
+    fixedAmount:
+      baseFee:
+        amount: 25000
+        currency: INR
+    chargeStrategy: DIRECT-APPLY
+    chargeStrategyConfig:
+      application:
+        applyOn: keyDateSpecification://code/ACCOUNT_OPEN_DATE
+        voucherCode: ACCOUNT_SETUP_FEE
+        offsetDaysForValueDate: '0'
+  validFrom: '2025-01-01T00:00:00.000+05:30'
+  validTill: '9999-01-01T21:39:01.795+05:30'
+  templateCode: in-credit

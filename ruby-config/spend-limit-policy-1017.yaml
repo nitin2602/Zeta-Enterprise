@@ -1,0 +1,53 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubySpendLimitPolicy
+metadata:
+  name: lsg.ruby.rubyspendlimitpolicy.1017
+spec:
+  metadata:
+    id: ruby.rubyspendlimitpolicy.1017
+    name: 1017 Ruby Spend Limit Policies
+    description: 1017 Ruby Spend Limit Policies
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  validFrom: '2025-01-01T00:00:00.000+05:30'
+  validTill: '2999-01-01T23:09:01.000Z'
+  name: Spend Limit Policy 1017
+  description: Spend Limit Policy 1017
+  code: SPLIN001017
+  coaCode: COAIN001017
+  disabledForNewCards:
+    - DOMESTIC_ECOM
+    - DOMESTIC_CONTACTLESS
+    - INTERNATIONAL_POS
+    - INTERNATIONAL_ECOM
+    - INTERNATIONAL_ATM
+    - INTERNATIONAL_CONTACTLESS
+  defaultLimitsForNewCards:
+    - category: DOMESTIC_ECOM
+      limitType: PERTRANSACTION
+      limitValue: '10000'
+    - category: DOMESTIC_POS
+      limitType: PERTRANSACTION
+      limitValue: '10000'
+    - category: DOMESTIC_ATM
+      limitType: PERTRANSACTION
+      limitValue: '10000'
+    - category: DOMESTIC_CONTACTLESS
+      limitType: PERTRANSACTION
+      limitValue: '10000'
+    - category: INTERNATIONAL_ECOM
+      limitType: PERTRANSACTION
+      limitValue: '10000'
+    - category: INTERNATIONAL_POS
+      limitType: PERTRANSACTION
+      limitValue: '10000'
+    - category: INTERNATIONAL_ATM
+      limitType: PERTRANSACTION
+      limitValue: '10000'
+    - category: INTERNATIONAL_CONTACTLESS
+      limitType: PERTRANSACTION
+      limitValue: '10000'
+  templateCode: in-credit

@@ -18,12 +18,12 @@ spec:
   modelParameters:
     fixedAmount:
       baseFee:
-        amount: 0
-        currency: USD
+        amount: 15000
+        currency: INR
     replacementCardIdentifier:
       - key: cardSkuID
         value:
-          - SKUUS005001_CARDWORKSUAT
-  validFrom: '2000-01-01T00:00:00.000-05:00'
+          - SKUIN005001_CARDWORKSUAT
+  validFrom: '2025-01-01T00:00:00.000+05:30'
   validTill: '2999-01-01T00:00:00.000-05:00'
-  templateCode: us-credit
+  templateCode: in-credit

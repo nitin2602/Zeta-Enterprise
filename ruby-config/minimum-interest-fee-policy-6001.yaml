@@ -1,0 +1,23 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyMinimumInterestFeePolicy
+metadata:
+  name: lsg.ruby.rubyminimuminterestfeepolicy.6001
+spec:
+  metadata:
+    id: ruby.rubyminimuminterestfeepolicy.6001
+    name: 6001 Ruby Minimum Interest Fee Policy
+    description: 6001 Minimum Interest-Fee Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  name: Ruby Minimum Interest Fee Policy
+  code: MIFIN006001
+  description: Ruby Minimum Interest-Fee Policy
+  modelParameters:
+    fixedAmount:
+      baseFee: 200.0
+  validFrom: '2025-01-01T00:00:00.000+05:30'
+  validTill: '2999-01-01T00:00:00.000-07:00'
+  templateCode: in-credit

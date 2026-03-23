@@ -1,0 +1,215 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyInterestTermResolutionPolicy
+metadata:
+  name: lsg.ruby.interesttermresolutionpolicy.6001
+spec:
+  code: TRPIN006001
+  description: Interest term resolution policy
+  metadata:
+    description: 6001 interest term resolution policy
+    id: ruby.interesttermresolutionpolicy.6001
+    name: 6001 interest term resolution policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantCode: lsg
+    tenantId: '600309'
+  configs:
+    - selectionCriteria:
+        accountStatus:
+          - tag://SCRAStatus/LEVEL_1?name=SCRA&tagTypeCode=classification
+        postingFilters:
+          purposeCodes: [
+            ]
+      couponRepricingConfig:
+        - programType: GENERAL
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - SCRA
+            flags:
+              shouldResolveCurrentTerm: true
+              shouldRecursivelyResolvePreviousAppliedTerms: false
+        - programType: PROMOTION
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - SCRA
+            flags:
+              shouldResolveCurrentTerm: true
+              shouldRecursivelyResolvePreviousAppliedTerms: false
+        - programType: BALANCE_TRANSFER
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - SCRA
+            flags:
+              shouldResolveCurrentTerm: true
+              shouldRecursivelyResolvePreviousAppliedTerms: false
+        - programType: DELINQUENCY
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - SCRA
+            flags:
+              shouldResolveCurrentTerm: true
+              shouldRecursivelyResolvePreviousAppliedTerms: false
+        - programType: HARDSHIP
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - SCRA
+            flags:
+              shouldResolveCurrentTerm: true
+              shouldRecursivelyResolvePreviousAppliedTerms: false
+        - programType: SCRA
+          repricingAction: DONT_REPRICE
+      couponExpiryConfig:
+        - programType: GENERAL
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - SCRA
+              - HARDSHIP
+              - DELINQUENCY
+              - GENERAL
+              - BALANCE_TRANSFER
+        - programType: PROMOTION
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - SCRA
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+        - programType: BALANCE_TRANSFER
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - SCRA
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+        - programType: DELINQUENCY
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - SCRA
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+        - programType: HARDSHIP
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - SCRA
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+        - programType: SCRA
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - SCRA
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+      couponNewIssuanceConfig:
+        - preferenceWithinProgramType: LOWESTAPR
+          eligibleProgramTypes:
+            - SCRA
+            - HARDSHIP
+            - DELINQUENCY
+            - PROMOTION
+            - GENERAL
+            - BALANCE_TRANSFER
+    - selectionCriteria:
+        accountStatus:
+          - '*'
+        postingFilters:
+          purposeCodes:
+            - SCRA_EXPIRY
+      couponRepricingConfig:
+        - programType: GENERAL
+          repricingAction: DONT_REPRICE
+        - programType: PROMOTION
+          repricingAction: DONT_REPRICE
+        - programType: BALANCE_TRANSFER
+          repricingAction: DONT_REPRICE
+        - programType: DELINQUENCY
+          repricingAction: DONT_REPRICE
+        - programType: HARDSHIP
+          repricingAction: DONT_REPRICE
+        - programType: SCRA
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: PRECEDENCE
+            eligibleProgramTypes:
+              - SCRA
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+            flags:
+              shouldResolveCurrentTerm: false
+              shouldRecursivelyResolvePreviousAppliedTerms: true
+      couponExpiryConfig:
+        - programType: GENERAL
+          repricingAction: DONT_REPRICE
+        - programType: PROMOTION
+          repricingAction: DONT_REPRICE
+        - programType: BALANCE_TRANSFER
+          repricingAction: DONT_REPRICE
+        - programType: DELINQUENCY
+          repricingAction: DONT_REPRICE
+        - programType: HARDSHIP
+          repricingAction: DONT_REPRICE
+        - programType: SCRA
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: PRECEDENCE
+            eligibleProgramTypes:
+              - SCRA
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+            flags:
+              shouldResolveCurrentTerm: false
+              shouldRecursivelyResolvePreviousAppliedTerms: true
+      couponNewIssuanceConfig:
+        - preferenceWithinProgramType: PRECEDENCE
+          eligibleProgramTypes:
+            - SCRA
+            - HARDSHIP
+            - DELINQUENCY
+            - PROMOTION
+            - GENERAL
+            - BALANCE_TRANSFER
+  name: interest term resolution policy
+  templateCode: in-credit
+  validFrom: '2025-01-01T00:00:00.000+05:30'
+  validTill: '2999-01-01T23:09:01.795+07:00'

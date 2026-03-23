@@ -1,0 +1,38 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyCreditBalanceHandlingPolicy
+metadata:
+  name: lsg.ruby.rubycreditbalancehandlingpolicy.6001
+spec:
+  metadata:
+    id: ruby.rubycreditbalancehandlingpolicy.6001
+    name: 6001 Ruby Credit Balance Handling Policy
+    description: 6001 Ruby Credit Balance Handling Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  validFrom: '2025-01-01T00:00:00.000+05:30'
+  validTill: '2999-01-01T23:09:01.795+07:00'
+  name: Credit Balance Handling
+  description: Credit Balance Handling
+  code: CBRIN006001
+  canBeOverriddenPerCard: false
+  creditBalanceHandlingModels:
+    - sourceCategory: ExcessPaymentUnallocatable
+      model: AUTOREFUND
+      selectionCriteria:
+        type: DECLARATIVE
+        frequency: CYCLE
+        keyDateURI: keyDateSpecification://code/REGULAR_DATE
+    - sourceCategory: ExcessPayment
+      model: AUTOREFUND
+      selectionCriteria:
+        type: DECLARATIVE
+        frequency: CYCLE
+        keyDateURI: keyDateSpecification://code/REGULAR_DATE
+  automaticRefundEnabled: true
+  balanceThreshold: '2000'
+  ageThreshold: 3
+  refundType: EXCESS
+  templateCode: in-credit

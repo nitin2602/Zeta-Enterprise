@@ -13,7 +13,7 @@ spec:
     tenantId: '600309'
     tenantCode: lsg
   name: Ruby Over Limit Fee Policy
-  code: OVLUS005001
+  code: OVLIN005001
   description: Ruby Over Limit Fee Policy
   modelParameters:
     maxDebitsCount: 1
@@ -21,8 +21,8 @@ spec:
     chargeDefinition:
       variableAmount:
         range:
-          min: 0
-        percentage: 0
-  validFrom: '2000-01-01T00:00:00.000-05:00'
+          min: 50000
+        percentage: 3
+  validFrom: '2025-01-01T00:00:00.000+05:30'
   validTill: '2999-01-01T00:00:00.000-05:00'
-  templateCode: us-credit
+  templateCode: in-credit

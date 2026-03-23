@@ -1,0 +1,35 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyJoiningFeePolicy
+metadata:
+  name: lsg.ruby.joiningfeeepolicy.6001
+spec:
+  metadata:
+    id: ruby.joiningfeeepolicy.6001
+    name: 6001 Ruby Joining Fee Policy
+    description: 6001 Ruby Joining Fee Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  name: Ruby Joining Fee Policy
+  code: JFFIN006001
+  description: Ruby Joining Fee Policy
+  modelParameters:
+    fixedAmount:
+      baseFee:
+        amount: 99900
+        currency: INR
+  chargeStrategy: HOLD-THEN-APPLY
+  chargeStrategyConfig:
+    placeHold:
+      applyOn: keyDateSpecification://code/OPEN_DATE
+      voucherCode: PLACE_HOLD
+      expiryInDays: '10000'
+    releaseHold:
+      applyOn: keyDateSpecification://code/FIRST_USAGE_DATE
+      phase: EOPI
+      voucherCode: RELEASE_HOLD
+  validFrom: '2025-01-01T00:00:00.000+05:30'
+  validTill: '2999-01-01T00:00:00.000-07:00'
+  templateCode: in-credit

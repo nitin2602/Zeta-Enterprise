@@ -1,0 +1,29 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyNpaDecisionPolicy
+metadata:
+  name: lsg.ruby.rubynpadecision.3002
+spec:
+  metadata:
+    id: ruby.rubynpadecision.3002
+    name: 3002 Ruby NPA Decision Policy
+    description: 1011 Ruby NPA Decision Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600309'
+    tenantCode: lsg
+  validFrom: '2025-01-01T00:00:00.000+05:30'
+  validTill: '2999-01-01T23:09:01.795+07:00'
+  name: Ruby NPA Decision
+  description: Ruby NPA Decision
+  code: NPDIN003002
+  decision: NPA
+  enabled: true
+  classificationConfiguration:
+    npaBasis: dpdDays
+    dpdDaysLimit: 80
+    delinquencyLevelLimit: LEVEL_6
+  accounting:
+    enabled: true
+    accountingType: SYSTEM_LEDGER
+  templateCode: in-credit

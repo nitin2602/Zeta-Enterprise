@@ -13,7 +13,7 @@ spec:
     tenantId: '600309'
     tenantCode: lsg
   name: Dormancy Policy
-  code: DORUS005001
+  code: DORIN005001
   description: Dormancy Policy
   applicableVoucherCodesCredit:
     - CARD_PURCHASE_CLEARANCE_REFUND
@@ -26,8 +26,14 @@ spec:
     - CARD_CASH_CLEARANCE_AGAINST_HOLD
   dormancyRules:
     - level: 1
-      description: Dormant for 150 days
-      days: 150
-  validFrom: '2000-01-01T00:00:00.000-05:00'
+      description: Dormant for 30 days
+      days: 30
+    - level: 2
+      description: Dormant for 120 days
+      days: 120
+    - level: 3
+      description: Dormant for 365 days
+      days: 365
+  validFrom: '2025-01-01T00:00:00.000+05:30'
   validTill: '2999-01-01T00:00:00.000-05:00'
-  templateCode: us-credit
+  templateCode: in-credit
