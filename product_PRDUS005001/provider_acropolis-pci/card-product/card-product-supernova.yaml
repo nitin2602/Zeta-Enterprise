@@ -1,15 +1,15 @@
 kind: Configuration
 apiVersion: rrsd.zetaapps.in/v1alpha1
 metadata:
-  name: lsg.acropolis-pci.configuration.product.prdin001011.nova.card-sku
+  name: lsg.acropolis-pci.configuration.product.prdin001012.supernova.card-product
   annotations:
-    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.lsg","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.lsg.git","filePath":"product_configurations/provider_acropolis-pci/card-sku/card-sku-nova.yaml","tenantCode":"lsg"}'
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.lsg","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.lsg.git","filePath":"product_configurations/provider_acropolis-pci/card-product/card-product-supernova.yaml","tenantCode":"lsg"}'
 spec:
   metadata:
-    id: acropolis-pci.configuration.product.PRDIN001011.nova.card-sku
-    name: Nova Card SKU
-    description: Card SKU for Ezz x ZPay Nova — Secured Credit Card
-    tenantId: "600309"
+    id: acropolis-pci.configuration.product.PRDIN001012.supernova.card-product
+    name: Supernova Card Product
+    description: Card Product for Ezz x ZPay Supernova — Unsecured Premium Credit Card
+    tenantId: '600309'
     tenantCode: lsg
   config:
     format: YAML
@@ -18,19 +18,58 @@ spec:
     isEncrypted: false
     useVault: false
     value:
-      code: SKUIN-NOVA-1011
-      productCode: CRPIN-NOVA-1011
-      batchCode: EZZ_600309_NOVA_BATCH
-      plasticCode: NOVA-LIGHT-PURPLE
-      fileAttributes:
-        bankIdentifier: EzzBank
-      reservoirConfig:
-        inventory.size: 100000
-        refilling.rate: 10000
-      vendorIDs:
-        - VENIN00100703
+      code: CRPIN-SUPERNOVA-1012
+      name: Ezz x ZPay Supernova Card Product
+      description: Supernova Unsecured Premium Credit Card — Ezz x ZPay India
+      status: ENABLED
+      binRangeSelectionStrategy: CHRONOLOGICAL
+      binRanges:
+        - bin: '53599800'
+          range: '02'
+      features:
+        - MAG_STRIPE
+        - EMV
+        - NFC
+      expiry:
+        month: 0
+        year: 5
+      cardActivationPolicy:
+        - physical.activation.type: MANUAL
+          digital.activation.type: MANUAL
+          enabled: true
+      cardReissuancePolicy:
+        - policyType: TERMINATE_SOURCE_CARD
+          enabled: true
+          overrideAllowed: false
+        - policyType: SWAP_TOKENS_FROM_SOURCE_CARD
+          enabled: false
+          overrideAllowed: false
+      cardRenewalPolicy:
+        - policyType: TERMINATE_SOURCE_CARD
+          enabled: true
+          overrideAllowed: false
+        - policyType: SWAP_PIN_FROM_SOURCE_CARD
+          enabled: true
+          overrideAllowed: false
+        - policyType: SWAP_TOKENS_FROM_SOURCE_CARD
+          enabled: true
+          overrideAllowed: false
+      cardReplacementPolicy:
+        - policyType: TERMINATE_SOURCE_CARD
+          enabled: true
+          overrideAllowed: false
+        - policyType: SWAP_TOKENS_FROM_SOURCE_CARD
+          enabled: true
+          overrideAllowed: false
+      acsProviderConfig:
+        enrollmentConfigs:
+          - enrollmentType: CARD_ENROLLMENT
+            enrollmentCredentials:
+              - PHONE_NUMBER
+            enabled: true
+            domainID: 600309.acs
   viewConfig:
     angelosSchema:
       view:
-        entityId: angelos.acropolis.card-sku
-    displayName: Nova Card SKU
+        entityId: angelos.acropolis.card-product
+    displayName: Supernova Card Product
