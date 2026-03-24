@@ -42,7 +42,7 @@ spec:
         loanProduct:
           productFamilyCode: LNPIN-SUPERNOVA-1012
           productCode: LNPIN-SUPERNOVA-1012
-          serviceProvider: RUBY
+          serviceProvider: EMERALD
       issueInactiveCard: true
       applySpendLimits: true
       cardVariant: SUPERNOVA
