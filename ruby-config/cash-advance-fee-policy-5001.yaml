@@ -18,8 +18,8 @@ spec:
   modelParameters:
     variableAmount:
       range:
-        min: 20000.0
-      percentage: 4.0
+        min: 30000
+      percentage: 2.5.0
   validFrom: '2025-01-01T00:00:00.000+05:30'
   validTill: '2999-01-01T00:00:00.000-05:00'
   templateCode: in-credit
