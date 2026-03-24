@@ -25,7 +25,7 @@ spec:
     chargeOffBasis: DPD_DAYS
     finalChargeOffDPDLimit: 210
     writeOffDPDLimit: 210
-    writeOffPrincipalAmount: 8000
+    writeOffPrincipalAmount: 80000
     delinquencyLevelLimit: LEVEL_6
   accounting:
     enabled: true
