@@ -1,0 +1,22 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Cycle
+metadata:
+  name: bkezz.aura.cycle.cycinbkezz00101
+  namespace: elenchos
+spec:
+  metadata:
+    description: Bank Ezz India base billing cycle
+    id: aura.cycle.cycinbkezz00101
+    name: Bank Ezz India Base Cycle
+    requester:
+      module: aura-module
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: "700001"
+  calendarCode: CALINBKEZZ001
+  clockCode: CLKINBKEZZ001
+  code: CYCINBKEZZ00101
+  name: Bank Ezz Base Billing Cycle
+  periodicity: WEEKLY
+  startCbuSequenceNumber: 1
+  status: ENABLED

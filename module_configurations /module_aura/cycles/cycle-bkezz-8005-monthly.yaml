@@ -1,0 +1,22 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Cycle
+metadata:
+  name: bkezz.aura.cycle.cycinbkezz800501
+  namespace: elenchos
+spec:
+  metadata:
+    description: Bank Ezz India monthly cycle for module clock 8005
+    id: aura.cycle.cycinbkezz800501
+    name: Bank Ezz India Monthly Cycle 8005
+    requester:
+      module: aura-module
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: "700001"
+  calendarCode: CALINBKEZZ001
+  clockCode: CLKINBKEZZ8005
+  code: CYCINBKEZZ800501
+  name: Bank Ezz Monthly Cycle 8005
+  periodicity: MONTHLY
+  startCbuSequenceNumber: 1
+  status: ENABLED

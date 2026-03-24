@@ -1,0 +1,54 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: TransactionPolicy
+metadata:
+  name: bkezz.aura.transaction-policy.per-txn-amount-limits-3001
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git","filePath":"module_configurations/module_aura/transactions-policies/transaction-policy_per-txn-amount-limits-3001.yaml","tenantCode":"bkezz"}'
+spec:
+  accountsApplicableTo:
+    - account.provider: ruby
+  coaCode: COAINBKEZZ001
+  code: TPOIN003013001
+  customRules:
+    - action: META_DETAIL_CHANGE
+      errorCode: PER_TXN_AMOUNT_LIMIT_EXCEEDED
+      evaluationFunction:
+        type: JAVASCRIPT
+        function: >
+          function apply(policyContext) {
+            var posting = policyContext.posting;
+            var attributes = posting.attributes || {};
+            var amount = posting.amount;
+            var action = attributes['super-card.action'];
+            if (!amount || !action) {
+              return true;
+            }
+            if (action !== 'DEBIT') {
+              return true;
+            }
+            var minAmt = 100;
+            var maxAmt = 100000;
+            return amount >= minAmt && amount <= maxAmt;
+          }
+  description: Per-transaction min INR 100 and max INR 100000 on debit transactions
+  effectiveFrom: "2024-01-01T00:00:00.000Z"
+  errorCodes:
+    - code: PER_TXN_AMOUNT_LIMIT_EXCEEDED
+      description: Transaction amount outside allowed per-transaction range
+      errorCode: PER_TXN_AMOUNT_LIMIT_EXCEEDED
+  expiresAt: "2999-12-31T00:00:00.000Z"
+  metadata:
+    description: Per-transaction min/max amount limits for Bank Ezz RuPay credit card
+    id: aura.transaction-policy.per-txn-amount-limits-3001
+    name: per-txn-amount-limits
+    requester:
+      module: aura-module
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: "700001"
+  policyScope: EACH_ACCOUNT_OF_ACCOUNT_HOLDER
+  violationAction: DECLINE_AND_NOTIFY
+  viewConfig:
+    displayName: transaction-policy_per-txn-amount-limits-3001.yaml

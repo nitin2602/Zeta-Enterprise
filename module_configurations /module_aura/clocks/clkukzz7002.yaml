@@ -1,0 +1,24 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Clock
+metadata:
+  name: bkezz.aura.clock.clkinzz7002
+  namespace: elenchos
+spec:
+  calendarCode: CALINBKEZZ001
+  cbuDuration: 1
+  cbusInAdvance: 60
+  code: CLKINBKEZZ7002
+  metadata:
+    description: System Clock for Chart of Limit
+    id: aura.clock.clkinzz7002
+    name: System Clock for Chart of Limit
+    requester:
+      module: aura
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: "700001"
+  name: Bank Ezz India System Clock for Chart of Limit
+  clockStartTimeDate: "2026-01-21"
+  clockStartTimeHours: 0
+  status: ENABLED
+  type: SYSTEM

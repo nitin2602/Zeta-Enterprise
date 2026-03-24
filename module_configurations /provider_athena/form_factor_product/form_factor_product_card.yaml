@@ -1,0 +1,66 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: bkezz.athena.configuration.product.prdin001001.card.form-factor-product
+spec:
+  metadata:
+    id: athena.configuration.product.PRDIN001001.card.form-factor-product
+    name: Card Form Factor Product - Bank Ezz India RuPay
+    description: Card Form Factor Product for Bank Ezz × ZPay India RuPay credit cards (Nova & Super Nova)
+    tenantId: '700001'
+    tenantCode: bkezz
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string" },
+          "description": { "type": "string" },
+          "issuanceStatus": {
+            "type": "string",
+            "enum": ["ACTIVE","INACTIVE"]
+          },
+          "name": { "type": "string" },
+          "paymentStatus": {
+            "type": "string",
+            "enum": ["ACTIVE","INACTIVE"]
+          },
+          "provider": {
+            "type": "string",
+            "enum": ["CMS","WMS","WCMS","TTMS","UIDMS","PMS","PCMS","UPIMS","PKMS","DIDMS"]
+          },
+          "skuID": { "type": "string" },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "type": {
+            "type": "string",
+            "enum": ["card","wallet","walletCard","tethysToken","uniqueId","phoneNumber","proxyCard","vpa","public_key","device"]
+          }
+        },
+        "required": ["code","name","description","type","provider","issuanceStatus","paymentStatus"]
+      }
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: FFPIN001001
+      description: Card Form Factor Product for Bank Ezz × ZPay India RuPay credit cards
+      issuanceStatus: ACTIVE
+      name: Card Form Factor Product - Bank Ezz India RuPay
+      paymentStatus: ACTIVE
+      provider: CMS
+      skuID: SKUIN001001_BKEZZ_RUPAY
+      type: card
+      tags:
+        - network:RUPAY
+        - product:NOVA
+        - product:SUPER_NOVA
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.form-factor-product
+    displayName: Card Form Factor Product - Bank Ezz India RuPay

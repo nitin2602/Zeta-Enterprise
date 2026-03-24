@@ -1,0 +1,51 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: bkezz.athena.configuration.module.cms.form-factor-provider
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: >-
+      {"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz",
+       "gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git",
+       "filePath":"module_configurations/module_athena/form_factor_provider/form_factor_provider_cms.yaml",
+       "tenantCode":"bkezz"}
+spec:
+  metadata:
+    id: athena.configuration.module.cms.form-factor-provider
+    name: cms
+    description: Form Factor Provider (CMS) for Bank Ezz India
+    requester:
+      module: athena
+      moduleVersion: 0.0.1
+    tenantId: '700001'
+    tenantCode: bkezz
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": ["CMS","WMS","WCMS","TTMS","UIDMS","PMS","PCMS","UPIMS","PKMS","DIDMS"]
+          },
+          "description": { "type": "string" },
+          "status": {
+            "enum": ["ACTIVE","INACTIVE","DELETED"]
+          }
+        },
+        "required": ["code","description","status"]
+      }
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: CMS
+      description: Card Management System
+      status: ACTIVE
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.form-factor-provider
+    displayName: Form Factor Provider - CMS (Bank Ezz)

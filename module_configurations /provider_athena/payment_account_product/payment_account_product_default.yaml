@@ -1,0 +1,53 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: bkezz.athena.configuration.product.prdin001001.default.payment-account-product
+spec:
+  metadata:
+    id: athena.configuration.product.prdin001001.default.payment-account-product
+    name: Credit Card Payment Account Product - Bank Ezz India
+    description: Credit Card Payment Account Product for Bank Ezz × ZPay India RuPay credit cards (Nova & Super Nova)
+    tenantId: '700001'
+    tenantCode: bkezz
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {
+        "properties": {
+          "code": { "type": "string" },
+          "description": { "type": "string" },
+          "name": { "type": "string" },
+          "resourceProductCode": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["ACTIVE","INACTIVE"]
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "walletProductCode": { "type": "string" }
+        },
+        "required": ["code","name","description","resourceProductCode","status"],
+        "type": "object"
+      }
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: PPDIN001001
+      name: Credit Card Payment Account Product - Bank Ezz India
+      description: Credit Card Payment Account Product for Bank Ezz × ZPay India RuPay credit cards
+      type: CREDIT_CARD
+      status: ACTIVE
+      baseCurrency: INR
+      paymentAccountProviderCode: PAPIN001001
+      tags:
+        - product:NOVA
+        - product:SUPER_NOVA
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.payment-product
+    displayName: Payment Account Product for PRDIN001001

@@ -1,0 +1,25 @@
+kind: Clock
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: bkezz.aura.clock.module.8005
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git","filePath":"module_configurations/module_aura/clocks/clock_8005.yaml","tenantCode":"bkezz"}'
+  namespace: aura
+spec:
+  metadata:
+    id: aura.clock.module.8005
+    name: aura.clock.module.8005
+    description: aura.clock.module.8005
+    tenantId: "700001"
+    tenantCode: bkezz
+  calendarCode: CALINBKEZZ001
+  cbuDuration: 1
+  cbusInAdvance: 10
+  code: CLKINBKEZZ8005
+  name: Bank Ezz India Monthly Clock CLKINBKEZZ8005
+  clockStartTimeDate: "2000-01-01"
+  clockStartTimeHours: 0
+  status: ENABLED
+  type: BOOK

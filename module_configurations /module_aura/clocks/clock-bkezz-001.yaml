@@ -1,0 +1,28 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Clock
+metadata:
+  name: bkezz.aura.clock.clkinbkezz001
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git","filePath":"module_configurations/module_aura/clocks/clock-bkezz-001.yaml","tenantCode":"bkezz"}'
+  namespace: elenchos
+spec:
+  calendarCode: CALINBKEZZ001
+  cbuDuration: 1
+  cbusInAdvance: 10
+  code: CLKINBKEZZ001
+  metadata:
+    description: Bank Ezz India Book Clock
+    id: aura.clock.clkinbkezz001
+    name: Bank Ezz India Book Clock
+    requester:
+      module: aura-module
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: "700001"
+  name: Bank Ezz India Default Clock
+  clockStartTimeDate: "2026-01-01"
+  clockStartTimeHours: 0
+  status: ENABLED
+  type: BOOK

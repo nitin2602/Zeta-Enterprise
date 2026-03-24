@@ -1,0 +1,47 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Paymentcode
+metadata:
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  name: bkezz.athena.paymentcode.dom-ecom-purchase-rupay-120110001
+spec:
+  additionalAttributes:
+    authType: AUTHORIZATION
+    transactionOrigination: DOMESTIC
+    transactionType: ECOM_PURCHASE
+  code: PMCINZZ120110001
+  paymentCodeId: PMCINZZ120110001
+  connectorSpecification:
+    isoFilters:
+      - type: JAVA
+        dataElementInclusions:
+          # DE 3.1 – purchase
+          - fieldId: '3.1'
+            allowedValues:
+              - '00'
+          # DE 22.1 – ECOM entry modes (depends on scheme, e.g. 81/82)
+          - fieldId: '22.1'
+            allowedValues:
+              - '81'
+              - '82'
+          # DE 43.4 – Merchant country = IN (Domestic ECOM)
+          - fieldId: '43.4'
+            allowedValues:
+              - IN
+    validators:
+      - CURRENCY_VALIDATOR
+      - OPTIONAL_CVV2_VALIDATOR
+      - MERCHANT_COUNTRY_CODE_VALIDATOR
+  description: Domestic ECOM Purchase - RuPay
+  metadata:
+    description: dom-ecom-purchase-rupay-120110001
+    id: athena.paymentcode.dom-ecom-purchase-rupay-120110001
+    name: dom-ecom-purchase-rupay-120110001
+    requester:
+      module: athena
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: '700001'
+  name: DOM_ECOM_PURCHASE_RUPAY
+  status: ACTIVE
+  tags: []

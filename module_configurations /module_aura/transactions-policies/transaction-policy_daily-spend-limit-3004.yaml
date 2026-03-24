@@ -1,0 +1,64 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: TransactionPolicy
+metadata:
+  name: bkezz.aura.transaction-policy.daily-spend-limit-3004
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git","filePath":"module_configurations/module_aura/transactions-policies/transaction-policy_daily-spend-limit-3004.yaml","tenantCode":"bkezz"}'
+spec:
+  accountsApplicableTo:
+    - account.provider: ruby
+  coaCode: COAINBKEZZ001
+  code: TPOIN003013004
+  customRules:
+    - action: META_DETAIL_CHANGE
+      errorCode: DAILY_SPEND_LIMIT_EXCEEDED
+      evaluationFunction:
+        type: JAVASCRIPT
+        function: >
+          function apply(policyContext) {
+            var posting = policyContext.posting;
+            var attributes = posting.attributes || {};
+            var amount = posting.amount;
+            var action = attributes['super-card.action'];
+            if (!amount || !action) {
+              return true;
+            }
+            if (action !== 'DEBIT') {
+              return true;
+            }
+            amount = Number(amount);
+            if (isNaN(amount)) {
+              return true;
+            }
+            var aggregates = policyContext.aggregateEvaluations || {};
+            // Example key; depends on how aggregates are configured
+            var currentDaily = aggregates['DAILY_DEBIT_AMOUNT'] || 0;
+            currentDaily = Number(currentDaily);
+            if (isNaN(currentDaily)) {
+              currentDaily = 0;
+            }
+            var limit = 50000;
+            return (currentDaily + amount) <= limit;
+          }
+  description: Decline transactions when daily aggregate debit exceeds INR 50000
+  effectiveFrom: "2024-01-01T00:00:00.000Z"
+  errorCodes:
+    - code: DAILY_SPEND_LIMIT_EXCEEDED
+      description: Daily aggregate spend limit exceeded
+      errorCode: DAILY_SPEND_LIMIT_EXCEEDED
+  expiresAt: "2999-12-31T00:00:00.000Z"
+  metadata:
+    description: Aggregate daily spend limit for Bank Ezz RuPay credit card
+    id: aura.transaction-policy.daily-spend-limit-3004
+    name: daily-spend-limit
+    requester:
+      module: aura-module
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: "700001"
+  policyScope: EACH_ACCOUNT_OF_ACCOUNT_HOLDER
+  violationAction: DECLINE_AND_NOTIFY
+  viewConfig:
+    displayName: transaction-policy_daily-spend-limit-3004.yaml

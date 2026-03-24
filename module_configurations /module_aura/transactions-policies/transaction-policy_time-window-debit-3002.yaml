@@ -1,0 +1,58 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: TransactionPolicy
+metadata:
+  name: bkezz.aura.transaction-policy.time-window-debit-3002
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git","filePath":"module_configurations/module_aura/transactions-policies/transaction-policy_time-window-debit-3002.yaml","tenantCode":"bkezz"}'
+spec:
+  accountsApplicableTo:
+    - account.provider: ruby
+  coaCode: COAINBKEZZ001
+  code: TPOIN003013002
+  customRules:
+    - action: META_DETAIL_CHANGE
+      errorCode: TIME_WINDOW_VIOLATION
+      evaluationFunction:
+        type: JAVASCRIPT
+        function: >
+          function apply(policyContext) {
+            var attributes = policyContext.posting.attributes || {};
+            var isoTime = attributes['super-card.txn-time-iso'];
+            // Expecting ISO like "2025-03-24T14:35:00+05:30"
+            if (!isoTime) {
+              return true;
+            }
+            try {
+              var date = new Date(isoTime);
+              var hour = date.getHours();
+              // allow between 08:00 (8) and 22:00 (21:59), inclusive start
+              if (hour >= 8 && hour < 22) {
+                return true;
+              }
+              return false;
+            } catch (e) {
+              return true;
+            }
+          }
+  description: Decline transactions attempted outside 08:00 to 22:00 IST
+  effectiveFrom: "2024-01-01T00:00:00.000Z"
+  errorCodes:
+    - code: TIME_WINDOW_VIOLATION
+      description: Transaction attempted outside allowed time window
+      errorCode: TIME_WINDOW_VIOLATION
+  expiresAt: "2999-12-31T00:00:00.000Z"
+  metadata:
+    description: Time-based transaction constraint for Bank Ezz RuPay credit card
+    id: aura.transaction-policy.time-window-debit-3002
+    name: time-window-debit
+    requester:
+      module: aura-module
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: "700001"
+  policyScope: EACH_ACCOUNT_OF_ACCOUNT_HOLDER
+  violationAction: DECLINE_AND_NOTIFY
+  viewConfig:
+    displayName: transaction-policy_time-window-debit-3002.yaml

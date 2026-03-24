@@ -1,0 +1,54 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: TransactionPolicy
+metadata:
+  name: bkezz.aura.transaction-policy.daily-credit-limit-should-not-exceed
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git","filePath":"module_configurations/module_aura/transactions-policies/transaction-policy_transaction-policies-daily-credit-limit-should-not-exceed.yaml","tenantCode":"bkezz"}'
+spec:
+  accountsApplicableTo:
+    - account.provider: ruby
+  coaCode: COAINBKEZZ001
+  code: TPOIN00300102
+  customRules:
+    - action: META_DETAIL_CHANGE
+      errorCode: DAILY_LIMIT_EXCEEDED
+      evaluationFunction:
+        function: >
+          function apply(policyContext) {
+            // Extract credit limit from custom fields; defaults to 0 if undefined
+            var creditLimit = policyContext['customFields']['CREDIT_LIMIT'] == undefined ? 
+                              0 : 
+                              policyContext['customFields']['CREDIT_LIMIT'];
+            
+            // Extract current spend amount from LTD (Life-To-Date) categories balances
+            // Defaults to 0 if Spends category or currentBalance not found
+            var currentSpend = policyContext['afterPostingLTDCategoriesBalances']['Spends'] == undefined ? 
+                               0 : 
+                               policyContext['afterPostingLTDCategoriesBalances']['Spends']['currentBalance'];
+            
+            // Policy rule: Return true if current spend is within (less than or equal to) the credit limit
+            // Return false if current spend exceeds the credit limit (declines the transaction)
+            return creditLimit >= currentSpend;
+          }
+  description: A daily credit balance on the account should not exceed this limit to increase
+  effectiveFrom: "2022-03-24T11:54:14.000Z"
+  errorCodes:
+    - code: DAILYCREDITLIMITSHOULDNOTEXCEED
+      description: A daily credit balance on the account should not exceed this limit to increase
+      errorCode: DAILY_LIMIT_EXCEEDED
+  expiresAt: "2021-12-31T00:00:00.000Z"
+  metadata:
+    description: A daily credit balance on the account should not exceed this limit to increase
+    id: aura.transaction-policy.daily-credit-limit-should-not-exceed
+    name: daily-credit-limit-should-not-exceed
+    requester:
+      module: aura-module-e2e
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: "700001"
+  policyScope: EACH_ACCOUNT_OF_ACCOUNT_HOLDER
+  violationAction: DECLINE_AND_NOTIFY
+  viewConfig:
+    displayName: transaction-policies-daily-credit-limit-should-not-exceed-1002.yaml

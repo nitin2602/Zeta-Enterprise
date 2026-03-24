@@ -1,0 +1,24 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Calendar
+metadata:
+  name: bkezz.aura.calendar.calinbkezz001
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git","filePath":"module_configurations/module_aura/calendars/calendar-bkezz-001.yaml","tenantCode":"bkezz"}'
+spec:
+  metadata:
+    id: aura.calendar.calinbkezz001
+    name: Bank Ezz India Calendar
+    description: Primary calendar for Bank Ezz x ZPay India credit card setup
+    requester:
+      module: aura-module
+      moduleVersion: 0.0.1
+    tenantId: "700001"
+    tenantCode: bkezz
+  code: CALINBKEZZ001
+  name: Bank Ezz India Calendar
+  timezone: Asia/Kolkata
+  description: Bank Ezz India calendar
+  weekStartOffset: 1
+  yearStartDate: 01-01

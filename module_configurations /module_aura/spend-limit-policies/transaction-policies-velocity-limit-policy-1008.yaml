@@ -1,0 +1,50 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: TransactionPolicy
+metadata:
+  name: bkezz.aura.configuration.transaction-policy-velocity-limit-policy
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git","filePath":"module_configurations/module_aura/transactions-policies/transaction-policy_transaction-policies-velocity-limit-policy.yaml","tenantCode":"bkezz"}'
+spec:
+  metadata:
+    id: aura.transaction-policy.velocity-limit-policy
+    name: TransactionPolicy
+    description: TransactionPolicy
+    requester:
+      module: aura-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: "700001"
+    tenantCode: bkezz
+  code: TPOIN00300108
+  coaCode: COAINBKEZZ001
+  description: velocity limit policy for transaction restriction
+  policyScope: EACH_ACCOUNT_OF_ACCOUNT_HOLDER
+  effectiveFrom: "2006-03-24T11:54:14.000Z"
+  expiresAt: "2024-03-24T11:54:14.000Z"
+  violationAction: DECLINE_AND_NOTIFY
+  accountsApplicableTo:
+    - key: value
+  attributes: {}
+  aggregateRules:
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: "6"
+      errorCode: RETAIL_PURCHASE_TXN_DAILY_COUNT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ00101
+      maxLimit: 50
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_PURCHASE_TRANSACTIONS
+      aggExpressionCode: "6"
+      errorCode: WEEKLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800101
+      maxLimit: 350
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_PURCHASE_TRANSACTIONS
+      aggExpressionCode: "6"
+      errorCode: DAILY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ00101
+      maxLimit: 50

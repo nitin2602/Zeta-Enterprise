@@ -1,0 +1,22 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Cycle
+metadata:
+  name: bkezz.aura.cycle.cycinbkezz800101
+  namespace: elenchos
+spec:
+  metadata:
+    description: Bank Ezz India weekly cycle for module clock 8001
+    id: aura.cycle.cycinbkezz800101
+    name: Bank Ezz India Weekly Cycle 8001
+    requester:
+      module: aura-module
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: "700001"
+  calendarCode: CALINBKEZZ001
+  clockCode: CLKINBKEZZ8001
+  code: CYCINBKEZZ800101
+  name: Bank Ezz Weekly Cycle 8001
+  periodicity: WEEKLY
+  startCbuSequenceNumber: 1
+  status: ENABLED

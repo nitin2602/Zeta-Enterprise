@@ -1,0 +1,47 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Paymentcode
+metadata:
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  name: bkezz.athena.paymentcode.dom-atm-cash-withdrawal-rupay-120121803
+spec:
+  additionalAttributes:
+    authType: AUTHORIZATION
+    transactionOrigination: DOMESTIC
+    transactionType: ATM_CASH_WITHDRAWAL
+  code: PMCINZZ120121803
+  paymentCodeId: PMCINZZ120121803
+  connectorSpecification:
+    isoFilters:
+      - type: JAVA
+        dataElementInclusions:
+          # DE 3.1 – processing code for cash withdrawal (usually 01 or 11)
+          - fieldId: '3.1'
+            allowedValues:
+              - '01'
+              - '11'
+          # DE 18 – MCC = 6011 (ATM)
+          - fieldId: '18'
+            allowedValues:
+              - '6011'
+          # DE 43.4 – Country = IN (Domestic)
+          - fieldId: '43.4'
+            allowedValues:
+              - IN
+    validators:
+      - CURRENCY_VALIDATOR
+      - PIN_PRESENCE_VALIDATOR
+      - MERCHANT_COUNTRY_CODE_VALIDATOR
+  description: Domestic ATM Cash Withdrawal - RuPay (MCC 6011)
+  metadata:
+    description: dom-atm-cash-withdrawal-rupay-120121803
+    id: athena.paymentcode.dom-atm-cash-withdrawal-rupay-120121803
+    name: dom-atm-cash-withdrawal-rupay-120121803
+    requester:
+      module: athena
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: '700001'
+  name: DOM_ATM_CASH_WITHDRAWAL_RUPAY
+  status: ACTIVE
+  tags: []

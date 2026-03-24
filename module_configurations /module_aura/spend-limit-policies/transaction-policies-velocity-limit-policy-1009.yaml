@@ -1,0 +1,243 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: TransactionPolicy
+metadata:
+  name: bkezz.aura.transaction-policy.velocity-limit-1009
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git","filePath":"module_configurations/module_aura/spend-limit-policies/transaction-policies-velocity-limit-policy-1009.yaml","tenantCode":"bkezz"}'
+spec:
+  accountsApplicableTo:
+    - account.provider: ruby
+    - account.pd-id: '6210998203771348037'
+  coaCode: COAINBKEZZ001
+  code: TPOIN00300119
+  description: velocity limit policy for transaction restriction
+  effectiveFrom: '2006-04-01T00:00:00.000Z'
+  expiresAt: '2999-12-31T00:00:00.000Z'
+  attributes: {
+    }
+  aggregateRules:
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: DAILY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ00101
+      maxLimit: 1000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+    - action: DEBIT
+      transactionCategoryCode: RETAIL_CASH_TRANSACTIONS
+      aggExpressionCode: '6'
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+      type: VELOCITY
+      cycleURI: cycleCode://CYCINBKEZZ800501
+      maxLimit: 28000
+  errorCodes:
+    - code: DAILYLIMITEXCEEDEDCASHHOLD
+      description: Velocity limit exceed
+      errorCode: DAILY_VELOCITY_LIMIT_EXCEEDED
+    - code: MONTHLYLIMITEXCEEDEDCASHHOLD
+      description: Monthly Velocity limit exceed
+      errorCode: MONTHLY_VELOCITY_LIMIT_EXCEEDED
+  metadata:
+    description: Velocity limit 1009
+    id: aura.transaction-velocity-limit-1009
+    name: velocity-limit 1009
+    requester:
+      module: aura-module-e2e
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: '700001'
+  policyScope: EACH_ACCOUNT_OF_ACCOUNT_HOLDER
+  violationAction: DECLINE_AND_NOTIFY
+  viewConfig:
+    displayName: transaction-policies-velocity-limit 1009

@@ -1,0 +1,58 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: bkezz.athena.configuration.product.prdin001001.default.payment-product
+spec:
+  metadata:
+    id: athena.configuration.product.PRDIN001001.default.payment-product
+    name: default Payment Product for Bank Ezz India Credit Card
+    description: Default Payment Product for Bank Ezz × ZPay India RuPay credit cards (Nova & Super Nova)
+    tenantId: '700001'
+    tenantCode: bkezz
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string" },
+          "description": { "type": "string" },
+          "name": { "type": "string" },
+          "resourceProductCode": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["ACTIVE","INACTIVE"]
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "walletProductCode": { "type": "string" }
+        },
+        "required": ["code","name","description","resourceProductCode","status"]
+      }
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: PYPIN001001_BKEZZ_RUPAY
+      description: Payment Product for Bank Ezz × ZPay India RuPay credit cards
+      name: Payment Product - Bank Ezz India RuPay Credit Card
+      resourceProductCode: RPIN001001
+      status: ACTIVE
+      channelCodePaymentCodeMapping:
+        - channelCode: CHNINZZ1201
+          paymentCodes:
+            - PMCINZZ120100001
+            - PMCINZZ120110001
+            - PMCINZZ120121803
+      tags:
+        - network:RUPAY
+        - product:NOVA
+        - product:SUPER_NOVA
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.payment-product
+    displayName: default Payment Product for Bank Ezz India RuPay Credit Card

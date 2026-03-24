@@ -1,0 +1,50 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Paymentcode
+metadata:
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  name: bkezz.athena.paymentcode.dom-pos-purchase-rupay-120100001
+spec:
+  additionalAttributes:
+    authType: AUTHORIZATION
+    transactionOrigination: DOMESTIC
+    transactionType: POS_PURCHASE
+  code: PMCINZZ120100001
+  paymentCodeId: PMCINZZ120100001
+  connectorSpecification:
+    isoFilters:
+      - type: JAVA
+        dataElementInclusions:
+          # DE 3.1 – Processing code for purchase (Visa/RuPay usually '00' or '01')
+          - fieldId: '3.1'
+            allowedValues:
+              - '00'
+              - '01'
+          # DE 22.1 – POS entry mode (card present)
+          - fieldId: '22.1'
+            allowedValues:
+              - '00'
+              - '01'
+              - '02'
+              - '05'
+          # DE 43.4 – Merchant country = IN (Domestic)
+          - fieldId: '43.4'
+            allowedValues:
+              - IN
+    validators:
+      - CURRENCY_VALIDATOR
+      - PIN_PRESENCE_VALIDATOR
+      - MERCHANT_COUNTRY_CODE_VALIDATOR
+  description: Domestic POS Purchase - RuPay
+  metadata:
+    description: dom-pos-purchase-rupay-120100001
+    id: athena.paymentcode.dom-pos-purchase-rupay-120100001
+    name: dom-pos-purchase-rupay-120100001
+    requester:
+      module: athena
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: '700001'
+  name: DOM_POS_PURCHASE_RUPAY
+  status: ACTIVE
+  tags: []

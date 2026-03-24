@@ -1,0 +1,48 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: bkezz.aura.configuration.module.zero.interest-rate
+  labels: {}
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git","filePath":"/.defaults/module_configurations/module_aura/tree/root/t0/module_configurations/module_aura/interest_rate/interest_rate_zero.yaml","tenantCode":"bkezz"}'
+spec:
+  metadata:
+    id: aura.configuration.module.zero.interest-rate
+    name: zero Interest Rate
+    description: zero Interest Rate
+    tenantId: '700001'
+    tenantCode: bkezz
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"amountTiers":{"items":{"properties":{"fromAmount":{"type":"number"},"tenureTier":{"items":{"properties":{"fromTenure":{"properties":{"days":{"type":"number"},"months":{"type":"number"},"years":{"type":"number"}},"type":"object"},"interestRate":{"type":"number"},"toTenure":{"properties":{"days":{"type":"number"},"months":{"type":"number"},"years":{"type":"number"}},"type":"object"}},"type":"object"},"type":"array"},"toAmount":{"type":"number"}},"type":"object"},"type":"array"},"currency":{"type":"string"},"description":{"type":"string"},"name":{"type":"string"},"rateSpecificationCode":{"type":"string"},"status":{"type":"string"},"validFrom":{"type":"string"},"validTill":{"type":"string"}},"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      amountTiers:
+      - fromAmount: 0
+        tenureTier:
+        - fromTenure:
+            days: 0
+            months: 0
+            years: 0
+          interestRate: 24.99
+          toTenure:
+            days: 0
+            months: 0
+            years: 200
+        toAmount: 9999999999
+      currency: USD
+      description: Zero Rate interest
+      name: Zero Rate Interest
+      rateSpecificationCode: IRTIN000001
+      status: ACTIVE
+      validFrom: '2021-04-01'
+      validTill: '2023-03-31'
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.aura.interest-rate
+    displayName: zero Interest Rate

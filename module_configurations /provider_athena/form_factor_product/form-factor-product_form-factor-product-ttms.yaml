@@ -1,0 +1,77 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: bkezz.athena.configuration.product.prdin001001.form-factor-product-ttms.form-factor-product
+  labels:
+    rrsd.zetaapps.in/day: day-one
+  annotations:
+    zeta.tech/resource-tags: >-
+      {"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz",
+       "gitDbPath":"",
+       "filePath":"product_configurations/product_PRDIN001001/provider_athena/form_factor_product/form-factor-product_form-factor-product-ttms.yaml",
+       "tenantCode":"bkezz"}
+spec:
+  metadata:
+    id: athena.configuration.product.prdin001001.form-factor-product-ttms.form-factor-product
+    name: athena.configuration.product.prdin001001.form-factor-product-ttms.form-factor-product
+    description: Tethys Token Form Factor Product for Bank Ezz × ZPay India RuPay credit cards
+    tenantId: '700001'
+    tenantCode: bkezz
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string" },
+          "description": { "type": "string" },
+          "issuanceStatus": {
+            "type": "string",
+            "enum": ["ACTIVE","INACTIVE"]
+          },
+          "name": { "type": "string" },
+          "paymentStatus": {
+            "type": "string",
+            "enum": ["ACTIVE","INACTIVE"]
+          },
+          "provider": {
+            "type": "string",
+            "enum": ["CMS","WMS","WCMS","TTMS","UIDMS","PMS","PCMS","UPIMS","PKMS","DIDMS"]
+          },
+          "skuID": { "type": "string" },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^tag://[a-zA-Z0-9-]+/.{1,255}$"
+            }
+          },
+          "type": {
+            "type": "string",
+            "enum": ["card","wallet","walletCard","tethysToken","uniqueId","phoneNumber","proxyCard","vpa","public_key","device"]
+          }
+        },
+        "required": ["code","name","description","type","provider","issuanceStatus","paymentStatus"]
+      }
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: FFPIN001002_BKEZZ_RUPAY_TETHYS
+      description: Tethys Token Form Factor Product for Bank Ezz × ZPay India RuPay credit cards
+      issuanceStatus: ACTIVE
+      name: Bank Ezz Tethys Token Form Factor Product
+      paymentStatus: ACTIVE
+      provider: TTMS
+      type: tethysToken
+      skuID: SKUIN001002_BKEZZ_RUPAY_TETHYS
+      tags:
+        - tag://network/RUPAY
+        - tag://product/NOVA
+        - tag://product/SUPER_NOVA
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.form-factor-product
+    displayName: Bank Ezz Tethys Token Form Factor Product

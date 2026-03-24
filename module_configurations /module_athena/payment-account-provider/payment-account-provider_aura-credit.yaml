@@ -1,0 +1,91 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: bkezz.athena.configuration.module.aura.payment-account-provider
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: >-
+      {"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz",
+       "gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git",
+       "filePath":"module_configurations/module_athena/payment-account-provider/payment-account-provider_aura-credit.yaml",
+       "tenantCode":"bkezz"}
+spec:
+  metadata:
+    id: athena.configuration.module.aura.payment-account-provider
+    name: Payment Account Provider - Aura Credit - Bank Ezz
+    description: Aura credit Payment Account Provider for Bank Ezz India credit cards
+    requester:
+      module: athena
+      moduleVersion: 0.0.1
+    tenantId: '700001'
+    tenantCode: bkezz
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "code": { "type": "string" },
+          "description": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["ACTIVE","INACTIVE"]
+          },
+          "providedAccountSchemaURI": { "type": "string" },
+          "authorizationGatewayCodes": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "artemisAction": {
+                  "enum": ["command","query"]
+                },
+                "baseUrl": { "type": "string" },
+                "status": {
+                  "enum": ["ACTIVE","INACTIVE","DELETED"]
+                }
+              }
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^tag://[a-zA-Z0-9-]+/.{1,255}$"
+            }
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": { "type": "object" }
+          }
+        },
+        "required": ["name","code","status","providedAccountSchemaURI"]
+      }
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      code: PAPIN001001
+      name: Payment Account Provider - Aura Credit - Bank Ezz
+      description: Aura credit Payment Account Provider for Bank Ezz India Nova & Super Nova
+      status: ACTIVE
+      # AGAURA0003 is the standard Aura credit AG from athena.yaml
+      authorizationGatewayCodes:
+        - AGAURA0003
+      # Example schema URI for Aura credit accounts
+      providedAccountSchemaURI: schema://aura/credit-account/v1
+      actions: []
+      tags: []
+      attributes: {}
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.payment-account-provider
+    displayName: Payment Account Provider - Aura Credit (Bank Ezz)

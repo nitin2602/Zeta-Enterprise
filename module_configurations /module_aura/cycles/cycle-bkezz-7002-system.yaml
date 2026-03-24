@@ -1,0 +1,22 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Cycle
+metadata:
+  name: bkezz.aura.cycle.cycinbkezz700201
+  namespace: elenchos
+spec:
+  metadata:
+    description: Bank Ezz India chart-of-limit system cycle
+    id: aura.cycle.cycinbkezz700201
+    name: Bank Ezz India Chart Limit System Cycle
+    requester:
+      module: aura-module
+      moduleVersion: 0.0.1
+    tenantCode: bkezz
+    tenantId: "700001"
+  calendarCode: CALINBKEZZ001
+  clockCode: CLKINBKEZZ7002
+  code: CYCINBKEZZ700201
+  name: Bank Ezz Chart Limit System Cycle
+  periodicity: MONTHLY
+  startCbuSequenceNumber: 1
+  status: ENABLED

@@ -1,0 +1,43 @@
+kind: Channelcode
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: bkezz.athena.channelcode.rupay-channel-1201
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: >-
+      {"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz", "gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git", "filePath":"module_configurations/module_athena/channel-codes/channelcode-rupay-channel-1201.yaml", "tenantCode":"bkezz"}
+  namespace: athena
+spec:
+  metadata:
+    id: athena.channelcode.rupay-channel-1201
+    name: RuPay India Offus Channel - Bank Ezz
+    description: RuPay issuer offus channel for Bank Ezz India credit cards (Nova & Super Nova)
+    requester:
+      module: athena
+      moduleVersion: 0.0.1
+    tenantId: "700001"
+    tenantCode: bkezz
+  channelCodeId: CHNINZZ1201
+  code: CHNINZZ1201
+  name: RuPay India Offus Channel - Bank Ezz
+  description: RuPay issuer offus channel for Bank Ezz India
+  status: ACTIVE
+  channelType: RuPay offus channel
+  tags: []
+  paymentCodes:
+    - PMCINZZ120100001
+    - PMCINZZ120110001
+    - PMCINZZ120121803
+  channelSpecification:
+    authorizationConfiguration:
+      transactionExpirySpecification:
+        defaultConfiguration:
+          timeZone: IST
+          days: 7
+          hours: 0
+        ruleBasedConfigurations: []
+    clearanceConfiguration: |
+      {"payment.v2.apis.enabled": "false", "isRefundGreaterThanAuthSupported": "true"}
+    flags: |
+      {"switch.capture-with-amount": "ACTIVE", "authorization.payment.v2.apis.enabled": "INACTIVE"}

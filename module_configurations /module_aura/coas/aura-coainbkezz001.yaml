@@ -1,0 +1,101 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Coa
+metadata:
+  # K8s resource name, typically <tenant>.<module>.coa.<code-lower>
+  name: bkezz.aura.coa.coainbkezz001
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    # Adjust repo/path as per your actual tenant configuration repo
+    zeta.tech/resource-tags: >-
+      {"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz",
+       "gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git",
+       "filePath":"module_configurations/module_aura/coas/aura-coainbkezz001.yaml",
+       "tenantCode":"bkezz"}
+spec:
+  metadata:
+    id: bkezz.aura.coa.coainbkezz001
+    name: Bank Ezz India Credit Card COA
+    description: Chart of Accounts for Bank Ezz × ZPay India revolving credit (Nova & Super Nova)
+    requester:
+      module: aura-module
+      moduleVersion: 0.0.1
+    tenantId: "700001"
+    tenantCode: bkezz
+
+  # Main COA code for Bank Ezz India credit cards
+  code: COAINBKEZZ001
+  name: Bank Ezz India Credit Card COA
+  description: COA for Bank Ezz × ZPay India revolving credit products Nova and Super Nova
+  currency: INR
+
+  # Use a dedicated Bank Ezz India calendar
+  calendarCode: CALINBKEZZ001
+
+  status: ENABLED
+
+  nodes:
+    # Root of the COA tree
+    - nodeCode: COAINBKEZZ001_Node_Root
+      nodeType: ROOT
+      nodeValue: ROOT
+
+    # Primary accounting types under ROOT
+    - nodeCode: COAINBKEZZ001_Node_ASSET
+      nodeType: INTERMEDIATE
+      nodeValue: ASSET
+      parentNodeCode: COAINBKEZZ001_Node_Root
+
+    - nodeCode: COAINBKEZZ001_Node_LIABILITY
+      nodeType: INTERMEDIATE
+      nodeValue: LIABILITY
+      parentNodeCode: COAINBKEZZ001_Node_Root
+
+    - nodeCode: COAINBKEZZ001_Node_INCOME
+      nodeType: INTERMEDIATE
+      nodeValue: INCOME
+      parentNodeCode: COAINBKEZZ001_Node_Root
+
+    - nodeCode: COAINBKEZZ001_Node_EXPENSE
+      nodeType: INTERMEDIATE
+      nodeValue: EXPENSE
+      parentNodeCode: COAINBKEZZ001_Node_Root
+
+    - nodeCode: COAINBKEZZ001_Node_EQUITY
+      nodeType: INTERMEDIATE
+      nodeValue: EQUITY
+      parentNodeCode: COAINBKEZZ001_Node_Root
+
+    # Product hierarchy under ASSET
+    - nodeCode: COAINBKEZZ001_Node_Revolving_Credit
+      nodeType: INTERMEDIATE
+      nodeValue: Revolving Credit
+      parentNodeCode: COAINBKEZZ001_Node_ASSET
+
+    # Separate leaves for Nova and Super Nova products under Revolving Credit
+    - nodeCode: COAINBKEZZ001_Node_Nova
+      nodeType: LEAF
+      nodeValue: Nova
+      parentNodeCode: COAINBKEZZ001_Node_Revolving_Credit
+
+    - nodeCode: COAINBKEZZ001_Node_Super_Nova
+      nodeType: LEAF
+      nodeValue: Super Nova
+      parentNodeCode: COAINBKEZZ001_Node_Revolving_Credit
+
+    # Liability side for revolving credit (e.g. payables/obligations)
+    - nodeCode: COAINBKEZZ001_Node_RC_Liabilities
+      nodeType: LEAF
+      nodeValue: Revolving Credit Liabilities
+      parentNodeCode: COAINBKEZZ001_Node_LIABILITY
+
+    # Income and expense groupings for card business
+    - nodeCode: COAINBKEZZ001_Node_Card_Income
+      nodeType: INTERMEDIATE
+      nodeValue: Card Income
+      parentNodeCode: COAINBKEZZ001_Node_INCOME
+
+    - nodeCode: COAINBKEZZ001_Node_Card_Expenses
+      nodeType: INTERMEDIATE
+      nodeValue: Card Expenses
+      parentNodeCode: COAINBKEZZ001_Node_EXPENSE
