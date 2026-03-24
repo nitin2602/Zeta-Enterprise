@@ -17,7 +17,7 @@ spec:
   description: Account Closure Policy
   reason:
     - reasonCode: Delinquency
-      maxDebitBalForWriteOff: 8000
+      maxDebitBalForWriteOff: 80000
     - reasonCode: Dormancy
       maxDebitBalForWriteOff: 0
     - reasonCode: CustomerRequest
