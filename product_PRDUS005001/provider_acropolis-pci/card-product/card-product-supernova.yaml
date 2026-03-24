@@ -24,7 +24,7 @@ spec:
       status: ENABLED
       binRangeSelectionStrategy: CHRONOLOGICAL
       binRanges:
-        - bin: '53599800'
+        - bin: '535998'
           range: '02'
       features:
         - MAG_STRIPE
