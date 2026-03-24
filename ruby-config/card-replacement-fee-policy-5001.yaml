@@ -18,7 +18,7 @@ spec:
   modelParameters:
     fixedAmount:
       baseFee:
-        amount: 15000
+        amount: 25000
         currency: INR
     replacementCardIdentifier:
       - key: cardSkuID
