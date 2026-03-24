@@ -42,7 +42,7 @@ spec:
         loanProduct:
           productFamilyCode: LNPIN-NOVA-1011
           productCode: LNPIN-NOVA-1011
-          serviceProvider: RUBY
+          serviceProvider: EMERALD
       issueInactiveCard: true
       applySpendLimits: true
       cardVariant: NOVA
