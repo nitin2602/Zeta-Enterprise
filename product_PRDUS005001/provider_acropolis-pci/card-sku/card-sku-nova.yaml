@@ -1,36 +1,36 @@
 kind: Configuration
 apiVersion: rrsd.zetaapps.in/v1alpha1
 metadata:
-  name: lsg.acropolis-pci.configuration.product.prdus005001.999999-99.card-sku
+  name: lsg.acropolis-pci.configuration.product.prdin001011.nova.card-sku
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.lsg","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.lsg.git","filePath":"product_configurations/provider_acropolis-pci/card-sku/card-sku-nova.yaml","tenantCode":"lsg"}'
 spec:
   metadata:
-    id: acropolis-pci.configuration.product.PRDUS005001.999999-99.card-sku
-    name: Card SKU For Bin 999999 Range 99
-    description: Card SKU For Bin 999999 Range 99
-    tenantId: '600309'
+    id: acropolis-pci.configuration.product.PRDIN001011.nova.card-sku
+    name: Nova Card SKU
+    description: Card SKU for Ezz x ZPay Nova — Secured Credit Card
+    tenantId: "600309"
     tenantCode: lsg
   config:
     format: YAML
     schemaUrl: http://localhost
-    schemaInlineContent: |
-      {"properties":{"bin":{"type":"string"},"code":{"type":"string"},"fileAttributes":{"properties":{"bankIdentifier":{"type":"string"}},"type":"object"},"plasticCode":{"type":"string"},"productCode":{"type":"string"},"range":{"type":"string"},"reservoirConfig":{"properties":{"inventory.size":{"type":"number"},"refilling.rate":{"type":"number"}},"type":"object"},"vendorIDs":{"items":{"type":"string"},"type":"array"}},"type":"object"}
     key: key
     isEncrypted: false
     useVault: false
     value:
-      batchCode: DEAFULT_600309_BATCH
-      code: SKUUS005001_CARDWORKSUAT
+      code: SKUIN-NOVA-1011
+      productCode: CRPIN-NOVA-1011
+      batchCode: EZZ_600309_NOVA_BATCH
+      plasticCode: NOVA-LIGHT-PURPLE
       fileAttributes:
-        bankIdentifier: Merrick
-      plasticCode: Platinum
-      productCode: CRPUS005001_CWUAT
+        bankIdentifier: EzzBank
       reservoirConfig:
-        inventory.size: 2000
-        refilling.rate: 1000
+        inventory.size: 100000
+        refilling.rate: 10000
       vendorIDs:
-        - VENUS00100101
+        - VENIN00100703
   viewConfig:
     angelosSchema:
       view:
         entityId: angelos.acropolis.card-sku
-    displayName: Card SKU For Bin 999999 Range 99
+    displayName: Nova Card SKU
