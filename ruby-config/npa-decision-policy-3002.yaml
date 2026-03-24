@@ -21,7 +21,7 @@ spec:
   enabled: true
   classificationConfiguration:
     npaBasis: dpdDays
-    dpdDaysLimit: 80
+    dpdDaysLimit: 180
     delinquencyLevelLimit: LEVEL_6
   accounting:
     enabled: true
