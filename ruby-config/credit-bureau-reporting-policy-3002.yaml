@@ -5,16 +5,16 @@ metadata:
 spec:
   metadata:
     id: ruby.rubycreditbureaureportingpolicy.3002
-    name: 3002 Ruby Credit Bureau Reporting Policy
-    description: 3002 Ruby Credit Bureau Reporting Policy
+    name: SuperNova / Nova Ruby Credit Bureau Reporting Policy
+    description: SuperNova / Nova Ruby Credit Bureau Reporting Policy
     requester:
       module: ruby-module-e2e
       moduleVersion: 0.0.1
     tenantId: '600309'
     tenantCode: lsg
-  name: Ruby Credit Bureau Reporting Policy
+  name: SuperNova / Nova Ruby Credit Bureau Reporting Policy
   code: CBRIN003002
-  description: Ruby Credit Bureau Reporting Policy
+  description: SuperNova / Nova Ruby Credit Bureau Reporting Policy
   provider: ruby
   reportToCreditBureau: true
   frequencyOfReporting: BILLING_CYCLE
