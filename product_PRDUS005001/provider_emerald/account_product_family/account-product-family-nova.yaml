@@ -17,7 +17,7 @@ spec:
     useVault: false
     value:
       name: Loan Monthly Product Family NOVA-1011
-      code: EPFUS-NOVA-1011
+      code: EPFIN-NOVA-1011
       description: Loan Monthly Product Family NOVA-1011
       coaCode: COAIN-NOVA-1011
       parentCoaNodeCode: COAIN-NOVA-1011_Node_Unsecured_Loans
