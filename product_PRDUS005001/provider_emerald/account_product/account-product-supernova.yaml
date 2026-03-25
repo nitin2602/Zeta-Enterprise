@@ -30,7 +30,7 @@ spec:
         issuanceEndDate: '2999-12-31'
         issuanceStartDate: '2026-03-01'
         maxLoanAmount:
-          amount: 100000000
+          amount: 1000000000
           currency: INR
         maxTenure:
           days: 0
