@@ -5,8 +5,8 @@ metadata:
 spec:
   metadata:
     id: emerald.emeraldamortizationpolicy.nova.1011
-    name: Supernova COA Emerald Amortization Policies
-    description: Supernova COA Emerald Amortization Policies
+    name: nova COA Emerald Amortization Policies
+    description: nova COA Emerald Amortization Policies
     requester:
       module: emerald-module-e2e
       moduleVersion: 0.0.1
