@@ -5,23 +5,23 @@ metadata:
 spec:
   metadata:
     id: emerald.emeraldinterestpolicy.supernova.1012
-    name: Emerald Interest Policy
-    description: Emerald Interst Policy
+    name: SuperNova Interest Policy
+    description: SuperNova Interst Policy
     requester:
       module: emerald-module-e2e
       moduleVersion: 0.0.1
     tenantId: '600309'
     tenantCode: lsg
-  name: Emerald Interst Policy
+  name: SuperNova Interst Policy
   code: EIPUS-SUPERNOVA-1012
-  description: Emerald Interst Policy
+  description: SuperNova Interst Policy
   validFrom: '2026-03-06T00:00:00.000+05:30'
   validTill: '2999-12-31T00:00:00.000+05:30'
   creditEffectiveFrom: ValueDate
   debitEffectiveFrom: ValueDate
   interestAccrual:
     accountLevelRate: true
-    annualInterestRate: 16.00
+    annualInterestRate: 13.00
     dayCountMethods:
       - lifeCycleEvent: firstInstallment
         dayCountMethod: ACTUAL/360_EZZ
