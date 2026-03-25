@@ -1,182 +1,117 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: StatementPolicy
 metadata:
-  name: lsg.ruby.interesttermresolutionpolicy.5001
+  name: lumenpp.statement.statementpolicy.7001
 spec:
-  code: TRPIN006001
-  description: Interest term resolution policy
   metadata:
-    description: 5001 interest term resolution policy
-    id: ruby.interesttermresolutionpolicy.5001
-    name: 5001 interest term resolution policy
+    id: statement.statementpolicy.7001
+    name: 7001 Statement Generation Policies
+    description: 7001 Statement Generation Policies
     requester:
-      module: ruby-module-e2e
+      module: statement
       moduleVersion: 0.0.1
-    tenantCode: lsg
     tenantId: '600309'
-  configs:
-    - selectionCriteria:
-        accountStatus:
-          - tag://HardshipStatus/LEVEL_1?name=HARDSHIP&tagTypeCode=classification
-        postingFilters:
-          purposeCodes: [
-            ]
-      couponRepricingConfig:
-        - programType: GENERAL
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: LOWESTAPR
-            eligibleProgramTypes:
-              - HARDSHIP
-            flags:
-              shouldResolveCurrentTerm: true
-              shouldRecursivelyResolvePreviousAppliedTerms: false
-        - programType: PROMOTION
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: LOWESTAPR
-            eligibleProgramTypes:
-              - HARDSHIP
-            flags:
-              shouldResolveCurrentTerm: true
-              shouldRecursivelyResolvePreviousAppliedTerms: false
-        - programType: BALANCE_TRANSFER
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: LOWESTAPR
-            eligibleProgramTypes:
-              - HARDSHIP
-            flags:
-              shouldResolveCurrentTerm: true
-              shouldRecursivelyResolvePreviousAppliedTerms: false
-        - programType: DELINQUENCY
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: LOWESTAPR
-            eligibleProgramTypes:
-              - HARDSHIP
-            flags:
-              shouldResolveCurrentTerm: true
-              shouldRecursivelyResolvePreviousAppliedTerms: false
-        - programType: HARDSHIP
-          repricingAction: DONT_REPRICE
-      couponExpiryConfig:
-        - programType: GENERAL
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: LOWESTAPR
-            eligibleProgramTypes:
-              - HARDSHIP
-              - DELINQUENCY
-              - GENERAL
-              - BALANCE_TRANSFER
-        - programType: PROMOTION
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: LOWESTAPR
-            eligibleProgramTypes:
-              - HARDSHIP
-              - DELINQUENCY
-              - PROMOTION
-              - GENERAL
-              - BALANCE_TRANSFER
-        - programType: BALANCE_TRANSFER
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: LOWESTAPR
-            eligibleProgramTypes:
-              - HARDSHIP
-              - DELINQUENCY
-              - PROMOTION
-              - GENERAL
-              - BALANCE_TRANSFER
-        - programType: DELINQUENCY
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: LOWESTAPR
-            eligibleProgramTypes:
-              - HARDSHIP
-              - DELINQUENCY
-              - PROMOTION
-              - GENERAL
-              - BALANCE_TRANSFER
-        - programType: HARDSHIP
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: LOWESTAPR
-            eligibleProgramTypes:
-              - HARDSHIP
-              - DELINQUENCY
-              - PROMOTION
-              - GENERAL
-              - BALANCE_TRANSFER
-      couponNewIssuanceConfig:
-        - preferenceWithinProgramType: LOWESTAPR
-          eligibleProgramTypes:
-            - HARDSHIP
-            - DELINQUENCY
-            - PROMOTION
-            - GENERAL
-            - BALANCE_TRANSFER
-    - selectionCriteria:
-        accountStatus:
-          - '*'
-        postingFilters:
-          purposeCodes:
-            - HARDSHIP_EXPIRY
-      couponRepricingConfig:
-        - programType: GENERAL
-          repricingAction: DONT_REPRICE
-        - programType: PROMOTION
-          repricingAction: DONT_REPRICE
-        - programType: BALANCE_TRANSFER
-          repricingAction: DONT_REPRICE
-        - programType: DELINQUENCY
-          repricingAction: DONT_REPRICE
-        - programType: HARDSHIP
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: PRECEDENCE
-            eligibleProgramTypes:
-              - HARDSHIP
-              - DELINQUENCY
-              - PROMOTION
-              - GENERAL
-              - BALANCE_TRANSFER
-            flags:
-              shouldResolveCurrentTerm: false
-              shouldRecursivelyResolvePreviousAppliedTerms: true
-      couponExpiryConfig:
-        - programType: GENERAL
-          repricingAction: DONT_REPRICE
-        - programType: PROMOTION
-          repricingAction: DONT_REPRICE
-        - programType: BALANCE_TRANSFER
-          repricingAction: DONT_REPRICE
-        - programType: DELINQUENCY
-          repricingAction: DONT_REPRICE
-        - programType: HARDSHIP
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: PRECEDENCE
-            eligibleProgramTypes:
-              - HARDSHIP
-              - DELINQUENCY
-              - PROMOTION
-              - GENERAL
-              - BALANCE_TRANSFER
-            flags:
-              shouldResolveCurrentTerm: false
-              shouldRecursivelyResolvePreviousAppliedTerms: true
-      couponNewIssuanceConfig:
-        - preferenceWithinProgramType: PRECEDENCE
-          eligibleProgramTypes:
-            - HARDSHIP
-            - DELINQUENCY
-            - PROMOTION
-            - GENERAL
-            - BALANCE_TRANSFER
-  name: interest term resolution policy
-  templateCode: in-credit
+    tenantCode: lsg
   validFrom: '2026-01-01T00:00:00.000+05:30'
-  validTill: '2999-01-01T23:09:01.795+07:00'
+  validTill: '2999-01-01T00:00:00.000+05:30'
+  name: Statement Generation Policy
+  description: Statement Generation Policy
+  code: STMGEN007001
+  physicalStatementThreshold: '20'
+  password: function password(context) { return 'password' }
+  statementTemplateCode: statement.html
+  templateCode: in-credit
+  messageConfigs:
+    maxMessageCount: 6
+    ruleList:
+      - name: STATEMENT_PDF_MESSAGE
+        code: STMT_RULE_1
+        status: ENABLED
+        priority: 1
+        order: 1
+        condition: (input.rubyAccountStatusDetails.get('manualDefaulStatus') != null && input.rubyAccountStatusDetails.get('manualDefaulStatus').value == 'LEVEL_2') || (input.rubyAccountStatusDetails.get('autoDefaulStatus') != null && input.rubyAccountStatusDetails.get('autoDefaulStatus').value == 'LEVEL_2' && input.rubyAccountStatusDetails.get('manualDefaulStatus') != null && input.rubyAccountStatusDetails.get('manualDefaulStatus').attributes != null && input.rubyAccountStatusDetails.get('manualDefaulStatus').attributes.get('defaultDate') != null && input.statementDate < input.rubyAccountStatusDetails.get('manualDefaulStatus').attributes.get('defaultDate') <= input.nextStatementDate)
+        content: Bank may report the account as default to credit agencies if minimum amount due remains unpaid for 3 days from due date.
+        frequency: EVERYTIME
+        metaData:
+          isSuppressed: false
+          messageHeader: Credit Bureau Reporting Notice
+      - name: STATEMENT_PDF_MESSAGE
+        code: STMT_RULE_2
+        status: ENABLED
+        priority: 2
+        order: 1
+        condition: input.rateChangeEffectiveDate != null
+        content: MITC update: Minimum Amount Due (MAD) and statement charges may be revised from @{input.rateChangeEffectiveDate}. Refer the statement sections for details.
+        frequency: EVERYTIME
+        metaData:
+          isSuppressed: false
+          messageHeader: MITC and Rate Update
+      - name: STATEMENT_PDF_MESSAGE
+        code: STMT_RULE_3
+        status: ENABLED
+        priority: 3
+        order: 1
+        condition: (input.rubyAccountStatusDetails.get('manualBundleStatusPmtPlan') != null && input.rubyAccountStatusDetails.get('manualBundleStatusPmtPlan').value == 'MBSPMTP') || (input.rubyAccountStatusDetails.get('manualBundleStatusDAS') != null && (input.rubyAccountStatusDetails.get('manualBundleStatusDAS').value == 'MBSDASP' || input.rubyAccountStatusDetails.get('manualBundleStatusDAS') == 'MBSDASC')) || (input.rubyAccountStatusDetails.get('manualBundleStatusInsolvency') != null && (input.rubyAccountStatusDetails.get('manualBundleStatusInsolvency').value == 'MBSISVP' || input.rubyAccountStatusDetails.get('manualBundleStatusInsolvency').value == 'MBSISVC')) || (input.rubyAccountStatusDetails.get('manualBundleStatusDMP') != null && (input.rubyAccountStatusDetails.get('manualBundleStatusDMP').value == 'MBSDMPP' || input.rubyAccountStatusDetails.get('manualBundleStatusDMP').value == 'MBSDMPC'))
+        content: Account is under an active payment arrangement. This statement is issued for tracking balances, dues and transactions.
+        frequency: EVERYTIME
+        metaData:
+          isSuppressed: false
+          messageHeader: Payment Arrangement
+      - name: STATEMENT_PDF_MESSAGE
+        code: STMT_RULE_4
+        status: ENABLED
+        priority: 4
+        order: 1
+        condition: input.rubyAccountStatusDetails.get('accountClosureStatus') != null && (input.rubyAccountStatusDetails.get('accountClosureStatus').name == 'CLOSURE_ACCEPTED' || input.rubyAccountStatusDetails.get('accountClosureStatus').name == 'CLOSED')
+        content: Card usage is disabled for this account. Outstanding balance remains payable as per statement terms.
+        frequency: EVERYTIME
+        metaData:
+          isSuppressed: false
+          messageHeader: Account Closure Status
+      - name: STATEMENT_PDF_MESSAGE
+        code: STMT_RULE_5
+        status: ENABLED
+        priority: 5
+        order: 1
+        condition: input.delinquencyStatus == '1-CYCLE' || input.delinquencyStatus == '2-CYCLE' || input.delinquencyStatus == '3-CYCLE'
+        content: Minimum payment is overdue. Delays can attract late fees and impact credit bureau reporting.
+        frequency: EVERYTIME
+        metaData:
+          isSuppressed: false
+          messageHeader: Minimum Payment Alert
+      - name: STATEMENT_PDF_MESSAGE
+        code: STMT_RULE_6
+        status: ENABLED
+        priority: 6
+        order: 1
+        condition: input.rubyAccountStatusDetails.get('balanceStatus') != null && (input.rubyAccountStatusDetails.get('balanceStatus').name == 'APPROVED_OVERLIMIT' || input.rubyAccountStatusDetails.get('balanceStatus').name == 'CRITICALLY_OVERLIMIT')
+        content: Account is overlimit. Please make payment to bring balance within approved limit to avoid charges and transaction restrictions.
+        frequency: EVERYTIME
+        metaData:
+          isSuppressed: false
+          messageHeader: Overlimit Alert
+  schumerBoxConfig:
+    schumerMonthsToRepay:
+      - 6
+      - 8
+    showTotalCostOnMinimumPayment: true
+    showPaymentWarning: true
+  ytdSummaryEnabled: true
+  isProbableLateFeeEnabled: true
+  isInterestBreakupEnabled: true
+  rateChangeSummaryConfig:
+    showRateChangeSummary: true
+  estimatedInterestConfig:
+    estimatedInterestBreakDownCount: 2
+  interestBreakupConfig:
+    allowedBalanceTypes:
+      - retail
+      - cash
+    allowedPromotionalBalanceTypes:
+      - retail
+  cardBasedTransactionConfig:
+    allowedVoucherCodes:
+      - CONVERSION_LOAN_BOOKING
+      - CONVERSION_LOAN_PRE_CLOSURE
+      - CONVERSION_LOAN_CANCELLATION
+      - CONVERSION_LOAN_INSTALLMENT_BILLING

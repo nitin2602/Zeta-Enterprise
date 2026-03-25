@@ -1,14 +1,14 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
-kind: RubyInterestTermResolutionPolicy
+kind: StatementPolicy
 metadata:
-  name: lsg.ruby.interesttermresolutionpolicy.6001
+  name: lsg.ruby.interesttermresolutionpolicy.5001
 spec:
   code: TRPIN006001
   description: Interest term resolution policy
   metadata:
-    description: 6001 interest term resolution policy
-    id: ruby.interesttermresolutionpolicy.6001
-    name: 6001 interest term resolution policy
+    description: 5001 interest term resolution policy
+    id: ruby.interesttermresolutionpolicy.5001
+    name: 5001 interest term resolution policy
     requester:
       module: ruby-module-e2e
       moduleVersion: 0.0.1
@@ -17,7 +17,7 @@ spec:
   configs:
     - selectionCriteria:
         accountStatus:
-          - tag://SCRAStatus/LEVEL_1?name=SCRA&tagTypeCode=classification
+          - tag://HardshipStatus/LEVEL_1?name=HARDSHIP&tagTypeCode=classification
         postingFilters:
           purposeCodes: [
             ]
@@ -27,7 +27,7 @@ spec:
           repricingStrategy:
             preferenceWithinProgramType: LOWESTAPR
             eligibleProgramTypes:
-              - SCRA
+              - HARDSHIP
             flags:
               shouldResolveCurrentTerm: true
               shouldRecursivelyResolvePreviousAppliedTerms: false
@@ -36,7 +36,7 @@ spec:
           repricingStrategy:
             preferenceWithinProgramType: LOWESTAPR
             eligibleProgramTypes:
-              - SCRA
+              - HARDSHIP
             flags:
               shouldResolveCurrentTerm: true
               shouldRecursivelyResolvePreviousAppliedTerms: false
@@ -45,7 +45,7 @@ spec:
           repricingStrategy:
             preferenceWithinProgramType: LOWESTAPR
             eligibleProgramTypes:
-              - SCRA
+              - HARDSHIP
             flags:
               shouldResolveCurrentTerm: true
               shouldRecursivelyResolvePreviousAppliedTerms: false
@@ -54,20 +54,11 @@ spec:
           repricingStrategy:
             preferenceWithinProgramType: LOWESTAPR
             eligibleProgramTypes:
-              - SCRA
+              - HARDSHIP
             flags:
               shouldResolveCurrentTerm: true
               shouldRecursivelyResolvePreviousAppliedTerms: false
         - programType: HARDSHIP
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: LOWESTAPR
-            eligibleProgramTypes:
-              - SCRA
-            flags:
-              shouldResolveCurrentTerm: true
-              shouldRecursivelyResolvePreviousAppliedTerms: false
-        - programType: SCRA
           repricingAction: DONT_REPRICE
       couponExpiryConfig:
         - programType: GENERAL
@@ -75,7 +66,6 @@ spec:
           repricingStrategy:
             preferenceWithinProgramType: LOWESTAPR
             eligibleProgramTypes:
-              - SCRA
               - HARDSHIP
               - DELINQUENCY
               - GENERAL
@@ -85,7 +75,6 @@ spec:
           repricingStrategy:
             preferenceWithinProgramType: LOWESTAPR
             eligibleProgramTypes:
-              - SCRA
               - HARDSHIP
               - DELINQUENCY
               - PROMOTION
@@ -96,7 +85,6 @@ spec:
           repricingStrategy:
             preferenceWithinProgramType: LOWESTAPR
             eligibleProgramTypes:
-              - SCRA
               - HARDSHIP
               - DELINQUENCY
               - PROMOTION
@@ -107,7 +95,6 @@ spec:
           repricingStrategy:
             preferenceWithinProgramType: LOWESTAPR
             eligibleProgramTypes:
-              - SCRA
               - HARDSHIP
               - DELINQUENCY
               - PROMOTION
@@ -118,18 +105,6 @@ spec:
           repricingStrategy:
             preferenceWithinProgramType: LOWESTAPR
             eligibleProgramTypes:
-              - SCRA
-              - HARDSHIP
-              - DELINQUENCY
-              - PROMOTION
-              - GENERAL
-              - BALANCE_TRANSFER
-        - programType: SCRA
-          repricingAction: REPRICE
-          repricingStrategy:
-            preferenceWithinProgramType: LOWESTAPR
-            eligibleProgramTypes:
-              - SCRA
               - HARDSHIP
               - DELINQUENCY
               - PROMOTION
@@ -138,7 +113,6 @@ spec:
       couponNewIssuanceConfig:
         - preferenceWithinProgramType: LOWESTAPR
           eligibleProgramTypes:
-            - SCRA
             - HARDSHIP
             - DELINQUENCY
             - PROMOTION
@@ -149,7 +123,7 @@ spec:
           - '*'
         postingFilters:
           purposeCodes:
-            - SCRA_EXPIRY
+            - HARDSHIP_EXPIRY
       couponRepricingConfig:
         - programType: GENERAL
           repricingAction: DONT_REPRICE
@@ -160,13 +134,10 @@ spec:
         - programType: DELINQUENCY
           repricingAction: DONT_REPRICE
         - programType: HARDSHIP
-          repricingAction: DONT_REPRICE
-        - programType: SCRA
           repricingAction: REPRICE
           repricingStrategy:
             preferenceWithinProgramType: PRECEDENCE
             eligibleProgramTypes:
-              - SCRA
               - HARDSHIP
               - DELINQUENCY
               - PROMOTION
@@ -185,13 +156,10 @@ spec:
         - programType: DELINQUENCY
           repricingAction: DONT_REPRICE
         - programType: HARDSHIP
-          repricingAction: DONT_REPRICE
-        - programType: SCRA
           repricingAction: REPRICE
           repricingStrategy:
             preferenceWithinProgramType: PRECEDENCE
             eligibleProgramTypes:
-              - SCRA
               - HARDSHIP
               - DELINQUENCY
               - PROMOTION
@@ -203,7 +171,6 @@ spec:
       couponNewIssuanceConfig:
         - preferenceWithinProgramType: PRECEDENCE
           eligibleProgramTypes:
-            - SCRA
             - HARDSHIP
             - DELINQUENCY
             - PROMOTION
