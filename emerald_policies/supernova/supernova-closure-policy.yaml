@@ -15,7 +15,7 @@ spec:
   validFrom: '2026-03-01T00:00:00.000+05:30'
   validTill: '2999-12-31T00:00:00.000+05:30'
   name: EMI CLOSURE Policy
-  description: Nova/SupernovaCredit Card EMI CLOSURE Policy
+  description: Supernova Credit Card EMI CLOSURE Policy
   code: ECPUS-SUPERNOVA-1012
   allowCancellation: true
   coolingPeriodForCancellation: 90
