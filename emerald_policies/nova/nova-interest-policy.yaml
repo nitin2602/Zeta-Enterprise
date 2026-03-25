@@ -5,8 +5,8 @@ metadata:
 spec:
   metadata:
     id: emerald.emeraldinterestpolicy.nova.1011
-    name: Emerald Interest Policy
-    description: Emerald Interst Policy
+    name: Nova Interest Policy
+    description: Nova Interst Policy
     requester:
       module: emerald-module-e2e
       moduleVersion: 0.0.1
@@ -14,7 +14,7 @@ spec:
     tenantCode: lsg
   name: Emerald Interst Policy
   code: EIPUS-NOVA-1011
-  description: Emerald Interst Policy
+  description: Nova Interst Policy
   validFrom: '2026-03-06T00:00:00.000+05:30'
   validTill: '2999-12-31T00:00:00.000+05:30'
   creditEffectiveFrom: ValueDate
