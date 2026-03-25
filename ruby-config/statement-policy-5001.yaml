@@ -50,7 +50,6 @@ spec:
     - billingCycle: CYCIN00500126
     - billingCycle: CYCIN00500127
     - billingCycle: CYCIN00500128
-    - billingCycle: CYCIN00500129
   password: function password(context) { return 'password' }
   statementTemplateCode: statement.html
   applyLateFeesOn: GRACE_DATE
