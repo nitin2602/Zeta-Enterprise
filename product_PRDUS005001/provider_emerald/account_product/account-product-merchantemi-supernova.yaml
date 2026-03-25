@@ -18,7 +18,7 @@ spec:
     value:
       name: Loan Merchant EMI Product SUPERNOVA-1012
       code: EAPUS-SUPERNOVA-101202
-      coaCode: COAUS-SUPERNOVA-1012
+      coaCode: COAIN-SUPERNOVA-1012
       accountProductFamilyCode: EPFUS-SUPERNOVA-1012
       description: Loan Merchant EMI Product SUPERNOVA-1012
       productType: ZPAY_MERCHANT_EMI
@@ -31,14 +31,14 @@ spec:
         issuanceStartDate: '2010-04-01'
         maxLoanAmount:
           amount: 100000000
-          currency: USD
+          currency: INR
         maxTenure:
           days: 0
           months: 60
           years: 0
         minLoanAmount:
           amount: 10000
-          currency: USD
+          currency: INR
         minTenure:
           days: 1
           months: 0
@@ -65,4 +65,4 @@ spec:
         creditAllocationPolicy:
           code: ECAPUS-SUPERNOVA-1012
           version: 1
-      templateCode: us-credit
+      templateCode: in-credit

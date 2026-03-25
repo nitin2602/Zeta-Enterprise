@@ -12,7 +12,7 @@ spec:
       moduleVersion: 0.0.1
     tenantId: '600309'
     tenantCode: lsg
-  validFrom: '2025-01-01T00:00:00.000+05:30'
+  validFrom: '2026-01-01T00:00:00.000+05:30'
   validTill: '2999-01-01T23:09:01.795+07:00'
   name: Ruby NPA Decision
   description: Ruby NPA Decision

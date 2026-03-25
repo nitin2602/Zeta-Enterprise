@@ -15,8 +15,8 @@ spec:
     requester:
       module: aura
       moduleVersion: 0.0.1
-    tenantCode: bkezz
-    tenantId: "700001"
+    tenantCode: lsg
+    tenantId: "600309"
   name: Bank Ezz India Book Clock for Chart of Limit
   clockStartTimeDate: "2026-01-21"
   clockStartTimeHours: 0

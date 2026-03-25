@@ -23,7 +23,7 @@ spec:
       description: Credit Card Payment Account Product for CWUAT
       type: CREDIT_CARD
       status: ACTIVE
-      baseCurrency: USD
+      baseCurrency: INR
       paymentAccountProviderCode: PAPUS003001
   viewConfig:
     angelosSchema:

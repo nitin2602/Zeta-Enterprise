@@ -14,8 +14,8 @@ spec:
     requester:
       module: aura-module-e2e
       moduleVersion: 0.0.1
-    tenantId: "700001"
-    tenantCode: bkezz
+    tenantId: "600309"
+    tenantCode: lsg
   code: TPOIN00300108
   coaCode: COAINBKEZZ001
   description: velocity limit policy for transaction restriction

@@ -19,7 +19,7 @@ spec:
       name: Loan Monthly Product Family SUPERNOVA-1012
       code: EPFUS-SUPERNOVA-1012
       description: Loan Monthly Product Family SUPERNOVA-1012
-      coaCode: COAUS-SUPERNOVA-1012
-      parentCoaNodeCode: COAUS-SUPERNOVA-1012_Node_Unsecured_Loans
+      coaCode: COAIN-SUPERNOVA-1012
+      parentCoaNodeCode: COAIN-SUPERNOVA-1012_Node_Unsecured_Loans
       attributes:
         productClass: 12

@@ -19,7 +19,7 @@ spec:
       name: Loan Monthly Product Family NOVA-1011
       code: EPFUS-NOVA-1011
       description: Loan Monthly Product Family NOVA-1011
-      coaCode: COAUS-NOVA-1011
-      parentCoaNodeCode: COAUS-NOVA-1011_Node_Unsecured_Loans
+      coaCode: COAIN-NOVA-1011
+      parentCoaNodeCode: COAIN-NOVA-1011_Node_Unsecured_Loans
       attributes:
         productClass: 12

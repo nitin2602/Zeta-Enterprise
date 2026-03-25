@@ -11,7 +11,7 @@ metadata:
       {"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz",
        "gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git",
        "filePath":"module_configurations/module_aura/coas/aura-coainbkezz001.yaml",
-       "tenantCode":"bkezz"}
+       "tenantCode":lsg
 spec:
   metadata:
     id: bkezz.aura.coa.coainbkezz001
@@ -20,8 +20,8 @@ spec:
     requester:
       module: aura-module
       moduleVersion: 0.0.1
-    tenantId: "700001"
-    tenantCode: bkezz
+    tenantId: "600309"
+    tenantCode: lsg
 
   # Main COA code for Bank Ezz India credit cards
   code: COAINBKEZZ001

@@ -10,8 +10,8 @@ spec:
     id: aura.configuration.module.zero.interest-rate
     name: zero Interest Rate
     description: zero Interest Rate
-    tenantId: '700001'
-    tenantCode: bkezz
+    tenantId: '600309'
+    tenantCode: lsg
   config:
     format: YAML
     schemaUrl: http://localhost
@@ -34,7 +34,7 @@ spec:
             months: 0
             years: 200
         toAmount: 9999999999
-      currency: USD
+      currency: INR
       description: Zero Rate interest
       name: Zero Rate Interest
       rateSpecificationCode: IRTIN000001

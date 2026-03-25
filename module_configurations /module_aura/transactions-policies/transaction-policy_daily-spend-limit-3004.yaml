@@ -56,8 +56,8 @@ spec:
     requester:
       module: aura-module
       moduleVersion: 0.0.1
-    tenantCode: bkezz
-    tenantId: "700001"
+    tenantCode: lsg
+    tenantId: "600309"
   policyScope: EACH_ACCOUNT_OF_ACCOUNT_HOLDER
   violationAction: DECLINE_AND_NOTIFY
   viewConfig:

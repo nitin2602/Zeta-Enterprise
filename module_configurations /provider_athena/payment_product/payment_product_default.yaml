@@ -7,8 +7,8 @@ spec:
     id: athena.configuration.product.PRDIN001001.default.payment-product
     name: default Payment Product for Bank Ezz India Credit Card
     description: Default Payment Product for Bank Ezz × ZPay India RuPay credit cards (Nova & Super Nova)
-    tenantId: '700001'
-    tenantCode: bkezz
+    tenantId: '600309'
+    tenantCode: lsg
   config:
     format: YAML
     schemaUrl: http://localhost

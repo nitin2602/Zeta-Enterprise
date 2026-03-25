@@ -14,7 +14,7 @@ spec:
     description: ruby.rubychargeoffdecisionpolicy.module.8002
     tenantId: '600309'
     tenantCode: lsg
-  validFrom: '2025-01-01T00:00:00.000-07:00'
+  validFrom: '2026-01-01T00:00:00.000-07:00'
   validTill: '2099-01-01T00:00:00.000-07:00'
   name: Ruby Charge Off Decision
   description: Ruby Charge Off Decision

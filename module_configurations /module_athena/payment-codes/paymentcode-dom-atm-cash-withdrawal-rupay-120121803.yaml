@@ -40,8 +40,8 @@ spec:
     requester:
       module: athena
       moduleVersion: 0.0.1
-    tenantCode: bkezz
-    tenantId: '700001'
+    tenantCode: lsg
+    tenantId: '600309'
   name: DOM_ATM_CASH_WITHDRAWAL_RUPAY
   status: ACTIVE
   tags: []

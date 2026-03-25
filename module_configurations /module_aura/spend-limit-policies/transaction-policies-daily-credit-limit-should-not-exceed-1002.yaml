@@ -19,13 +19,13 @@ spec:
           function apply(policyContext) {
             // Extract credit limit from custom fields; defaults to 0 if undefined
             var creditLimit = policyContext['customFields']['CREDIT_LIMIT'] == undefined ? 
-                              0 : 
+                              0: 
                               policyContext['customFields']['CREDIT_LIMIT'];
             
             // Extract current spend amount from LTD (Life-To-Date) categories balances
             // Defaults to 0 if Spends category or currentBalance not found
             var currentSpend = policyContext['afterPostingLTDCategoriesBalances']['Spends'] == undefined ? 
-                               0 : 
+                               0: 
                                policyContext['afterPostingLTDCategoriesBalances']['Spends']['currentBalance'];
             
             // Policy rule: Return true if current spend is within (less than or equal to) the credit limit
@@ -46,8 +46,8 @@ spec:
     requester:
       module: aura-module-e2e
       moduleVersion: 0.0.1
-    tenantCode: bkezz
-    tenantId: "700001"
+    tenantCode: lsg
+    tenantId: "600309"
   policyScope: EACH_ACCOUNT_OF_ACCOUNT_HOLDER
   violationAction: DECLINE_AND_NOTIFY
   viewConfig:

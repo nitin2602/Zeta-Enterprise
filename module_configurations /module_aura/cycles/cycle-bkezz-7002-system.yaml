@@ -11,8 +11,8 @@ spec:
     requester:
       module: aura-module
       moduleVersion: 0.0.1
-    tenantCode: bkezz
-    tenantId: "700001"
+    tenantCode: lsg
+    tenantId: "600309"
   calendarCode: CALINBKEZZ001
   clockCode: CLKINBKEZZ7002
   code: CYCINBKEZZ700201

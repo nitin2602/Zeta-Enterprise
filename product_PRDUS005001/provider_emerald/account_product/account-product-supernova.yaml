@@ -18,7 +18,7 @@ spec:
     value:
       name: Supernova test Credit Card Loan Monthly Product SUPERNOVA-1012
       code: EAPUS-SUPERNOVA-1012
-      coaCode: COAUS-SUPERNOVA-1012
+      coaCode: COAIN-SUPERNOVA-1012
       accountProductFamilyCode: EPFUS-SUPERNOVA-1012
       description: Supernova test Credit Card Loan Monthly Product SUPERNOVA-1012
       productType: SUPERNOVA_CARD_EMI

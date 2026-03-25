@@ -23,4 +23,4 @@ spec:
   sourceProcessingControls:
     skipInstallmentBilling: false
     skipRepayment: false
-  templateCode: us-credit
+  templateCode: in-credit

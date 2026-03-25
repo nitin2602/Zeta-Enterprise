@@ -9,7 +9,7 @@ metadata:
       {"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bkezz",
        "gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bkezz.git",
        "filePath":"module_configurations/module_athena/form_factor_provider/form_factor_provider_cms.yaml",
-       "tenantCode":"bkezz"}
+       "tenantCode":lsg
 spec:
   metadata:
     id: athena.configuration.module.cms.form-factor-provider
@@ -18,8 +18,8 @@ spec:
     requester:
       module: athena
       moduleVersion: 0.0.1
-    tenantId: '700001'
-    tenantCode: bkezz
+    tenantId: '600309'
+    tenantCode: lsg
   config:
     format: YAML
     schemaUrl: http://localhost

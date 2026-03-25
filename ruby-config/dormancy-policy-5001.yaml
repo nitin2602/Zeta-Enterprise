@@ -34,6 +34,6 @@ spec:
     - level: 3
       description: Dormant for 365 days
       days: 365
-  validFrom: '2025-01-01T00:00:00.000+05:30'
+  validFrom: '2026-01-01T00:00:00.000+05:30'
   validTill: '2999-01-01T00:00:00.000-05:00'
   templateCode: in-credit

@@ -18,7 +18,7 @@ spec:
     value:
       name: Loan Smart EMI Product NOVA-1011
       code: EAPUS-NOVA-101101
-      coaCode: COAUS-NOVA-1011
+      coaCode: COAIN-NOVA-1011
       accountProductFamilyCode: EPFUS-NOVA-1011
       description: Loan Smart EMI Product NOVA-1011
       productType: POST_PURCHASE_EMI

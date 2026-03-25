@@ -1,107 +1,182 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: StatementPolicy
 metadata:
-  name: lumenpp.statement.statementpolicy.7001
+  name: lsg.ruby.interesttermresolutionpolicy.5001
 spec:
+  code: TRPIN006001
+  description: Interest term resolution policy
   metadata:
-    id: statement.statementpolicy.7001
-    name: 7001 Statement Generation Policies
-    description: 7001 Statement Generation Policies
+    description: 5001 interest term resolution policy
+    id: ruby.interesttermresolutionpolicy.5001
+    name: 5001 interest term resolution policy
     requester:
-      module: statement
+      module: ruby-module-e2e
       moduleVersion: 0.0.1
+    tenantCode: lsg
     tenantId: '600309'
-    tenantCode: lumenpp
-  validFrom: '2025-01-01T23:09:01.795+07:00'
-  validTill: '2999-01-01T23:09:01.795+07:00'
-  name: Statement Generation Policy
-  description: Statement Generation Policy
-  code: STMGEN007001
-  physicalStatementThreshold: '20'
-  password: function password(context) { return 'password' }
-  statementTemplateCode: https://hercules-assets.mum1-pp.zetaapps.in/statement-templates/3.12.2/lumen/ziva/template.html
+  configs:
+    - selectionCriteria:
+        accountStatus:
+          - tag://HardshipStatus/LEVEL_1?name=HARDSHIP&tagTypeCode=classification
+        postingFilters:
+          purposeCodes: [
+            ]
+      couponRepricingConfig:
+        - programType: GENERAL
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - HARDSHIP
+            flags:
+              shouldResolveCurrentTerm: true
+              shouldRecursivelyResolvePreviousAppliedTerms: false
+        - programType: PROMOTION
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - HARDSHIP
+            flags:
+              shouldResolveCurrentTerm: true
+              shouldRecursivelyResolvePreviousAppliedTerms: false
+        - programType: BALANCE_TRANSFER
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - HARDSHIP
+            flags:
+              shouldResolveCurrentTerm: true
+              shouldRecursivelyResolvePreviousAppliedTerms: false
+        - programType: DELINQUENCY
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - HARDSHIP
+            flags:
+              shouldResolveCurrentTerm: true
+              shouldRecursivelyResolvePreviousAppliedTerms: false
+        - programType: HARDSHIP
+          repricingAction: DONT_REPRICE
+      couponExpiryConfig:
+        - programType: GENERAL
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - HARDSHIP
+              - DELINQUENCY
+              - GENERAL
+              - BALANCE_TRANSFER
+        - programType: PROMOTION
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+        - programType: BALANCE_TRANSFER
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+        - programType: DELINQUENCY
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+        - programType: HARDSHIP
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: LOWESTAPR
+            eligibleProgramTypes:
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+      couponNewIssuanceConfig:
+        - preferenceWithinProgramType: LOWESTAPR
+          eligibleProgramTypes:
+            - HARDSHIP
+            - DELINQUENCY
+            - PROMOTION
+            - GENERAL
+            - BALANCE_TRANSFER
+    - selectionCriteria:
+        accountStatus:
+          - '*'
+        postingFilters:
+          purposeCodes:
+            - HARDSHIP_EXPIRY
+      couponRepricingConfig:
+        - programType: GENERAL
+          repricingAction: DONT_REPRICE
+        - programType: PROMOTION
+          repricingAction: DONT_REPRICE
+        - programType: BALANCE_TRANSFER
+          repricingAction: DONT_REPRICE
+        - programType: DELINQUENCY
+          repricingAction: DONT_REPRICE
+        - programType: HARDSHIP
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: PRECEDENCE
+            eligibleProgramTypes:
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+            flags:
+              shouldResolveCurrentTerm: false
+              shouldRecursivelyResolvePreviousAppliedTerms: true
+      couponExpiryConfig:
+        - programType: GENERAL
+          repricingAction: DONT_REPRICE
+        - programType: PROMOTION
+          repricingAction: DONT_REPRICE
+        - programType: BALANCE_TRANSFER
+          repricingAction: DONT_REPRICE
+        - programType: DELINQUENCY
+          repricingAction: DONT_REPRICE
+        - programType: HARDSHIP
+          repricingAction: REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: PRECEDENCE
+            eligibleProgramTypes:
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+            flags:
+              shouldResolveCurrentTerm: false
+              shouldRecursivelyResolvePreviousAppliedTerms: true
+      couponNewIssuanceConfig:
+        - preferenceWithinProgramType: PRECEDENCE
+          eligibleProgramTypes:
+            - HARDSHIP
+            - DELINQUENCY
+            - PROMOTION
+            - GENERAL
+            - BALANCE_TRANSFER
+  name: interest term resolution policy
   templateCode: in-credit
-  messageConfigs:
-    maxMessageCount: 2
-    ruleList:
-      - name: STATEMENT_PDF_MESSAGE
-        code: STMT_RULE_1
-        status: ENABLED
-        priority: 1
-        order: 1
-        condition: (input.rubyAccountStatusDetails.get('manualDefaulStatus') != null && input.rubyAccountStatusDetails.get('manualDefaulStatus').value == 'LEVEL_2') || (input.rubyAccountStatusDetails.get('autoDefaulStatus') != null && input.rubyAccountStatusDetails.get('autoDefaulStatus').value == 'LEVEL_2' && input.rubyAccountStatusDetails.get('manualDefaulStatus') != null && input.rubyAccountStatusDetails.get('manualDefaulStatus').attributes != null && input.rubyAccountStatusDetails.get('manualDefaulStatus').attributes.get('defaultDate') != null && input.statementDate < input.rubyAccountStatusDetails.get('manualDefaulStatus').attributes.get('defaultDate') <= input.nextStatementDate)
-        content: Your agreement has been terminated and a default has been registered with Credit Reference Agencies. Interest and charges may continue to apply.
-        frequency: EVERYTIME
-        metaData:
-          isSuppressed: false
-          messageHeader: Account in Default
-      - name: STATEMENT_PDF_MESSAGE
-        code: STMT_RULE_2
-        status: ENABLED
-        priority: 2
-        order: 1
-        condition: input.rateChangeEffectiveDate != null
-        content: Following a recent change to the Bank of England base rate, your standard and cash interest rates have been adjusted accordingly. Your updated rates will apply from @{input.rateChangeEffectiveDate} and are shown in the interest rate section of this statement. This change affects your outstanding balance and any new purchases made from the effective date.
-        frequency: EVERYTIME
-        metaData:
-          isSuppressed: false
-          messageHeader: Base Rate Price Change
-      - name: STATEMENT_PDF_MESSAGE
-        code: STMT_RULE_3
-        status: ENABLED
-        priority: 3
-        order: 1
-        condition: (input.rubyAccountStatusDetails.get('manualBundleStatusPmtPlan') != null && input.rubyAccountStatusDetails.get('manualBundleStatusPmtPlan').value == 'MBSPMTP') || (input.rubyAccountStatusDetails.get('manualBundleStatusDAS') != null && (input.rubyAccountStatusDetails.get('manualBundleStatusDAS').value == 'MBSDASP' || input.rubyAccountStatusDetails.get('manualBundleStatusDAS') == 'MBSDASC')) || (input.rubyAccountStatusDetails.get('manualBundleStatusInsolvency') != null && (input.rubyAccountStatusDetails.get('manualBundleStatusInsolvency').value == 'MBSISVP' || input.rubyAccountStatusDetails.get('manualBundleStatusInsolvency').value == 'MBSISVC')) || (input.rubyAccountStatusDetails.get('manualBundleStatusDMP') != null && (input.rubyAccountStatusDetails.get('manualBundleStatusDMP').value == 'MBSDMPP' || input.rubyAccountStatusDetails.get('manualBundleStatusDMP').value == 'MBSDMPC'))
-        content: While we have previously agreed a plan with you, accepted a plan made with a third party or have discussed and understand there are arrangements in place that mean you can't make a payment, we are required by law to continue to send you statements for your account so the information on this statement is for your information only. No action is required.
-        frequency: EVERYTIME
-        metaData:
-          isSuppressed: false
-      - name: STATEMENT_PDF_MESSAGE
-        code: STMT_RULE_4
-        status: ENABLED
-        priority: 4
-        order: 1
-        condition: input.rubyAccountStatusDetails.get('accountClosureStatus') != null && (input.rubyAccountStatusDetails.get('accountClosureStatus').name == 'CLOSURE_ACCEPTED' || input.rubyAccountStatusDetails.get('accountClosureStatus').name == 'CLOSED')
-        content: You can no longer use your card but there is a balance outstanding and you still need to pay off your account. Interest will continue to accrue.
-        frequency: EVERYTIME
-        metaData:
-          isSuppressed: false
-          messageHeader: Your account is closed
-      - name: STATEMENT_PDF_MESSAGE
-        code: STMT_RULE_5
-        status: ENABLED
-        priority: 5
-        order: 1
-        condition: input.delinquencyStatus == '1-CYCLE' || input.delinquencyStatus == '2-CYCLE' || input.delinquencyStatus == '3-CYCLE'
-        content: Failing to make your minimum payment can mean that you have broken the terms of this credit agreement and could result in us taking legal action against you. It could lead to your having to pay additional costs and make it more difficult for you to obtain credit in future.
-        frequency: EVERYTIME
-        metaData:
-          isSuppressed: false
-          messageHeader: You have failed to make a minimum payment
-      - name: STATEMENT_PDF_MESSAGE
-        code: STMT_RULE_6
-        status: ENABLED
-        priority: 6
-        order: 1
-        condition: input.rubyAccountStatusDetails.get('balanceStatus') != null && (input.rubyAccountStatusDetails.get('balanceStatus').name == 'APPROVED_OVERLIMIT' || input.rubyAccountStatusDetails.get('balanceStatus').name == 'CRITICALLY_OVERLIMIT')
-        content: Exceeding your credit limit will result in additional charges, as outlined in your credit agreement. To bring your account back within its limit, please make the minimum payment indicated. You may not be able to use your card until your balance is within the agreed limit.
-        frequency: EVERYTIME
-        metaData:
-          isSuppressed: false
-          messageHeader: You have exceeded your credit limit
-  rateChangeSummaryConfig:
-    showRateChangeSummary: true
-  estimatedInterestConfig:
-    estimatedInterestBreakDownCount: 1
-  interestBreakupConfig:
-    allowedBalanceTypes:
-      - retail
-      - cash
-    allowedPromotionalBalanceTypes:
-      - retail
-  cardBasedTransactionConfig:
-    allowedVoucherCodes:
-      - CONVERSION_LOAN_BOOKING
-      - CONVERSION_LOAN_PRE_CLOSURE
-      - CONVERSION_LOAN_CANCELLATION
-      - CONVERSION_LOAN_INSTALLMENT_BILLING
+  validFrom: '2026-01-01T00:00:00.000+05:30'
+  validTill: '2999-01-01T23:09:01.795+07:00'

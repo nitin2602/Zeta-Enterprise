@@ -6,17 +6,17 @@
 	<title>Bank Ezz × ZPay Credit Card Statement</title>
 	<style>
 		:root {
-			--navy: #0f2b46;
-			--blue: #0f5d9c;
-			--teal: #0e8f9e;
+			--navy: #4b2e83;
+			--blue: #6366f1;
+			--teal: #a5b4fc;
 			--ink: #111827;
-			--muted: #6b7280;
-			--line: #dfe4ea;
-			--bg: #f3f6fa;
-			--warn: #8a2a0f;
-			--warn-bg: #fff5f2;
-			--good: #0c6b57;
-			--good-bg: #edfdf9;
+			--muted: #5f6b7a;
+			--line: #d6dde7;
+			--bg: #eef2f7;
+			--warn: #7a4d00;
+			--warn-bg: #fff9eb;
+			--good: #1d5f45;
+			--good-bg: #edf7f1;
 		}
 
 		* { box-sizing: border-box; }
@@ -133,8 +133,8 @@
 		}
 
 		.alert {
-			border: 1px solid #f7c9bb;
-			border-left: 5px solid #de613d;
+			border: 1px solid #ecd7a8;
+			border-left: 5px solid #b37a1f;
 			background: var(--warn-bg);
 			border-radius: 10px;
 			padding: 12px;
@@ -147,7 +147,7 @@
 		.alert strong { color: var(--warn); }
 
 		.pay {
-			background: #de613d;
+			background: #2d4f7c;
 			color: #fff;
 			border: 0;
 			border-radius: 8px;
@@ -226,8 +226,8 @@
 			font-weight: 700;
 			letter-spacing: 0.35px;
 			text-transform: uppercase;
-			background: #edf2ff;
-			color: #3730a3;
+			background: #e8eef7;
+			color: #2d4f7c;
 		}
 
 		.divider {
@@ -298,6 +298,11 @@
 		</section>
 
 		<section class="section">
+			<h2>Statement Details</h2>
+			<div class="grid-4" id="statementMetaCards"></div>
+		</section>
+
+		<section class="section">
 			<h2>Account Summary</h2>
 			<div class="grid-3" id="accountSummaryCards"></div>
 		</section>
@@ -348,6 +353,46 @@
 		</section>
 
 		<section class="section">
+			<h2>Your Spending Analysis</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Category</th>
+						<th class="amt">Amount</th>
+						<th class="amt">% of Total</th>
+					</tr>
+				</thead>
+				<tbody id="spendingRows"></tbody>
+			</table>
+		</section>
+
+		<section class="section">
+			<h2>Easy Payment Options</h2>
+			<div class="grid-2" id="paymentOptionCards"></div>
+		</section>
+
+		<section class="section">
+			<h2>Repayment Scenarios</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Payment Option</th>
+						<th class="amt">Monthly Amount</th>
+						<th>Time to Clear</th>
+						<th class="amt">Estimated Total Interest</th>
+					</tr>
+				</thead>
+				<tbody id="repaymentRows"></tbody>
+			</table>
+			<div id="repaymentNote" class="note"></div>
+		</section>
+
+		<section class="section">
+			<h2>Exclusive Offers</h2>
+			<div class="grid-2" id="offerCards"></div>
+		</section>
+
+		<section class="section">
 			<h2>Year-to-Date Totals</h2>
 			<table>
 				<tbody id="ytdRows"></tbody>
@@ -372,7 +417,13 @@
 			<ul id="importantInfo" style="margin:0; padding-left:18px;"></ul>
 		</section>
 
+		<section class="section">
+			<h2>Service Channels</h2>
+			<div class="grid-3" id="serviceChannelCards"></div>
+		</section>
+
 		<footer class="footer">
+			<div>Bank Ezz Credit Cards GSTIN: <span id="bankGstin"></span> | HSN Code: <span id="hsnCode"></span></div>
 			<div style="margin-top:6px;">Issued by Bank Ezz under applicable network license. Co-brand partner: ZPay.</div>
 			<div style="margin-top:6px;">Customer care: <span id="carePhone"></span> | Email: <span id="careEmail"></span></div>
 		</footer>
@@ -381,143 +432,209 @@
 	<script>
 		function getMockStatementData() {
 			return {
-				statementNo: "BEZ-ZP-2026-03-000784",
+				statementNo: "BEZ-ZP-2025-06-00010181700007594",
 				cardholder: "Aarav Mehta",
-				cardEnding: "**** **** **** 4921",
-				billingPeriod: "20 Feb 2026 - 20 Mar 2026",
-				memberSince: "2022",
+				cardEnding: "5522 60XX XXXX 9495",
+				billingPeriod: "19 May 2025 - 19 Jun 2025",
+				memberSince: "Jun 2025",
 				paymentLink: "https://zpay.example/pay",
+				bankGstin: "33AAACH2702H2Z6",
+				hsnCode: "997113",
+
+				statementMeta: [
+					{ label: "AAN", value: "00010181700007594" },
+					{ label: "Statement Date", value: "19/06/2025" },
+					{ label: "Cardholder Email", value: "aarav.mehta@example.com" },
+					{ label: "Cardholder Address", value: "DNO-123, ABC 1st Road, Bengalore-560001, Karnataka" },
+					{ label: "Cardholder GST No.", value: "Not provided" },
+					{ label: "Bank GSTIN", value: "33AAACH2702H2Z6" },
+					{ label: "HSN Code", value: "997113" }
+				],
 
 				accountSummary: [
-					{ label: "Previous Balance", amount: 68420.75 },
-					{ label: "Payments & Credits", amount: -18000.00 },
-					{ label: "Transactions", amount: 25490.30 },
-					{ label: "Cash Advances", amount: 12000.00 },
-					{ label: "Fees Charged", amount: 1200.00 },
-					{ label: "Interest Charged", amount: 890.44 },
-					{ label: "New Balance", amount: 89901.49 },
-					{ label: "Credit Limit", amount: 150000.00 },
-					{ label: "Available Credit", amount: 60000.09 },
-					{ label: "Cash Advance Limit", amount: 60000.00 },
-					{ label: "Available Cash", amount: 38000.00 },
-					{ label: "Disputed Balance", amount: 1500.00 },
-					{ label: "Days in Billing Cycle", text: "29" }
+					{ label: "Opening Balance", amount: 45000.00 },
+					{ label: "Payments & Credits", amount: -20000.00 },
+					{ label: "Purchases / Debits", amount: 60570.00 },
+					{ label: "Finance Charges", amount: 0.00 },
+					{ label: "Total Dues", amount: 85570.00 },
+					{ label: "Credit Limit", amount: 100000.00 },
+					{ label: "Available Credit Limit", amount: 14430.00 },
+					{ label: "Available Cash Limit", amount: 40000.00 },
+					{ label: "Overlimit", amount: 0.00 },
+					{ label: "Past Dues", amount: 0.00 }
 				],
 
 				rewards: {
-					period: 1240,
-					ytd: 13880,
-					message: "You earn accelerated ZPay points on partner categories and 1% base value on eligible on-time repayments."
+					period: 618,
+					ytd: 1868,
+					message: "Opening points: 1,250 | Points redeemed: 0 | Closing balance: 1,868."
 				},
 
 				paymentInfo: {
-					newBalance: 89901.49,
-					minCurrent: 4890.00,
-					minPastDue: 1250.00,
-					totalMinDue: 6140.00,
-					dueDate: "05 Apr 2026",
-					lateFeeWarning: "If we do not receive your minimum payment by the due date, a late fee up to ₹1,300 plus taxes may apply."
+					newBalance: 85570.00,
+					minCurrent: 4278.50,
+					minPastDue: 0.00,
+					totalMinDue: 4279.00,
+					dueDate: "09 Jul 2025",
+					lateFeeWarning: "Bank may report the account as default to credit agencies if the minimum amount due remains unpaid for 3 days from due date."
 				},
 
 				minimumWarningRows: [
-					{ pay: "Only minimum due", payoff: "8 years", total: 178640.00 },
-					{ pay: "₹10,000 per month", payoff: "2 years 11 months", total: 103880.00 }
+					{ pay: "Minimum Amount Due", payoff: "~6-8 months", total: 94570.00 },
+					{ pay: "Pay 50% of balance", payoff: "~2 months", total: 87070.00 },
+					{ pay: "Pay Total Amount Due", payoff: "Immediate", total: 85570.00 }
 				],
-				counseling: "Credit counseling available: AICF (All India Credit Forum) at 1800-111-220 or www.creditdisputeonline.com — free government-recognized service.",
+				counseling: "*Repayment outcomes are estimates based on statement-provided examples and assume no additional transactions.",
 
 				notifications: [
-					"Annual membership fee of ₹2,999 is charged at the time of card issuance and renewal. GST applicable as per applicable rate.",
-					"Reward points are valid for 36 months from date of earning. Expired points are forfeited. Terms and conditions apply.",
-					"Any account update requests (address/email/mobile) can be done on the Bank Ezz app or ZPay app or by contacting Customer Care."
+					"MITC update: Minimum Amount Due (MAD) calculation revised with effect from June 2025 statement.",
+					"Complimentary insurance support: 1800-XXX-XXXX | claims@bankezz.com.",
+					"Redeem ZPay reward points for cashback, vouchers, or partner rewards through ZPay app."
 				],
 
 				coupon: {
 					cardholder: "Aarav Mehta",
-					cardEnding: "**** **** **** 4921",
-					billingAddress: "123 Park Avenue, Mumbai 400026, MH, India",
-					newBalance: 89901.49,
-					minimumDue: 6140.00,
-					dueDate: "05 Apr 2026",
+					cardEnding: "5522 60XX XXXX 9495",
+					billingAddress: "DNO-123, ABC 1st Road, Bengalore-560001, Karnataka",
+					newBalance: 85570.00,
+					minimumDue: 4279.00,
+					dueDate: "09 Jul 2025",
 					amountEnclosed: "",
 					payee: "Bank Ezz Limited - Credit Cards Division",
-					mailTo: "Bank Ezz Cards, PO Box 1102, Mumbai 400001, India"
+					mailTo: "The Manager, Bank Ezz Cards Division, Door No 94 SP, Estate Bus Stand, Wavin Main Road, Mogappair West, Chennai 600058"
 				},
 
 				activityGroups: [
 					{
 						title: "Payments and Other Credits",
 						rows: [
-							["03/03", "03/03", "Internet Banking - NEFT Transfer", "PA91231", -7000.00],
-							["12/03", "12/03", "Cheque Deposit - HDFC Bank", "PA91782", -11000.00],
-							["16/03", "16/03", "Merchant Refund - ZPay Travel", "RF77321", -1500.00]
+							["20/05/2025", "20/05/2025", "NETBANKING TRANSFER", "ST2515300840052001000525", -20000.00]
 						],
 						totalLabel: "Total Payments and Credits",
-						total: -19500.00
+						total: -20000.00
 					},
 					{
-						title: "Transactions",
+						title: "Domestic Transactions",
 						rows: [
-							["22/02", "23/02", "ZPay Mart - Grocery", "TX33590", 5400.00],
-							["27/02", "27/02", "SkyWays Airlines", "TX34120", 12450.00],
-							["02/03", "02/03", "Fuel Stop - Mumbai", "TX34912", 2900.00],
-							["14/03", "14/03", "ElectroHub Online", "TX36590", 8100.30]
+							["19/05/2025", "19/05/2025", "IGST-VPS2614088704225-RATE 18.0", "099999999805190132999326", 53.10],
+							["22/05/2025", "22/05/2025", "ABC MERCHANT", "-", 267.51],
+							["24/05/2025", "24/05/2025", "SUBHA ENTERPRISES", "-", 580.00],
+							["24/05/2025", "24/05/2025", "NSRK RECREATIONS PVT EAST GODAVAR", "-", 366.00],
+							["01/06/2025", "01/06/2025", "IGST-VPS2615317290836-RATE 18.0", "ST2515300840000158474460", 0.12],
+							["01/06/2025", "01/06/2025", "1% on all DCC Transaction", "ST2515300840000158474460", 0.69],
+							["02/06/2025", "02/06/2025", "PPSL*CLEARTRIP PRIVATE Mumbai", "-", 7500.00],
+							["03/06/2025", "03/06/2025", "RSP*BLINK COMMERCE PVT BANGALORE", "-", 291.00],
+							["05/06/2025", "05/06/2025", "Blinkit BANGALORE", "-", 218.00],
+							["06/06/2025", "06/06/2025", "PAYTM Noida", "-", 5103.32],
+							["06/06/2025", "06/06/2025", "PHO*PHONEPE INSURANCE", "-", 15000.00],
+							["09/06/2025", "09/06/2025", "YOUTUBEGOOGLE MUMBAI", "-", 2.00],
+							["12/06/2025", "12/06/2025", "RAZ*BUNDL TECHNOLOGIES Bengaluru", "-", 10000.00],
+							["12/06/2025", "12/06/2025", "MAKEMYTRIP INDIA PVT LT NEW DELHI", "-", 8000.00],
+							["14/06/2025", "14/06/2025", "INDIGO AIRLINE GURGAON", "-", 5000.00],
+							["19/06/2025", "19/06/2025", "CONSOLIDATED FCY MARKUP FEE", "MT2514600760000100255220", 40.26],
+							["19/06/2025", "19/06/2025", "OFFUS EMI, PRIN NB:06,00000117640608", "0999999999806190142936720", 8000.00],
+							["19/06/2025", "19/06/2025", "OFFUS EMI, INT NBR:06,00000117640608", "0999999998061901429368000", 148.00]
 						],
-						totalLabel: "Total Transactions",
-						total: 28850.30
+						totalLabel: "Total Purchases / Debits",
+						total: 60570.00
+					}
+				],
+
+				spendingAnalysis: [
+					["Travel & Airlines", 20500.00, "33.9%"],
+					["Insurance", 15000.00, "24.8%"],
+					["Food & Dining", 10000.00, "16.5%"],
+					["EMI Payments", 8148.00, "13.5%"],
+					["Utilities & Services", 5103.32, "8.4%"],
+					["Others", 1818.68, "3.0%"],
+					["Total Spending", 60570.00, "100%"]
+				],
+
+				paymentOptions: [
+					{
+						title: "ZPay App Payment",
+						details: [
+							"Open ZPay app and go to Pay Bills.",
+							"Select Bank Ezz Credit Card and complete payment instantly."
+						]
 					},
 					{
-						title: "Cash Advances",
-						rows: [
-							["01/03", "01/03", "ATM Cash Withdrawal", "CA09871", 12000.00]
-						],
-						totalLabel: "Total Cash Advances",
-						total: 12000.00
+						title: "UPI Payment",
+						details: [
+							"UPI ID: bankezz@upi",
+							"Use your 16-digit card number as payment reference."
+						]
 					},
 					{
-						title: "Fees Charged",
-						rows: [
-							["06/03", "06/03", "Late Payment Fee", "FE77111", 1000.00],
-							["09/03", "09/03", "GST on Late Fee", "FE77119", 180.00],
-							["11/03", "11/03", "Cash Advance Fee", "FE77200", 350.00]
-						],
-						totalLabel: "Total Fees Charged",
-						total: 1530.00
+						title: "Bank Ezz NetBanking",
+						details: [
+							"Login to NetBanking and go to Credit Cards > Pay Now."
+						]
 					},
 					{
-						title: "Interest Charged",
-						rows: [
-							["20/03", "20/03", "Interest on Cash Advances", "IN88011", 890.44]
-						],
-						totalLabel: "Total Interest Charged",
-						total: 890.44
+						title: "NEFT / RTGS",
+						details: [
+							"Beneficiary: Bank Ezz Card",
+							"Account: Your 16-digit card number",
+							"IFSC: BEZZ0000123"
+						]
+					}
+				],
+
+				repaymentScenarios: [
+					["Minimum Amount Due", 4279.00, "~6-8 months", 9000.00],
+					["Pay 50% of Balance", 42785.00, "~2 months", 1500.00],
+					["Pay Total Amount Due", 85570.00, "Immediate", 0.00]
+				],
+				repaymentNote: "Estimates based on 3.5% monthly interest and no additional transactions.",
+
+				offers: [
+					{
+						title: "ZPay Exclusive Cashback",
+						detail: "15% cashback on eligible payments via ZPay, up to ₹2,000 as per offer terms."
+					},
+					{
+						title: "Travel Rewards",
+						detail: "Flat ₹3,500 off on eligible flight bookings through partner platforms."
+					},
+					{
+						title: "Shop & Save",
+						detail: "Up to 20% discount on select partner e-commerce transactions."
+					},
+					{
+						title: "Dining Benefits",
+						detail: "Up to 10% savings at participating premium restaurant partners."
 					}
 				],
 
 				ytdTotals: [
-					{ label: "Total fees charged in 2026", value: 6240.00 },
-					{ label: "Total interest charged in 2026", value: 4412.66 }
+					{ label: "Total payments / credits in this statement", value: 20000.00 },
+					{ label: "Total purchases / debits in this statement", value: 60570.00 },
+					{ label: "Finance charges in this statement", value: 0.00 }
 				],
 
 				aprTable: [
-					["Purchases", "40.00%", 66540.75, 0.00],
-					["Cash Advances", "48.00%", 12000.00, 890.44]
+					["Purchases / Debits", "Not shown in PDF", 60570.00, 0.00],
+					["Other balances", "Not shown in PDF", 0.00, 0.00]
 				],
 
 				importantInfo: [
-					"Grace Period: Interest-free period on purchases applies only if the entire new balance is paid by the due date. No grace period on cash advances.",
-					"Interest Calculation: We use the Average Daily Balance (ADB) method, including new transactions. Interest is charged on the daily outstanding balance at the applicable APR.",
-					"Cash Advance APR applies from the transaction date. No grace period or rewards apply to cash advances.",
-					"Billing Frequency: Monthly. Statement generated on the last day of each month for the period. Due date is typically 20-25 days after statement generation.",
-					"Dispute Resolution: Raise billing disputes within 30 days from statement date. Mail disputes to the address below with documentary evidence.",
-					"RBI Ombudsman: If disputes are not resolved within 30 days, escalate to RBI Ombudsman under the Ombudsman Scheme 2019. No fee for lodging complaints.",
-					"Fees & Charges: All stated fees exclude applicable GST as per tax laws. GST will be added at the rate applicable on the date of incurrence.",
-					"Co-brand Terms: This card is issued by Bank Ezz under the ZPay partner ecosystem. Partner benefits and reward redemptions are governed by a separate agreement.",
-					"Card Terms & Conditions, complete fee schedule and APR changes are available on www.bankezz.example and www.zpay.example. Rates subject to periodic review."
+					"Bank will report the account as defaulter to credit agencies if minimum amount due is missed by 3 days from due date.",
+					"Bank Ezz Credit Cards GSTIN: 33AAACH2702H2Z6 | HSN Code: 997113.",
+					"MITC: Minimum Amount Due (MAD) calculation revised with effect from June 2025 statement.",
+					"This is a system-generated statement and does not require a signature."
 				],
 
-				carePhone: "1800-12-9009 (Toll-free) / +91-22-6719-9009",
-				careEmail: "support@bankezz-zpay.example",
-				customerAddress: "123 Park Avenue, Mumbai 400026, Maharashtra, India"
+				serviceChannels: [
+					{ label: "Bank Ezz Customer Care", value: "1800-BANK-EZZ (24x7)" },
+					{ label: "ZPay Support", value: "1800-ZPAY-NOW (Mon-Sat, 9 AM - 9 PM)" },
+					{ label: "Email Support", value: "support@bankezz.com | help@zpay.com" },
+					{ label: "Websites", value: "www.bankezz.com | www.zpay.com" },
+					{ label: "Insurance Claims", value: "claims@bankezz.com" }
+				],
+
+				carePhone: "1800-BANK-EZZ / 1800-ZPAY-NOW",
+				careEmail: "support@bankezz.com"
 			};
 		}
 
@@ -543,6 +660,17 @@
 			putText("memberSince", data.memberSince);
 			putText("carePhone", data.carePhone);
 			putText("careEmail", data.careEmail);
+			putText("bankGstin", data.bankGstin);
+			putText("hsnCode", data.hsnCode);
+
+			const statementMetaCards = document.getElementById("statementMetaCards");
+			statementMetaCards.innerHTML = "";
+			data.statementMeta.forEach((item) => {
+				const card = document.createElement("div");
+				card.className = "card";
+				card.innerHTML = `<div class="label">${item.label}</div><div class="value">${item.value}</div>`;
+				statementMetaCards.appendChild(card);
+			});
 
 			const payment = data.paymentInfo;
 			putText("alertText", `${formatCurrency(payment.totalMinDue)} minimum due by ${payment.dueDate} | New balance ${formatCurrency(payment.newBalance)}`);
@@ -554,7 +682,7 @@
 			accountSummaryCards.innerHTML = "";
 			data.accountSummary.forEach((item) => {
 				const card = document.createElement("div");
-				card.className = "card" + (item.label === "Available Credit" ? " good" : "");
+				card.className = "card" + (item.label === "Available Credit" || item.label === "Available Credit Limit" ? " good": "");
 				const val = item.text ?? formatCurrency(item.amount);
 				card.innerHTML = `<div class="label">${item.label}</div><div class="value">${val}</div>`;
 				accountSummaryCards.appendChild(card);
@@ -575,7 +703,7 @@
 			paymentInfoCards.innerHTML = "";
 			payItems.forEach(([label, val]) => {
 				const card = document.createElement("div");
-				card.className = "card" + (label === "Total Minimum Payment Due" ? " good" : "");
+				card.className = "card" + (label === "Total Minimum Payment Due" ? " good": "");
 				card.innerHTML = `<div class="label">${label}</div><div class="value">${val}</div>`;
 				paymentInfoCards.appendChild(card);
 			});
@@ -653,6 +781,42 @@
 				activity.appendChild(wrap);
 			});
 
+			const spendingRows = document.getElementById("spendingRows");
+			spendingRows.innerHTML = "";
+			data.spendingAnalysis.forEach((row) => {
+				const tr = document.createElement("tr");
+				tr.innerHTML = `<td>${row[0]}</td><td class="amt">${formatCurrency(row[1])}</td><td class="amt">${row[2]}</td>`;
+				spendingRows.appendChild(tr);
+			});
+
+			const paymentOptionCards = document.getElementById("paymentOptionCards");
+			paymentOptionCards.innerHTML = "";
+			data.paymentOptions.forEach((item) => {
+				const card = document.createElement("div");
+				card.className = "card";
+				const lines = item.details.map((d) => `<li>${d}</li>`).join("");
+				card.innerHTML = `<div class="label">${item.title}</div><ul style="margin:6px 0 0; padding-left:18px;">${lines}</ul>`;
+				paymentOptionCards.appendChild(card);
+			});
+
+			const repaymentRows = document.getElementById("repaymentRows");
+			repaymentRows.innerHTML = "";
+			data.repaymentScenarios.forEach((r) => {
+				const tr = document.createElement("tr");
+				tr.innerHTML = `<td>${r[0]}</td><td class="amt">${formatCurrency(r[1])}</td><td>${r[2]}</td><td class="amt">${formatCurrency(r[3])}</td>`;
+				repaymentRows.appendChild(tr);
+			});
+			putText("repaymentNote", data.repaymentNote);
+
+			const offerCards = document.getElementById("offerCards");
+			offerCards.innerHTML = "";
+			data.offers.forEach((offer) => {
+				const card = document.createElement("div");
+				card.className = "card";
+				card.innerHTML = `<div class="label">${offer.title}</div><div class="value">${offer.detail}</div>`;
+				offerCards.appendChild(card);
+			});
+
 			const ytdRows = document.getElementById("ytdRows");
 			ytdRows.innerHTML = "";
 			data.ytdTotals.forEach((row) => {
@@ -680,6 +844,15 @@
 				const li = document.createElement("li");
 				li.textContent = text;
 				importantInfo.appendChild(li);
+			});
+
+			const serviceChannelCards = document.getElementById("serviceChannelCards");
+			serviceChannelCards.innerHTML = "";
+			data.serviceChannels.forEach((item) => {
+				const card = document.createElement("div");
+				card.className = "card";
+				card.innerHTML = `<div class="label">${item.label}</div><div class="value">${item.value}</div>`;
+				serviceChannelCards.appendChild(card);
 			});
 		}
 

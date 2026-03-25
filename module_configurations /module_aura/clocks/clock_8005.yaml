@@ -12,8 +12,8 @@ spec:
     id: aura.clock.module.8005
     name: aura.clock.module.8005
     description: aura.clock.module.8005
-    tenantId: "700001"
-    tenantCode: bkezz
+    tenantId: "600309"
+    tenantCode: lsg
   calendarCode: CALINBKEZZ001
   cbuDuration: 1
   cbusInAdvance: 10

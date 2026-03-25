@@ -12,6 +12,6 @@ spec:
       moduleVersion: 0.0.1
     tenantId: '600309'
     tenantCode: lsg
-  code: COAUS-NOVA-1011
+  code: COAIN-NOVA-1011
   name: lsg Nova
   templateCode: in-credit

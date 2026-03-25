@@ -12,6 +12,6 @@ spec:
       moduleVersion: 0.0.1
     tenantId: '600309'
     tenantCode: lsg
-  code: COAUS-SUPERNOVA-1012
+  code: COAIN-SUPERNOVA-1012
   name: lsg Supernova
   templateCode: in-credit

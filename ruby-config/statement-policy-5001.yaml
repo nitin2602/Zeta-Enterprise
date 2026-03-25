@@ -12,7 +12,7 @@ spec:
       moduleVersion: 0.0.1
     tenantId: '600309'
     tenantCode: lsg
-  validFrom: '2025-01-01T00:00:00.000+05:30'
+  validFrom: '2026-01-01T00:00:00.000+05:30'
   validTill: '2999-01-01T00:00:00.000-05:00'
   name: Statement Policy
   description: Statement Policy
@@ -52,7 +52,7 @@ spec:
     - billingCycle: CYCIN00500128
     - billingCycle: CYCIN00500129
   password: function password(context) { return 'password' }
-  statementTemplateCode: https://hercules-assets.mum1-pp.zetaapps.in/statement-templates/3.0.65/sparrow/digital.html,https://hercules-assets.mum1-pp.zetaapps.in/statement-templates/3.0.65/sparrow/mail.html
+  statementTemplateCode: statement.html
   applyLateFeesOn: GRACE_DATE
   valueDateOfLateFees: GRACE_DATE
   ytdSummaryEnabled: true
