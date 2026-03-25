@@ -21,7 +21,7 @@ spec:
   debitEffectiveFrom: ValueDate
   interestAccrual:
     accountLevelRate: true
-    annualInterestRate: 13.00
+    annualInterestRate: 14.00
     dayCountMethods:
       - lifeCycleEvent: firstInstallment
         dayCountMethod: ACTUAL/360_EZZ
