@@ -5,14 +5,14 @@ metadata:
 spec:
   metadata:
     id: ruby.rubyannualfeeepolicy.5001
-    name: 5001 Ruby Annual Fee Policy
-    description: 5001 Ruby Annual Fee Policy
+    name: Supernova 5001 Ruby Annual Fee Policy
+    description: Supernova 5001 Ruby Annual Fee Policy
     requester:
       module: ruby-module-e2e
       moduleVersion: 0.0.1
     tenantId: '600309'
     tenantCode: lsg
-  name: Ruby Annual Fee Policy
+  name: Supernova Ruby Annual Fee Policy
   code: ANFUS005001
   description: Ruby Annual Fee Policy
   modelParameters:
