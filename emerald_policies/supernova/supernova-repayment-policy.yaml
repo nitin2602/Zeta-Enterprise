@@ -5,8 +5,8 @@ metadata:
 spec:
   metadata:
     id: emerald.emeraldrepaymentpolicy.supernova.1012
-    name: Emerald Repayment Policy
-    description: Emerald Repayment Policy
+    name: Supernova Repayment Policy
+    description: Supernova Repayment Policy
     requester:
       module: emerald-module-e2e
       moduleVersion: 0.0.1
@@ -14,8 +14,8 @@ spec:
     tenantCode: lsg
   validFrom: '2026-03-06T00:00:00.000+05:30'
   validTill: '2999-12-31T00:00:00.000+05:30'
-  name: Emerald Repayment Policy
-  description: Emerald Repayment Policy
+  name: Supernova Repayment Policy
+  description: Supernova Repayment Policy
   code: ERPUS-SUPERNOVA-1012
   longestOverDue: false
   minAmountForPartialPayOff: 50000
